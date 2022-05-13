@@ -1,0 +1,43 @@
+.collapse:not(.show) {
+	display: none
+}
+
+.collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	transition: height .35s ease;
+	// will-change: height;
+}
+
+.image-hover {
+	position: relative;
+	cursor: pointer;
+
+	&:hover{
+		&::after {
+			opacity: 1;
+		}
+	}
+
+	&::after{
+		content: '';
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -2rem;
+		margin-top: -2rem;
+
+		width: 4rem;
+		height: 4rem;
+		fill: #fff;
+
+		border-radius: 50%;
+
+		opacity: 0;
+		transition: ease .15s;
+		background-size: 2.4rem;
+
+	}
+}
