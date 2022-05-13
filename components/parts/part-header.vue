@@ -8,7 +8,7 @@
 					form-select.header__lang(lang value="Eng")
 				.header__column.header__column_right.flex.flex_vertical
 					button-action.header__favorite(to="#")
-					button-primary.header__login(to="/" white) Login / Registration
+					NuxtLink.header__login.link.p(to="#" white) Login / Registration
 					button-primary.header__add(to="/" light) Add advertise
 
 </template>
@@ -16,6 +16,7 @@
 <style lang="scss">
 .header{
 	padding: 30rem 0;
+	width: 100%;
 	@include large-mobile {
 		padding: 20rem 0;
 	}
@@ -29,16 +30,25 @@
 	}
 	&__lang {
 		margin-left: 30rem;
+		.select__head {
+			padding-right: 0;
+		}
 	}
 
 	&__login {
-		&:not(:last-child) {
-			margin-right: 10rem;
+		margin-left: 20rem;
+
+		@include small-tablet {
+			margin-left: 10rem;
 		}
 	}
 
 	&__add {
 		min-width: 160rem;
+		margin-left: 30rem;
+		@include small-tablet {
+			margin-left: 20rem;
+		}
 	}
 	&__column {
 		@include large-mobile {

@@ -32,10 +32,19 @@
 .content h5,
 .h6,
 .content h6 {
+	font-weight: 500;
+	font-family: 'Atyp Display';
 }
 
 .h1,
 .content h1 {
+	font-weight: 600;
+	font-size: 50rem;
+	line-height: 1;
+
+	@include large-mobile {
+		font-size: 28rem;
+	}
 }
 
 .h2,

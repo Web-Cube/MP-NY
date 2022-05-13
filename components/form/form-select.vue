@@ -13,6 +13,10 @@ export default {
 			type: String,
 			default: 'Select'
 		},
+		big: {
+			type: Boolean,
+			default: false
+		},
 		lang: {
 			type: Boolean,
 			default: false
@@ -27,6 +31,7 @@ export default {
 		Mods(){
 			return {
 				'select_lang': this.lang,
+				'select_big': this.big,
 				'select_border-right': this.borderRight,
 			}
 		}
@@ -46,6 +51,7 @@ export default {
 			}
 			&__arrow {
 				stroke: $default;
+				margin-left: 5rem;
 			}
 		}
 
@@ -58,15 +64,46 @@ export default {
 			}
 		}
 	}
+	&_big {
+		.select {
+			&__head {
+				font-size: 17rem;
+				color: $default;
+				font-weight: 600;
+			}
+			&__arrow {
+				stroke: $default;
+				margin-left: 14rem;
+			}
+		}
+
+		@include large-mobile {
+			.select {
+				&__head {
+					height: 20rem;
+					font-size: 14rem;
+				}
+			}
+		}
+	}
+	&_border-right {
+		.select {
+			&__head {
+				border-left: 0;
+				border-right: 1px solid $light-gray;
+			}
+		}
+	}
 	&__head {
 		border-left: 1px solid $light-gray;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 50rem;
+		height: 56rem;
 		color: $gray;
 		padding: 0 30rem;
 		cursor: pointer;
+		white-space: nowrap;
 
 		@include large-mobile {
 			height: 20rem;
@@ -84,6 +121,7 @@ export default {
 		fill: none;
 		stroke: $gray;
 		stroke-width: 2;
+		margin-left: 18rem;
 
 		@include large-mobile {
 			width: 8rem;

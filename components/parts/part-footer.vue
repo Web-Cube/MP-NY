@@ -10,6 +10,6 @@ export default {
 
 <style lang="scss">
 .footer{
-	
+	width: 100%;
 }
 </style>

@@ -48,6 +48,7 @@ export default {
 	border-radius: 10rem;
 	font-size: 17rem;
 	font-weight: 600;
+	transition: ease .2s;
 
 	&_white {
 		background: #fff;
@@ -56,6 +57,10 @@ export default {
 	&_light {
 		background: rgba(85, 109, 238, 0.1);
 		color: $blue;
+		&:hover {
+			color: #fff;
+			background: #1E41FF;
+		}
 	}
 }
 </style>

@@ -78,6 +78,17 @@ body {
 	}
 }
 
+.container {
+	min-height: 100vh;
+	display: flex;
+    flex-direction: column;
+}
+
+.main {
+	width: 100%;
+	flex: 1 0 auto;
+}
+
 input,
 textarea {
 	-webkit-appearance: none;
@@ -248,4 +259,13 @@ svg {
 
 .color-red {
 	color: #d31418;
+}
+
+.link {
+	transition: ease .2s;
+	font-weight: 600;
+	display: inline-flex;
+	&:hover {
+		color: $blue;
+	}
 }
