@@ -3,13 +3,14 @@
 		.item-card__box.flex.flex_bottom
 			.item-card__buttons
 				button-primary.item-card__btn.item-card__btn_chatting(gray icon="chatting")
-				button-primary.item-card__btn.item-card__btn_phone(gray to="tel:+ 13762665353" v-if="phone") + 1 376 266 5353
+				button-primary.item-card__btn.item-card__btn_phone(gray v-if="phone") {{ phone }}
 				button-primary.item-card__btn.item-card__btn_phone(gray small icon="phone" v-else @click.native="showPhone") Show number
 		.item-card__head
 			.item-card__gallery
 				part-mouse-gallery(:list="gallery")
-			.item-card__zoom
+			.item-card__zoom(v-if="zoom")
 				svg-icon(name="search")
+			.item-card__status(v-if="status") {{ status }}
 		.item-card__info
 			.item-card__top
 				NuxtLink.item-card__name.p(to="#") {{ name }}
@@ -33,6 +34,14 @@ export default{
 			type: String,
 			default: "$ 228"
 		},
+		status: {
+			type: String,
+			default: ""
+		},
+		phone: {
+			type: String,
+			default: "+ 1 376 266 5353"
+		},
 		gallery: {
 			type: Array,
 			default: () => ([
@@ -43,6 +52,10 @@ export default{
 				'item-card__img5.jpg'
 			])
 		},
+		zoom: {
+			type: Boolean,
+			default: false
+		}
 	},
 	data: () => ({
 		phone: false,		
@@ -173,6 +186,22 @@ export default{
 			stroke-width: 1px;
 			transform: rotate(90deg);
 		}
+	}
+	&__status {
+		position: absolute;
+		z-index: 30;
+		left: 10rem;
+		top: 10rem;
+		height: 30rem;
+		background: #FF664A;
+		border-radius: 7rem;
+		padding: 0 10rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-weight: 600;
+		letter-spacing: normal;
 	}
 }
 </style>
