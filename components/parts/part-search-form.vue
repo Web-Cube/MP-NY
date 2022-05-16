@@ -3,7 +3,7 @@
 		.search-form__row
 			form-select.search-form__select(big borderRight value="Categories" v-if="category")
 			.search-form__field
-				input.search-form__input(name="search" :placeholder="placeholder")
+				input.search-form__input(name="search" :placeholder="placeholder" autocomplete="off")
 				button-action.search-form__btn-search(icon="search")
 			.search-form__options
 				slot

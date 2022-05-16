@@ -1,6 +1,7 @@
 <template lang="pug">
 	main.main
 		section-search(:list="search.list" :title="search.title")
+		section-categories
 
 </template>
 
