@@ -3,7 +3,8 @@
 		:is="to !== '' ? 'NuxtLink' : 'button'"
 		:to="to !== '' ? to : false"
 		:class="Mods"
-	) 
+	)
+		svg-icon.button-action__icon(:name="icon" :class="`button-primary__icon_${icon}`" v-if="icon")
 		span.button-primary__text
 			slot
 
@@ -16,11 +17,23 @@ export default {
 			type: String,
 			default: ""
 		},
+		icon: {
+			type: String,
+			default: ""
+		},
 		white: {
 			type: Boolean,
 			default: false
 		},
 		light: {
+			type: Boolean,
+			default: false
+		},
+		gray: {
+			type: Boolean,
+			default: false
+		},
+		small: {
 			type: Boolean,
 			default: false
 		}
@@ -30,7 +43,9 @@ export default {
 		Mods(){
 			return {
 				'button-primary_white': this.white,
-				'button-primary_light': this.light
+				'button-primary_light': this.light,
+				'button-primary_gray': this.gray,
+				'button-primary_small': this.small
 			}
 		}
 	}
@@ -49,6 +64,8 @@ export default {
 	font-size: 17rem;
 	font-weight: 600;
 	transition: ease .2s;
+	cursor: pointer;
+	font-family: 'Gilroy';
 
 	&_white {
 		background: #fff;
@@ -60,6 +77,31 @@ export default {
 		&:hover {
 			color: #fff;
 			background: #1E41FF;
+		}
+	}
+
+	&_gray {
+		background: #F5F5F7;
+		border: 1px solid #F5F5F7;
+		&:hover {
+			background: #fff;
+			border-color: #E4E4E4;
+		}
+	}
+	&_small {
+		font-size: 14rem;
+	}
+	&__icon {
+		flex-shrink: 0;
+		&_chatting {
+			width: 16rem;
+			height: 12rem;
+		}
+		&_phone {
+			width: 11rem;
+			height: 10rem;
+			margin-right: 10rem;
+			margin-top: -1px;
 		}
 	}
 }

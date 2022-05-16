@@ -59,6 +59,10 @@
 .content h3 {
 	font-size: 26rem;
 	line-height: 1;
+
+	@include large-mobile {
+		font-size: 20rem;
+	}
 }
 
 .h4,
