@@ -21,10 +21,6 @@ export default {
 			type: String,
 			default: ""
 		},
-		white: {
-			type: Boolean,
-			default: false
-		},
 		light: {
 			type: Boolean,
 			default: false
@@ -42,7 +38,6 @@ export default {
 	computed: {
 		Mods(){
 			return {
-				'button-primary_white': this.white,
 				'button-primary_light': this.light,
 				'button-primary_gray': this.gray,
 				'button-primary_small': this.small
@@ -63,17 +58,13 @@ export default {
 	border-radius: 10rem;
 	font-size: 17rem;
 	font-weight: 600;
-	transition: ease .2s;
+	transition: ease .12s;
 	cursor: pointer;
 	font-family: 'Gilroy';
 
 	@include large-mobile {
 		height: 50rem;
 		font-size: 14rem;
-	}
-
-	&_white {
-		background: #fff;
 	}
 
 	&_light {

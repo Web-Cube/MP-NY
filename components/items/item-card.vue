@@ -1,46 +1,47 @@
 <template lang="pug">
-	NuxtLink.item-card(v-if="banner" :to="to")
-		span.item-card__banner
-			span.item-card__bg
-			span.item-card__banner-wrap
-				span.item-card__banner-img(v-if="bannerImg")
-					img(:src="require(`~/assets/img/${bannerImg}`)")
-				span.item-card__banner-name.h4(v-html="name")
-				svg-icon.item-card__banner-arrow(name="arrowRight")
-	.item-card(v-else)
+	.item-card
 		.item-card__box.flex.flex_bottom
 			.item-card__buttons
 				button-primary.item-card__btn.item-card__btn_chatting(gray icon="chatting")
 				button-primary.item-card__btn.item-card__btn_phone(gray v-if="phone") {{ phoneNumber }}
 				button-primary.item-card__btn.item-card__btn_phone(gray small icon="phone" v-else @click.native="showPhone") Show number
 		.item-card__head
-			.item-card__gallery
+			NuxtLink.item-card__gallery(:to="to")
 				part-mouse-gallery(:list="gallery")
-			.item-card__zoom(v-if="zoom")
+			.item-card__zoom
 				svg-icon(name="search")
 			.item-card__status(v-if="status") {{ status }}
 		.item-card__info
 			.item-card__top
 				NuxtLink.item-card__name.p(:to="to") {{ name }}
 				button-action.item-card__favorite(to="#")
-			.item-card__text.color-gray {{ text }}
-			.item-card__price {{ price }}
+			.item-card__text.color-gray {{ city }}, {{ distance }}  •  {{ date }}
+			.item-card__price $ {{ numberWithSpaces(price) }}
 </template>
 
 <script>
+import {numberWithSpaces} from '~/assets/js/functions';
 export default{
 	props: {
 		name: {
 			type: String,
 			default: "Объектив SLR Magic. Sony E. 25mm f1.4"
 		},
-		text: {
+		city: {
 			type: String,
-			default: "New Your, 2 km near you  •  2 days ago"
+			default: "New Your"
+		},
+		distance: {
+			type: String,
+			default: "2 km near you"
+		},
+		date: {
+			type: String,
+			default: "2 days ago"
 		},
 		price: {
-			type: String,
-			default: "$ 228"
+			type: Number,
+			default: 228
 		},
 		status: {
 			type: String,
@@ -54,10 +55,6 @@ export default{
 			type: String,
 			default: "#"
 		},
-		bannerImg: {
-			type: String,
-			default: ""
-		},
 		gallery: {
 			type: Array,
 			default: () => ([
@@ -68,18 +65,13 @@ export default{
 				'item-card__img5.jpg'
 			])
 		},
-		banner: {
-			type: Boolean,
-			default: false
-		},
-		zoom: {
-			type: Boolean,
-			default: false
-		}
 	},
-	data: () => ({
-		phone: false,		
-	}),
+	data(){
+		return {
+			phone: false,
+			numberWithSpaces
+		}		
+	},
 	methods: {
 		showPhone() {
 			this.phone = true;
@@ -91,12 +83,22 @@ export default{
 <style lang="scss">
 .item-card{
 	position: relative;
-	&:hover {
-		z-index: 31;
-		.item-card {
-			&__box {
-				visibility: visible;
-				opacity: 1;
+	@include min-large-mobile {
+		&:hover {
+			z-index: 31;
+			.item-card {
+				&__box {
+					visibility: visible;
+					opacity: 1;
+				}
+				&__zoom {
+					opacity: 1;
+					visibility: visible;
+				}
+				&__status {
+					opacity: 0;
+					visibility: hidden;
+				}
 			}
 		}
 	}
@@ -109,6 +111,7 @@ export default{
 		overflow: hidden;
 		padding-top: div(220, 264) * 100%;
 		border-radius: 10rem;
+		display: block;
 
 		@include large-mobile {
 			padding-top: div(140, 167) * 100%;
@@ -190,14 +193,10 @@ export default{
 		padding: 20rem 15rem;
 		visibility: hidden;
 		opacity: 0;
-		transition: ease .2s;
+		transition: ease .1s;
 
 		@include large-mobile {
-			left: -10rem;
-			top: -10rem;
-			width: calc( 100% + 20rem );
-			height: calc( 100% + 95rem );
-			padding: 15rem 10rem;
+			display: none;
 		}
 	}
 
@@ -242,6 +241,9 @@ export default{
 		backdrop-filter: blur(10px);
 		border-radius: 10rem;
 		z-index: 30;
+		transition: ease .12s;
+		opacity: 0;
+		visibility: hidden;
 		svg {
 			width: 16rem;
 			height: 16rem;
@@ -275,6 +277,7 @@ export default{
 		color: #fff;
 		font-weight: 600;
 		letter-spacing: normal;
+		transition: ease .12s;
 		@include large-mobile {
 			height: 20rem;
 			padding: 0 6rem;
@@ -314,6 +317,20 @@ export default{
 			stroke-width: 2;
 		}
 
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(239.83deg, #E0F0FF 10.5%, #FFE3D3 124.13%);
+			opacity: 0.7;
+			border-radius: 10px;
+			transform: matrix(-1, 0, 0, 1, 0, 0);
+		}
+
 		@include large-mobile {
 			&-img {
 				margin-bottom: 17rem;
@@ -328,17 +345,6 @@ export default{
 				margin-top: 10rem;
 			}
 		}
-	}
-	&__bg {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(239.83deg, #E0F0FF 10.5%, #FFE3D3 124.13%);
-		opacity: 0.7;
-		border-radius: 10px;
-		transform: matrix(-1, 0, 0, 1, 0, 0);
 	}
 }
 </style>

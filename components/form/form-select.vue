@@ -1,17 +1,30 @@
 <template lang="pug">
 	.select(:class="Mods")
-		.select__head
+		input.select__input(type="hidden" :name="name" :value="value")
+		.select__head(v-click-outside="closeList" @click="toggleList")
 			.select__value {{ value }}
 			.select__arrow
 				svg-icon(name="arrowDown" viewBox="0 0 11 7")
+		.select__list(v-if="listOn")
+			.select__item(v-for="(item, i) in items" :key="i")
+				label.select__btn
+					input.select__btn-input(type="radio" :name="name" :value="item" @change="closeList(); updateValue();" v-model="currentValue")
+					span.select__btn-text {{ item }}
+
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
+
 export default {
 	props: {
 		value: {
 			type: String,
 			default: 'Select'
+		},
+		name: {
+			type: String,
+			default: ''
 		},
 		big: {
 			type: Boolean,
@@ -24,7 +37,18 @@ export default {
 		borderRight: {
 			type: Boolean,
 			default: false
+		},
+		items: {
+			type: [Array, Object],
+			default: () => ([])
 		}
+	},
+
+	data() {
+		return {
+			listOn: false,
+			currentValue: '',
+		};	
 	},
 
 	computed: {
@@ -35,12 +59,30 @@ export default {
 				'select_border-right': this.borderRight,
 			}
 		}
-	}
+	},
+	methods: {
+		toggleList() {
+			this.listOn = !this.listOn;
+		},
+		closeList() {
+			this.listOn = false;
+		},
+		updateValue(e){
+			this.value = this.currentValue;
+		},
+	},
+	mounted () {
+		this.popupItem = this.$el
+	},
+	directives: {
+		ClickOutside
+  	}
 }
 </script>
 
 <style lang="scss">
 .select{
+	position: relative;
 	&_lang {
 		.select {
 			&__head {
@@ -126,6 +168,42 @@ export default {
 		@include large-mobile {
 			width: 8rem;
 			height: 5rem;
+		}
+	}
+
+	&__list {
+		position: absolute;
+		top: 100%;
+		margin-top: 10rem;
+		z-index: 100;
+		left: 0;
+		width: calc( 100% + 30rem );
+		background: #fff;
+		padding: 10rem;
+		border: 1px solid #D2D2D7;
+		border-radius: 5px 5px 15rem 15rem;
+	}
+
+	&__btn {
+		cursor: pointer;
+		&-input {
+			display: none;
+			&:checked {
+				& + .select__btn-text {
+					background: #F5F5F7;
+					color: $default;
+				}
+			}
+		}
+		&-text {
+			padding: 10rem 20rem;
+			border-radius: 5px;
+			transition: ease .2s;
+			display: block;
+			font-size: 17rem;
+			&:hover {
+				color: $blue;
+			}
 		}
 	}
 }

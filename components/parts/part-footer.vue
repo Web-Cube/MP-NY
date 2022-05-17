@@ -4,7 +4,7 @@
 			.footer__top.flex.flex_vertical.flex_justify
 				NuxtLink.footer__logo(to="/")
 					img(src="~/assets/img/logo.svg")
-				ul.footer__nav.flex
+				ul.footer__nav.flex.flex_right
 					li.footer__nav-item
 						NuxtLink.footer__nav-link.link(to="#") Money Back
 					li.footer__nav-item
@@ -53,6 +53,7 @@ export default {
 	&__top {
 		padding: 23rem 0;
 		border-top: 1px solid rgba(195, 200, 203, 0.6);
+		flex-wrap: nowrap;
 
 		@include large-mobile {
 			padding: 0 0 20rem 0;
@@ -60,7 +61,7 @@ export default {
 		}
 	}
 	&__logo {
-		display: block;
+		flex: 0 0 auto;
 		width: 132rem;
 		@include large-mobile {
 			width: 120rem;
@@ -68,11 +69,16 @@ export default {
 	}
 	&__nav {
 		list-style: none;
+		flex: 1 1 auto;
+		margin-right: -25rem;
 		&-item {
-			margin-top: 5rem;
-			margin-bottom: 5rem;
-			&:not(:last-child) {
-				margin-right: 50rem;
+			margin: 5rem 25rem;
+		}
+
+		@include large-desktop {
+			margin-right: -15rem;
+			&-item {
+				margin: 5rem 15rem;
 			}
 		}
 

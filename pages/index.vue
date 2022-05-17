@@ -1,6 +1,6 @@
 <template lang="pug">
 	main.main
-		section-search(:list="search.list" :title="search.title")
+		section-search(:list="search.list")
 		section-categories(:categories="categories")
 
 </template>
@@ -9,7 +9,6 @@
 export default {
 	data(){
 		const search = {
-			title: "Search. Buy. <span class='color-blue'>Sell.</span>",
 			list: [
 				{
 
@@ -77,11 +76,13 @@ export default {
 				title: 'VIP advertise',
 				list: [
 					{
-						name: 'Объектив SLR Magic. Sony E. 25mm f1.4',
-						text: 'New Your, 2 km near you • 2 days ago',
-						price: '$ 228',
-						phone: '+ 1 376 266 5353',
-						zoom: true,
+						name: 'Объектив SLR Magic. Sony E. 25mm f1.4 2',
+						city: 'New Your',
+						distance: '2 km near you',
+						date: '4 days ago',
+						price: 22228,
+						phoneNumber: '+ 1 376 266 5353',
+						status: 'VIP',
 						gallery: [
 							'item-card__img1.jpg',
 							'item-card__img2.jpg',
@@ -92,9 +93,11 @@ export default {
 					},
 					{
 						name: 'Объектив SLR Magic. Sony E. 25mm f1.2',
-						text: 'New Your, 22 km near you • 1 days ago',
-						price: '$ 128',
-						phone: '+ 1 379 266 5353',
+						city: 'New Your',
+						distance: '3 km near you',
+						date: '5 days ago',
+						price: 128,
+						phoneNumber: '+ 1 379 266 5353',
 						status: 'VIP',
 						gallery: [
 							'item-card__img2.jpg',
@@ -174,9 +177,9 @@ export default {
 						]
 					},
 					{
-						banner: true,
-						bannerImg: 'banner1.png',
-						name: 'Объектив <br>SLR Magic. Sony E. 25mm f1.4'
+						img: 'card-premium__img1.png',
+						name: 'Объектив <br>SLR Magic. Sony E. 25mm f1.4',
+						type: 'premium'
 					},
 					{
 						gallery: [
@@ -199,9 +202,9 @@ export default {
 						]
 					},
 					{
-						banner: true,
-						bannerImg: 'banner2.png',
-						name: 'Объектив <br>SLR Magic. Sony E. 25mm f1.4'
+						img: 'card-premium__img2.png',
+						name: 'Объектив <br>SLR Magic. Sony E. 25mm f1.4',
+						type: 'premium'
 					},
 					{
 						gallery: [

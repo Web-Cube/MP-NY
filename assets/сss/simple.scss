@@ -32,12 +32,21 @@
 html {
 	font-size: #{div(100, div(1480, 1))}vw;
 
+	&.js-lock {
+		overflow: hidden;
+		margin-right: 15px;
+	}
+
 	@include min-large-desktop {
 		font-size: 1px;
 	}
 
 	@include large-tablet {
 		font-size: 0.8px;
+
+		&.js-lock {
+			margin-right: 0;
+		}
 	}
 
 	@include large-mobile {
@@ -47,38 +56,19 @@ html {
 	@include small-mobile {
 		font-size: #{div(100, div(375, 1))}vw;
 	}
-
-	&.js-lock {
-		overflow: hidden;
-	}
 }
 
 body {
-	font-size: 14px;
+	font-size: 14rem;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
 	font-family: 'Gilroy';
 	color: $default;
 	font-weight: 500;
-
-	@include large-tablet {
-		font-size: 13px;
-	}
-	@include large-mobile {
-		font-size: 12rem;
-	}
-}
-body {
 	position: relative;
 
-	&.js-lock {
-		overflow: hidden;
-		margin-right: 15px;
-	}
 	@include large-mobile {
-		&.js-lock {
-			margin-right: 0;
-		}
+		font-size: 12rem;
 	}
 }
 
@@ -274,7 +264,7 @@ svg {
 }
 
 .link {
-	transition: ease .2s;
+	transition: ease .15s;
 	font-weight: 600;
 	display: inline-flex;
 	&:hover {

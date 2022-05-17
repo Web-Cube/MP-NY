@@ -3,7 +3,13 @@
 		.search-form__row
 			form-select.search-form__select(big borderRight value="Categories" v-if="category")
 			.search-form__field
-				input.search-form__input(name="search" :placeholder="placeholder" autocomplete="off" @keyup="showList" @blur="closeList")
+				input.search-form__input(
+					name="search" 
+					:placeholder="placeholder" 
+					autocomplete="off" 
+					@keyup="showList" 
+					@blur="closeList"
+				)
 				button-action.search-form__btn-search(icon="search")
 				.search-form__list(v-if="searchListOn")
 					.search-form__item(
@@ -37,7 +43,7 @@ export default {
 			default: false
 		},
 		searchList: {
-			type: Object,
+			type: [Array, Object],
 			default: () => ([])
 		}
 	},
@@ -63,25 +69,27 @@ export default {
 	position: relative;
 	display: flex;
 	border-radius: 15rem;
+	height: 88rem;
 
 	@include large-mobile {
 		border-radius: 8px;
+		height: 48rem;
 	}
 
 	&__row {
 		display: flex;
 		background: #fff;
-		border-radius: 15rem;
-		height: 86rem;
+		border-radius: 14rem;
 		width: 100%;
+		height: 100%;
 		@include large-mobile {
-			border-radius: 8px;
-			height: 46rem;
+			border-radius: 6px;
 		}
 	}
 	&__field {
 		position: relative;
 		width: 100%;
+		flex: 1 1 auto;
 	}
 	&__list {
 		position: absolute;
@@ -161,9 +169,9 @@ export default {
 	}
 	&__options {
 		display: flex;
+		flex: 0 0 auto;
 	}
 	&__select {
-		flex-shrink: 1;
 		display: flex;
 		align-items: center;
 

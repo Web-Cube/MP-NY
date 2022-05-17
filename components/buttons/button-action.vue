@@ -52,7 +52,7 @@ export default {
 	&__icon {
 		max-width: 18rem;
 		max-height: 16rem;
-		transition: ease .2s;
+		transition: ease .1s;
 		&_heart {
 			fill: none;
 			stroke: #000;

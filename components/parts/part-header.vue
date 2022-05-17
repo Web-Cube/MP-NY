@@ -5,10 +5,13 @@
 				.header__column.header__column_left.flex.flex_vertical
 					NuxtLink.header__logo(to="/")
 						img(src="~/assets/img/logo.svg")
-					form-select.header__lang(lang value="Eng")
+					form-select.header__lang(lang value="Eng" name="lang" :items="['Ru', 'Ukr']")
 				.header__column.header__column_right.flex.flex_vertical
 					button-action.header__favorite(to="#")
-					NuxtLink.header__login.link.p(to="#") Login / Registration
+					.header__nav
+						NuxtLink.header__login.link.p(to="#") Login 
+						span  / 
+						NuxtLink.header__reg.link.p(to="#") Registration
 					button-primary.header__add(to="/" light) Add advertise
 
 </template>
@@ -35,7 +38,7 @@
 		}
 	}
 
-	&__login {
+	&__nav {
 		margin-left: 20rem;
 
 		@include small-tablet {

@@ -51,7 +51,7 @@ export default {
 		fill: #C3C8CB;
 		fill-rule: evenodd;
 		clip-rule: evenodd;
-		transition: ease .2s;
+		transition: ease .12s;
 		&:hover {
 			fill: $blue;
 		}

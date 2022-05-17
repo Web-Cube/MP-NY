@@ -1,5 +1,5 @@
 <template lang="pug">
-	SECTION.section-search
+	section.section-search
 		.section-search__images
 			.section-search__wrap.wrap
 				.section-search__img.section-search__img_left
@@ -9,9 +9,11 @@
 		.section-search__wrap.wrap
 			.section-search__img.section-search__img_right
 			.section-search__inner
-				h2.section-search__title.h1(v-html="title")
+				h2.section-search__title.h1
+					| Search. Buy. 
+					span.color-blue Sell.
 				part-search-form.section-search__form(:searchList="searchList")
-					form-select.search-form__select(value="New Yourk")
+					form-select.search-form__select(value="New Yourk" name="city" :items="['Chicago', 'San Diego', 'Houston']")
 			.section-search__list
 				.section-search__list-wrap.flex
 					item-category.section-search__item(
@@ -25,10 +27,6 @@
 <script>
 export default {
 	props: {
-		title: {
-			type: String,
-			default: "Search. Buy. <span class='color-blue'>Sell.</span>"
-		},
 		list: {
 			type: Array,
 			default: () => ([])
@@ -151,6 +149,10 @@ export default {
 		margin-top: 50rem;
 		&:first-child {
 			display: none;
+		}
+
+		@include small-tablet {
+			margin-top: 30rem;
 		}
 
 		@include large-mobile {
