@@ -2,7 +2,7 @@
 	--wrapper-offset: 40rem;
 
 	@include large-tablet {
-		--wrapper-offset: 30rem;
+		--wrapper-offset: 20px;
 		// 	--global-size: #{100/ (1120/0.7)}vw;
 	}
 
@@ -23,6 +23,10 @@
 	max-width: 1480rem;
 	margin: auto;
 	position: relative;
+
+	@include large-desktop {
+		max-width: 1280rem;
+	}
 }
 
 html {

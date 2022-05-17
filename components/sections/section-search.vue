@@ -41,7 +41,7 @@ export default {
 	overflow: hidden;
 
 	@include large-mobile {
-		padding: 80rem 0 50rem 0;
+		padding: 80rem 0 40rem 0;
 	}
 
 	&__inner {

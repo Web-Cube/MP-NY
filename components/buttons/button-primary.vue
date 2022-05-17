@@ -67,6 +67,11 @@ export default {
 	cursor: pointer;
 	font-family: 'Gilroy';
 
+	@include large-mobile {
+		height: 50rem;
+		font-size: 14rem;
+	}
+
 	&_white {
 		background: #fff;
 	}
@@ -102,6 +107,14 @@ export default {
 			height: 10rem;
 			margin-right: 10rem;
 			margin-top: -1px;
+		}
+
+		@include large-mobile {
+			&_phone {
+				width: 9rem;
+				height: 8rem;
+				margin-right: 5rem;
+			}
 		}
 	}
 }

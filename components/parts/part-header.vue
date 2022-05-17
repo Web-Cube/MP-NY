@@ -8,7 +8,7 @@
 					form-select.header__lang(lang value="Eng")
 				.header__column.header__column_right.flex.flex_vertical
 					button-action.header__favorite(to="#")
-					NuxtLink.header__login.link.p(to="#" white) Login / Registration
+					NuxtLink.header__login.link.p(to="#") Login / Registration
 					button-primary.header__add(to="/" light) Add advertise
 
 </template>

@@ -1,6 +1,10 @@
 .content p,
 .p {
 	font-size: 17rem;
+
+	@include large-mobile {
+		font-size: 14rem;
+	}
 }
 .content b,
 .b {
@@ -62,11 +66,15 @@
 
 	@include large-mobile {
 		font-size: 20rem;
+		font-family: 'Gilroy';
+		font-weight: 600;
+		line-height: 1.1;
 	}
 }
 
 .h4,
 .content h4 {
+	font-size: 20rem;
 }
 
 .h5,
