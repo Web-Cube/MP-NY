@@ -230,6 +230,7 @@ svg {
 
 .css-scrollbar {
 	overflow-y: auto;
+	
 	/* width */
 	&::-webkit-scrollbar {
 		width: 2px;
@@ -244,11 +245,6 @@ svg {
 	&::-webkit-scrollbar-thumb {
 		background: $blue;
 	}
-
-	/* Handle on hover */
-	// &::-webkit-scrollbar-thumb:hover {
-	// 	background: #555;
-	// }
 }
 
 .color-gray {

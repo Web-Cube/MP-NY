@@ -62,7 +62,6 @@ export default {
 
 	&__arrow {
 		flex-shrink: 0;
-		margin-left: 5px;
 		width: 11rem;
 		height: 7rem;
 		fill: none;

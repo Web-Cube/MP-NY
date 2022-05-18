@@ -49,3 +49,15 @@
     opacity: 1;
   }
 }
+
+.collapse:not(.show) {
+	display: none
+}
+
+.collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	transition: height .35s ease;
+	// will-change: height;
+}

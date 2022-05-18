@@ -29,6 +29,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		blue: {
+			type: Boolean,
+			default: false
+		},
 		small: {
 			type: Boolean,
 			default: false
@@ -40,7 +44,8 @@ export default {
 			return {
 				'button-primary_light': this.light,
 				'button-primary_gray': this.gray,
-				'button-primary_small': this.small
+				'button-primary_small': this.small,
+				'button-primary_blue': this.blue
 			}
 		}
 	}
@@ -56,7 +61,7 @@ export default {
 	height: 60rem;
 	padding: 0 20rem;
 	border-radius: 10rem;
-	font-size: 17rem;
+	font-size: 16rem;
 	font-weight: 600;
 	transition: ease .12s;
 	cursor: pointer;
@@ -86,6 +91,10 @@ export default {
 	}
 	&_small {
 		font-size: 14rem;
+	}
+	&_blue {
+		background: $blue;
+		color: #fff;
 	}
 	&__icon {
 		flex-shrink: 0;
