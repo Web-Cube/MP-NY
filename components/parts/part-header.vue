@@ -7,7 +7,7 @@
 						img(src="~/assets/img/logo.svg")
 					form-select.header__lang(lang value="Eng" name="lang" :items="['Ru', 'Ukr']")
 				.header__column.header__column_right.flex.flex_vertical
-					button-action.header__favorite(to="#")
+					button-action.header__favorite(to="#" content="<strong>Избранное</strong>" v-tippy="{ trigger: 'mouseenter' }")
 					.header__nav
 						NuxtLink.header__login.link.p(to="#") Login 
 						span  / 
@@ -15,6 +15,10 @@
 					button-primary.header__add(to="/" light) Add advertise
 
 </template>
+
+<script>
+
+</script>
 
 <style lang="scss">
 .header{

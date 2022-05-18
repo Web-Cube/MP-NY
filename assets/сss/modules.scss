@@ -1,0 +1,55 @@
+.tippy {
+	&-tooltip {
+		font-size: 17rem;
+		background: #fff;
+		color: $default;
+		padding: 20rem;
+		border: 1px solid #D2D2D7;
+		border-radius: 10rem;
+		transition-duration: .2s!important;
+	}
+	&-roundarrow {
+		fill: #fff;
+		stroke: #D2D2D7;
+		stroke-width: 1px;
+		width: 20px;
+		height: 10px;
+		transform: scale(1.2, 1);
+		svg {
+			width: 100%;
+		}
+		&:after {
+			content: '';
+			background: #fff;
+			width: 16px;
+			height: 1px;
+			display: block;
+			position: absolute;
+			left: 2px;
+			bottom: 2px;
+		}
+	}
+}
+
+.tippy-popper[x-placement^=bottom] .tippy-roundarrow {
+	top: -8px;
+}
+
+.DropDown-enter-active {
+	animation: drop-down 0.2s;
+}
+
+.DropDown-leave-active {
+	animation: drop-down 0.2s reverse;
+}
+
+@keyframes drop-down {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -58,6 +58,7 @@ export default {
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [
+		'~/plugins/vue-tippy/vue-tippy.js'
 	],
 
 
@@ -82,6 +83,18 @@ export default {
 			componentPlugins: [
 				'CollapsePlugin',
 			],
+		}
+	},
+
+	VueTippy: {
+		directive: "tippy", // => v-tippy
+			flipDuration: 0,
+			popperOptions: {
+			modifiers: {
+				preventOverflow: {
+					enabled: false
+				}
+			}
 		}
 	},
 

@@ -5,11 +5,12 @@
 			.select__value {{ value }}
 			.select__arrow
 				svg-icon(name="arrowDown" viewBox="0 0 11 7")
-		.select__list(v-if="listOn")
-			.select__item(v-for="(item, i) in items" :key="i")
-				label.select__btn
-					input.select__btn-input(type="radio" :name="name" :value="item" @change="closeList(); updateValue();" v-model="currentValue")
-					span.select__btn-text {{ item }}
+		transition(name="DropDown")
+			.select__list(v-if="listOn")
+				.select__item(v-for="(item, i) in items" :key="i")
+					label.select__btn
+						input.select__btn-input(type="radio" :name="name" :value="item" @change="closeList(); updateValue();" v-model="currentValue")
+						span.select__btn-text {{ item }}
 
 </template>
 
