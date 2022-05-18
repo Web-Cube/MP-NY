@@ -1,7 +1,8 @@
 <template lang="pug">
 	form.search-form(action="/")
 		.search-form__row
-			form-select.search-form__select(big borderRight value="Categories" v-if="category")
+			.search-form__options
+				slot(name="left")
 			.search-form__field
 				input.search-form__input(
 					name="search" 
