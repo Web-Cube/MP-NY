@@ -84,7 +84,7 @@ export default {
 		font-size: 17rem;
 		font-weight: 600;
 		font-family: 'Gilroy';
-		padding: 0 20rem;
+		padding: 0 10rem 0 20rem;
 		border: 1px solid #D2D2D7;
 		border-radius: 10rem;
 		display: block;

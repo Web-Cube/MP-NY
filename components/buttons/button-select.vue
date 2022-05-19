@@ -52,6 +52,11 @@ export default {
 		cursor: pointer;
 		white-space: nowrap;
 
+		@include small-tablet {
+			padding: 0 20rem;
+
+		}
+
 		@include large-mobile {
 			height: 20rem;
 			font-size: 14rem;
@@ -72,6 +77,10 @@ export default {
 		@include large-mobile {
 			width: 8rem;
 			height: 5rem;
+		}
+
+		@include small-tablet {
+			margin-left: 10rem;
 		}
 	}
 }

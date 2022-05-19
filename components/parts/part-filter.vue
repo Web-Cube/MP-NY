@@ -1,12 +1,7 @@
 <template lang="pug">
 	.filter
 		.filter__nav.flex.flex_vertical
-			.filter__nav-item
-				.filter__title
-					svg-icon.filter__title-icon(name="filter")
-					span.filter__title-text
-						| {{ title }} 
-						span.color-blue ({{ counter }})
+			button-filter.filter__title(:counter="counter")
 			.filter__nav-item
 				.filter__reset
 					svg-icon.filter__reset-icon(name="reset")
@@ -39,10 +34,6 @@
 import {numberWithSpaces} from '~/assets/js/functions';
 export default {
 	props: {
-		title: {
-			type: String,
-			default: "Filters"
-		},
 		counter: {
 			type: Number,
 			default: 2
@@ -83,6 +74,14 @@ export default {
 
 <style lang="scss">
 .filter{
+	@include small-tablet {
+		visibility: hidden;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
 	&__nav {
 		&-item {
 			display: flex;
@@ -93,19 +92,6 @@ export default {
 				border-left: 1px solid #D2D2D7;
 				padding-left: 20rem;
 			}
-		}
-	}
-	&__title {
-		display: inline-flex;
-		align-items: center;
-		color: $gray;
-		font-weight: 600;
-		&-icon {
-			width: 18rem;
-			height: 8rem;
-			flex-shrink: 0;
-			fill: $gray;
-			margin-right: 10rem;
 		}
 	}
 

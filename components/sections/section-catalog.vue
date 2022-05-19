@@ -1,7 +1,7 @@
 <template lang="pug">
 	section.section-catalog
 		.section-catalog__wrap.wrap
-			part-search-form.section-search__form(:searchList="searchList")
+			part-search-form.section-catalog__form(:searchList="searchList")
 				template(v-slot:left)
 					button-select.search-form__select(borderRight name="tippyCategories") Categories
 					tippy(to="tippyCategories" placement="bottom-start")
@@ -11,13 +11,50 @@
 				form-select.search-form__select(value="+0 km" name="distanse" :items="['+1 km', '+2 km', '+3 km']")
 			.section-catalog__row
 				.section-catalog__column.section-catalog__column_left
-					part-filter.section-catalog__filter(:filters="filters")
+					part-filter.section-catalog__filter(:filters="filters" :counter="counter")
 
 				.section-catalog__column.section-catalog__column_right
+					.section-catalog__nav.flex.flex_vertical.flex_justify
+						button-filter.section-catalog__btn-filter(:counter="counter")
+						form-select.section-catalog__sort(
+							lang 
+							noBorder 
+							label="Sort by"
+							value="Newest" 
+							:items="['By date', 'By price', 'By rating']"
+						)
+						module-grid-switch.section-catalog__grid-switch
+					.section-catalog__list.flex
+						item-card.section-catalog__item(
+							v-for="(item, i) in catalog" 
+							:key="i"
+							:name="item.name"
+							:city="item.city"
+							:distance="item.distance"
+							:date="item.date"
+							:phoneNumber="item.phoneNumber"
+							:price="item.price"
+							:gallery="item.gallery"
+							:status="item.status"
+							:to="item.to"
+						)
+					.section-catalog__btn-wrap
+						button-primary.section-catalog__btn(gray) {{ buttonText }}
 </template>
 
 <script>
 export default {
+	props: {
+		catalog: {
+			type: Array,
+			default: () => ([
+			])
+		},
+		buttonText: {
+			type: String,
+			default: "Показать еще"
+		},
+	},
 	data(){
 		const searchList = [
 			{
@@ -208,7 +245,8 @@ export default {
 		return{
 			searchList,
 			categories,
-			filters
+			filters,
+			counter: 3
 		}
 	}
 }
@@ -216,11 +254,24 @@ export default {
 
 <style lang="scss">
 .section-catalog{
-	padding-bottom: 100rem;
+	padding-bottom: 85rem;
+
+	@include large-mobile {
+		padding-top: 15rem;
+		padding-bottom: 50rem;
+	}
 	&__row {
 		display: flex;
 		margin-top: 50rem;
 		align-items: flex-start;
+
+		@include small-tablet {
+			flex-wrap: wrap;
+		}
+
+		@include large-mobile {
+			margin-top: 27rem;
+		}
 	}
 	&__column {
 		&_left {
@@ -233,6 +284,71 @@ export default {
 			flex: 1 1 auto;
 			width: 100%;
 			padding-left: 20rem;
+		}
+
+		@include small-tablet {
+			width: 100%;
+			&_left {
+				padding-right: 0;
+				border-right: 0;
+			}
+			&_right {
+				padding-left: 0;
+			}
+		}
+	}
+
+	&__list {
+		@include items(4, 10);
+
+		@include large-tablet {
+			@include items(3, 10);
+		}
+
+		@include small-tablet {
+			@include items(3, 10);
+		}
+		@include large-mobile {
+			@include items(2, 10);
+		}
+	}
+
+	&__item {
+		margin-top: 35rem;
+		margin-bottom: 5rem;
+		@include large-mobile {
+			margin-top: 20rem;
+			margin-bottom: 0;
+		}
+	}
+
+	&__nav {
+		@include small-tablet {
+			padding: 18rem 0;
+			border-bottom: 1px solid $light-gray;
+		}
+	}
+
+	&__btn-filter {
+		display: none;
+
+		@include small-tablet {
+			display: inline-flex;
+		}
+	}
+
+	&__btn {
+		width: 100%;
+		height: 40rem;
+		font-size: 12rem;
+		&-wrap {
+			display: none;
+			margin-top: 40rem;
+		}
+		@include large-mobile {
+			&-wrap {
+				display: block;
+			}
 		}
 	}
 }

@@ -1,16 +1,18 @@
 <template lang="pug">
 	.select(:class="Mods")
-		input.select__input(type="hidden" :name="name" :value="value")
-		.select__head(v-click-outside="closeList" @click="toggleList")
-			.select__value {{ value }}
-			.select__arrow
-				svg-icon(name="arrowDown" viewBox="0 0 11 7")
-		transition(name="DropDown")
-			.select__list(v-if="listOn")
-				.select__item(v-for="(item, i) in items" :key="i")
-					label.select__btn
-						input.select__btn-input(type="radio" :name="name" :value="item" @change="closeList(); updateValue();" v-model="currentValue")
-						span.select__btn-text {{ item }}
+		.select__label.p.color-gray(v-if="label") {{ label }}
+		.select__wrap
+			input.select__input(type="hidden" :name="name" :value="value")
+			.select__head(v-click-outside="closeList" @click="toggleList")
+				.select__value {{ value }}
+				.select__arrow
+					svg-icon(name="arrowDown" viewBox="0 0 11 7")
+			transition(name="DropDown")
+				.select__list(v-if="listOn")
+					.select__item(v-for="(item, i) in items" :key="i")
+						label.select__btn
+							input.select__btn-input(type="radio" :name="name" :value="item" @change="closeList(); updateValue();" v-model="currentValue")
+							span.select__btn-text {{ item }}
 
 </template>
 
@@ -27,6 +29,10 @@ export default {
 			type: String,
 			default: ''
 		},
+		label: {
+			type: String,
+			default: ''
+		},
 		big: {
 			type: Boolean,
 			default: false
@@ -36,6 +42,10 @@ export default {
 			default: false
 		},
 		borderRight: {
+			type: Boolean,
+			default: false
+		},
+		noBorder: {
 			type: Boolean,
 			default: false
 		},
@@ -58,6 +68,7 @@ export default {
 				'select_lang': this.lang,
 				'select_big': this.big,
 				'select_border-right': this.borderRight,
+				'select_no-border': this.noBorder,
 			}
 		}
 	},
@@ -84,6 +95,8 @@ export default {
 <style lang="scss">
 .select{
 	position: relative;
+	display: inline-flex;
+	align-items: center;
 	&_lang {
 		.select {
 			&__head {
@@ -137,6 +150,43 @@ export default {
 			}
 		}
 	}
+	&_no-border {
+		.select {
+			&__head {
+				height: auto;
+				padding: 0 15rem;
+				height: auto;
+				border: 0;
+			}
+			&__list {
+				left: -15rem;
+			}
+		}
+	}
+
+	@include large-mobile {
+		&_no-border {
+			.select {
+				&__head {
+					padding: 0 5rem;
+					height: auto;
+					border: 0;
+				}
+				&__list {
+					left: -15rem;
+				}
+			}
+		}
+	}
+
+	&__label {
+		@include large-mobile {
+			padding-bottom: 1px;
+		}
+	}
+	&__wrap {
+		position: relative;
+	}
 	&__head {
 		border-left: 1px solid $light-gray;
 		display: flex;
@@ -147,6 +197,10 @@ export default {
 		padding: 0 30rem;
 		cursor: pointer;
 		white-space: nowrap;
+
+		@include small-tablet {
+			padding: 0 20rem;
+		}
 
 		@include large-mobile {
 			height: 20rem;
@@ -165,6 +219,10 @@ export default {
 		stroke: $gray;
 		stroke-width: 2;
 		margin-left: 18rem;
+
+		@include small-tablet {
+			margin-left: 10rem;
+		}
 
 		@include large-mobile {
 			width: 8rem;
@@ -204,6 +262,13 @@ export default {
 			font-size: 17rem;
 			&:hover {
 				color: $blue;
+			}
+		}
+
+		@include large-mobile {
+			&-text {
+				font-size: 14rem;
+				padding: 8rem 10rem;
 			}
 		}
 	}

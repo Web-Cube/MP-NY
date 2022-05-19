@@ -145,13 +145,13 @@ export default {
 		background: none;
 		font-size: 20rem;
 		padding-left: 64rem;
-		padding-right: 30rem;
+		padding-right: 20rem;
 		width: 100%;
 		&::placeholder {
 			color: $gray;
 		}
 
-		@include large-mobile {
+		@include small-tablet {
 			padding-left: 39rem;
 			font-size: 14rem;
 			font-weight: 500;
@@ -163,7 +163,7 @@ export default {
 		top: 50%;
 		margin-top: -19rem;
 
-		@include large-mobile {
+		@include small-tablet {
 			left: 5rem;
 			margin-top: -18rem;
 		}
