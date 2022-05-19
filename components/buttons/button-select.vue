@@ -74,13 +74,13 @@ export default {
 		stroke-width: 2;
 		margin-left: 18rem;
 
+		@include small-tablet {
+			margin-left: 10rem;
+		}
+
 		@include large-mobile {
 			width: 8rem;
 			height: 5rem;
-		}
-
-		@include small-tablet {
-			margin-left: 10rem;
 		}
 	}
 }

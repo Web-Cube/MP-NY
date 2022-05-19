@@ -1,0 +1,96 @@
+<template lang="pug">
+	.profile(:class="Mods" @click="ToggleClass")
+		.profile__avatar
+			img.object-fit(:src="require(`~/assets/img/${avatar}`)")
+		.profile__name.p.strong {{ profileName }}
+		.profile__arrow
+			svg-icon(name="arrowDown" viewBox="0 0 11 7")
+</template>
+
+<script>
+export default {
+	props: {
+		avatar: {
+			type: String,
+			default: "avatar.jpg"
+		},
+		profileName: {
+			type: String,
+			default: "A.Bayramov"
+		},
+	},
+	data(){
+		return {
+			active: false
+		}
+	},
+	computed: {
+		Mods(){
+			return {
+				'is-active': this.active
+			}
+		}
+	},
+	methods: {
+		ToggleClass(){
+			this.active = !this.active
+		}
+	}
+}
+</script>
+
+<style lang="scss">
+.profile{
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	transition: ease .12s;
+	&:hover, &.is-active {
+		color: $blue;
+	}
+	&.is-active {
+		.profile__arrow {
+			svg {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+	&__avatar {
+		width: 35rem;
+		height: 35rem;
+		flex-shrink: 0;
+		margin-right: 15rem;
+		overflow: hidden;
+		position: relative;
+		border-radius: 100%;
+	}
+	&__name {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		max-width: 86rem;
+	}
+
+	&__arrow {
+		flex-shrink: 0;
+		stroke: $default;
+		stroke-width: 2;
+		margin-left: 20rem;
+		width: 11rem;
+		height: 7rem;
+		fill: none;
+
+		svg {
+			width: 100%;
+			height: 100%;
+			transition: ease .15s;
+		}
+
+		@include large-mobile {
+			margin-left: 10rem;
+			width: 8rem;
+			height: 5rem;
+		}
+	}
+}
+</style>
