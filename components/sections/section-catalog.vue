@@ -14,6 +14,16 @@
 					part-filter.section-catalog__filter(:filters="filters" :counter="counter")
 
 				.section-catalog__column.section-catalog__column_right
+					.section-catalog__tags
+						.section-catalog__tags-list
+							item-tag.section-catalog__tag(
+								v-for="(tag, i) in tags"
+								:key="i"
+								:text="tag.text"
+								:counter="tag.counter"
+								:to="tag.to"
+							)
+
 					.section-catalog__nav.flex.flex_vertical.flex_justify
 						button-filter.section-catalog__btn-filter(:counter="counter")
 						form-select.section-catalog__sort(
@@ -46,6 +56,11 @@
 export default {
 	props: {
 		catalog: {
+			type: Array,
+			default: () => ([
+			])
+		},
+		tags: {
 			type: Array,
 			default: () => ([
 			])
@@ -322,10 +337,51 @@ export default {
 		}
 	}
 
+	&__tags {
+		margin-bottom: 25rem;
+		padding-bottom: 16rem;
+		border-bottom: 1px solid $light-gray;
+		&-list {
+			margin: -5rem 0;
+		}
+
+		@include large-mobile {
+			margin: 0 -15rem 16rem -15rem;
+			padding-bottom: 20rem;
+			overflow: hidden;
+			&-list {
+				display: flex;
+				flex-wrap: nowrap;
+				padding-left: 15rem;
+				padding-right: 15rem;
+				padding-bottom: 40px;
+				margin: 0 0 -40px 0;
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
+		}
+	}
+
+	&__tag {
+		margin: 5rem 0;
+		&:not(:last-child) {
+			margin-right: 25rem;
+		}
+
+		@include large-mobile {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
 	&__nav {
-		@include small-tablet {
-			padding: 18rem 0;
+		@include large-mobile {
+			padding-bottom: 16rem;
 			border-bottom: 1px solid $light-gray;
+			margin-left: -15rem;
+			margin-right: -15rem;
+			padding-left: 15rem;
+			padding-right: 15rem;
 		}
 	}
 

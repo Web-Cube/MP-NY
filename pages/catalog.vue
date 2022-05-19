@@ -1,6 +1,6 @@
 <template lang="pug">
 	main.main
-		section-catalog(:catalog="catalog")
+		section-catalog(:catalog="catalog" :tags="tags")
 
 </template>
 
@@ -112,6 +112,36 @@ export default {
 					gallery: [
 						'item-card__img4.jpg',
 					]
+				},
+			],
+			tags: [
+				{
+					text: 'Electronics',
+					counter: 274,
+				},
+				{
+					text: 'Sport',
+					counter: 33,
+				},
+				{
+					text: 'Appliances',
+					counter: 274,
+				},
+				{
+					text: 'Electronics',
+					counter: 74,
+				},
+				{
+					text: 'Computers',
+					counter: 569,
+				},
+				{
+					text: 'Appliances',
+					counter: 74,
+				},
+				{
+					text: 'Electronics',
+					counter: 569,
 				},
 			]
 		}
