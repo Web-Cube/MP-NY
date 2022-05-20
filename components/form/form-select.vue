@@ -186,6 +186,9 @@ export default {
 	}
 	&__wrap {
 		position: relative;
+		height: 100%;
+		display: flex;
+		align-items: center;
 	}
 	&__head {
 		border-left: 1px solid $light-gray;

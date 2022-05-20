@@ -27,11 +27,12 @@ export default {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 38rem;
-	height: 38rem;
+	width: 40rem;
+	height: 40rem;
 	border: 0;
 	background: none;
 	cursor: pointer;
+	border-radius: 10rem;
 	&:hover {
 		.button-action {
 			&__icon {
@@ -62,9 +63,22 @@ export default {
 			fill: $gray;
 		}
 
+		&_zoom {
+			width: 16rem;
+			height: 16rem;
+			fill: #fff;
+			stroke: #fff;
+			stroke-width: 1px;
+			transform: rotate(90deg);
+		}
+
 		@include large-mobile {
 			max-width: 16rem;
 			max-height: 14rem;
+			&_zoom {
+				width: 14rem;
+				height: 14rem;
+			}
 		}
 	}
 }

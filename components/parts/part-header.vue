@@ -10,7 +10,7 @@
 					button-action.header__favorite(to="#" content="<strong>Избранное</strong>" v-tippy="{ trigger: 'mouseenter' }")
 
 					item-profile.header__profile(v-if="login" name="profileMenu")
-					tippy(to="profileMenu" placement="bottom-start")
+					tippy.tippy-hide(to="profileMenu" placement="bottom-start")
 						part-profile-menu(:menuList="menuList")
 					.header__nav(v-if="login !== true")
 						NuxtLink.header__login.link.p(to="#") Login 

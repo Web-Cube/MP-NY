@@ -8,8 +8,7 @@
 		.item-card__head
 			NuxtLink.item-card__gallery(:to="to")
 				part-mouse-gallery(:list="gallery")
-			.item-card__zoom
-				svg-icon(name="search")
+			button-action.item-card__zoom(icon="search")
 			.item-card__status(v-if="status") {{ status }}
 		.item-card__info
 			.item-card__top
@@ -232,14 +231,8 @@ export default{
 		position: absolute;
 		left: 5rem;
 		top: 5rem;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 40rem;
-		height: 40rem;
 		background: rgba(255, 255, 255, 0.1);
 		backdrop-filter: blur(10px);
-		border-radius: 10rem;
 		z-index: 30;
 		transition: ease .12s;
 		opacity: 0;
@@ -251,15 +244,6 @@ export default{
 			stroke: #fff;
 			stroke-width: 1px;
 			transform: rotate(90deg);
-		}
-
-		@include large-mobile {
-			width: 30rem;
-			height: 30rem;
-			svg {
-				width: 12rem;
-				height: 12rem;
-			}
 		}
 	}
 	&__status {

@@ -63,6 +63,10 @@ export default {
 		overflow: visible;
 	}
 
+	@include small-tablet {
+		padding-top: 60rem;
+	}
+
 	@include large-mobile {
 		padding: 80rem 0 40rem 0;
 	}

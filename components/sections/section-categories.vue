@@ -16,14 +16,12 @@
 							:gallery="item.gallery"
 							:status="item.status"
 							:to="item.to"
-							:type="item.type"
 						)
 						item-card-premium.section-categories__item(
 							v-else-if="item.type === 'premium'"
 							:name="item.name"
 							:img="item.img"
 							:to="item.to"
-							:type="item.type"
 						)
 				.section-categories__btn-wrap
 					button-primary.section-categories__btn(gray) {{ buttonText }}
@@ -51,7 +49,7 @@ export default {
 	overflow: hidden;
 
 	@include small-tablet {
-		padding-top: 20rem;
+		padding-top: 10rem;
 	}
 
 	@include large-mobile {

@@ -44,36 +44,38 @@ export default {
 .input{
 	position: relative;
 
-	&.is-separator {
-		.input__field {
-			border-left-width: 0;
-			border-right-width: 0;
-			border-radius: 0;
-		}
-		&:before {
-			content: '';
-			display: block;
-			position: absolute;
-			left: 0;
-			top: 50%;
-			width: 1px;
-			height: 30rem;
-			background: #D2D2D7;
-			margin-top: -15rem;
-		}
-		&:first-child {
+	@include min-large-mobile {
+		&.is-separator {
+			.input__field {
+				border-left-width: 0;
+				border-right-width: 0;
+				border-radius: 0;
+			}
 			&:before {
-				display: none;
+				content: '';
+				display: block;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				width: 1px;
+				height: 30rem;
+				background: #D2D2D7;
+				margin-top: -15rem;
 			}
-			.input__field {
-				border-radius: 10rem 0 0 10rem;
-				border-left-width: 1px;
+			&:first-child {
+				&:before {
+					display: none;
+				}
+				.input__field {
+					border-radius: 10rem 0 0 10rem;
+					border-left-width: 1px;
+				}
 			}
-		}
-		&:last-child {
-			.input__field {
-				border-radius: 0 10rem 10rem 0;
-				border-right-width: 1px;
+			&:last-child {
+				.input__field {
+					border-radius: 0 10rem 10rem 0;
+					border-right-width: 1px;
+				}
 			}
 		}
 	}
@@ -91,6 +93,11 @@ export default {
 		&::placeholder {
 			font-weight: 500;
 			color: $gray;
+		}
+
+		@include large-mobile {
+			height: 50rem;
+			font-size: 14rem;
 		}
 	}
 	

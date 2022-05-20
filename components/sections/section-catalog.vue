@@ -4,14 +4,14 @@
 			part-search-form.section-catalog__form(:searchList="searchList")
 				template(v-slot:left)
 					button-select.search-form__select(borderRight name="tippyCategories") Categories
-					tippy(to="tippyCategories" placement="bottom-start")
+					tippy.tippy-hide(to="tippyCategories" placement="bottom-start")
 						part-modal-categories(:categories="categories")
 
 				form-select.search-form__select(value="New Yourk" name="city" :items="['Chicago', 'San Diego', 'Houston']")
 				form-select.search-form__select(value="+0 km" name="distanse" :items="['+1 km', '+2 km', '+3 km']")
 			.section-catalog__row
 				.section-catalog__column.section-catalog__column_left
-					part-filter.section-catalog__filter(:filters="filters" :counter="counter")
+					part-filter.section-catalog__filter(:filters="filters" :counter="counter" ref="catalogFilter")
 
 				.section-catalog__column.section-catalog__column_right
 					.section-catalog__tags
@@ -25,7 +25,7 @@
 							)
 
 					.section-catalog__nav.flex.flex_vertical.flex_justify
-						button-filter.section-catalog__btn-filter(:counter="counter")
+						button-filter.section-catalog__btn-filter(:counter="counter" @click.native="openFilter()")
 						form-select.section-catalog__sort(
 							lang 
 							noBorder 
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-export default {
+export default { 
 	props: {
 		catalog: {
 			type: Array,
@@ -263,6 +263,25 @@ export default {
 			filters,
 			counter: 3
 		}
+	},
+	methods: {
+	    openFilter() {
+
+			document.querySelector("body").classList.add("js-locked");
+			let div = document.createElement('div');
+
+			div.style.overflowY = 'scroll';
+			div.style.width = '50px';
+			div.style.height = '50px';
+			document.body.append(div);
+			let scrollWidth = div.offsetWidth - div.clientWidth;
+
+			div.remove();
+
+			document.querySelector("body").style.marginRight = scrollWidth + "px";
+
+			document.querySelector(".js-filter").classList.add('visible');
+	    }
 	}
 }
 </script>

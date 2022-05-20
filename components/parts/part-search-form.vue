@@ -72,6 +72,10 @@ export default {
 	border-radius: 15rem;
 	height: 88rem;
 
+	@include small-tablet {
+		height: 70rem;
+	}
+
 	@include large-mobile {
 		border-radius: 8px;
 		height: 48rem;
@@ -182,7 +186,7 @@ export default {
 	}
 
 	&__btn {
-		height: 86rem;
+		height: 100%;
 		background: none;
 		border: 0;
 		color: #fff;
