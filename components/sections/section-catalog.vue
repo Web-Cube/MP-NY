@@ -4,7 +4,7 @@
 			part-search-form.section-catalog__form(:searchList="searchList")
 				template(v-slot:left)
 					button-select.search-form__select(borderRight name="tippyCategories") Categories
-					tippy.tippy-hide(to="tippyCategories" placement="bottom-start")
+					tippy.tippy-hide(to="tippyCategories" placement="bottom-start" trigger="click" )
 						part-modal-categories(:categories="categories")
 
 				form-select.search-form__select(value="New Yourk" name="city" :items="['Chicago', 'San Diego', 'Houston']")
@@ -16,7 +16,7 @@
 				.section-catalog__column.section-catalog__column_right
 					.section-catalog__tags
 						.section-catalog__tags-list
-							item-tag.section-catalog__tag(
+							module-tag.section-catalog__tag(
 								v-for="(tag, i) in tags"
 								:key="i"
 								:text="tag.text"
