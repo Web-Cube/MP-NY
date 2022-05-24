@@ -1,6 +1,6 @@
 <template lang="pug">
 	.container
-		part-header
+		part-header(:login="false")
 		Nuxt
 		part-footer
 </template>

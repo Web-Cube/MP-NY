@@ -7,7 +7,7 @@
 						img(src="~/assets/img/logo.svg")
 					form-select.header__lang(lang value="Eng" name="lang" :items="['Ru', 'Ukr']")
 				.header__column.header__column_right.flex.flex_vertical
-					button-action.header__favorite(to="#" content="<strong>Избранное</strong>" v-tippy="{ trigger: 'mouseenter' }")
+					button-action.header__favorite(to="#" content="<strong>Избранное</strong>" v-tippy)
 
 					item-profile.header__profile(v-if="login" name="profileMenu")
 					tippy.tippy-hide(to="profileMenu" placement="bottom-start")

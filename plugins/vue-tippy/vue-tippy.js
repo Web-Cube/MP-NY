@@ -9,7 +9,7 @@ Vue.use(VueTippy, {
 	allowHTML: true,
 	placement: 'bottom',
 	theme: 'default',
-	trigger: 'click'
+	trigger: 'mouseenter focus'
 });
 
 Vue.component("tippy", TippyComponent);
