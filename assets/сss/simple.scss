@@ -1,8 +1,8 @@
 :root {
-	--wrapper-offset: 40rem;
+	--wrapper-offset: 40px;
 
 	@include large-tablet {
-		--wrapper-offset: 20px;
+		--wrapper-offset: 32px;
 		// 	--global-size: #{100/ (1120/0.7)}vw;
 	}
 
@@ -20,29 +20,34 @@
 
 .wrap {
 	padding: 0 var(--wrapper-offset);
-	max-width: 1480rem;
+	max-width: 1480px;
 	margin: auto;
 	position: relative;
 
 	@include large-desktop {
-		max-width: 1280rem;
+		max-width: 1200px; //1280px;
 	}
 }
 
 html {
-	font-size: #{div(100, div(1480, 1))}vw;
+	// font-size: #{div(100, div(1480, 1))}vw;
+
+	font-size: 1px;
 
 	&.js-lock {
 		overflow: hidden;
 		margin-right: 15px;
 	}
 
-	@include min-large-desktop {
-		font-size: 1px;
+	@include large-desktop {
+		font-size: 0.9px;
 	}
+	// @include min-large-desktop {
+	// 	font-size: 1px;
+	// }
 
 	@include large-tablet {
-		font-size: 0.8px;
+		// font-size: 0.8px;
 
 		&.js-lock {
 			margin-right: 0;

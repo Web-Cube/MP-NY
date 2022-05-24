@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss">
 .section-search{
-	padding: 100rem 0 45rem 0;
+	padding: 100rem 0 17rem 0;
 	position: relative;
 
 	@include large-desktop {
