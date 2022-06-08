@@ -4,7 +4,7 @@
 		:to="to !== '' ? to : false"
 		:class="Mods"
 	)
-		svg-icon.button-action__icon(:name="icon" :class="`button-primary__icon_${icon}`" v-if="icon")
+		svg-icon.button-primary__icon(:name="icon" :class="`button-primary__icon_${icon}`" v-if="icon")
 		span.button-primary__text
 			slot
 
@@ -75,9 +75,10 @@ export default {
 	&_light {
 		background: rgba(85, 109, 238, 0.1);
 		color: $blue;
+		fill: $blue;
 		&:hover {
-			color: #fff;
-			background: #1E41FF;
+			// color: #fff;
+			background: #D6DDFE;
 		}
 	}
 
@@ -95,9 +96,15 @@ export default {
 	&_blue {
 		background: $blue;
 		color: #fff;
+		fill: #fff;
+		&:hover{
+			background: #4257C7;
+		}
 	}
 	&__icon {
 		flex-shrink: 0;
+		margin-right: 10rem;
+
 		&_chatting {
 			width: 16rem;
 			height: 12rem;
@@ -105,7 +112,7 @@ export default {
 		&_phone {
 			width: 11rem;
 			height: 10rem;
-			margin-right: 10rem;
+			
 			margin-top: -1px;
 		}
 

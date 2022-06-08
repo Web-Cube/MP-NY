@@ -7,8 +7,9 @@ Vue.use(VueTippy, {
 	arrow: true,
 	arrowType: 'round',
 	allowHTML: true,
-	placement: 'bottom',
+	// placement: 'bottom',
 	theme: 'default',
+	// trigger: 'click'
 	trigger: 'mouseenter focus'
 });
 

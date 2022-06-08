@@ -35,9 +35,7 @@ export default {
 
 <style lang="scss">
 .single-content{
-	padding-bottom: 50rem;
-	margin-bottom: 50rem;
-	border-bottom: 1px solid #D2D2D7;
+
 
 	
 	&__content{
@@ -51,10 +49,28 @@ export default {
 				margin-bottom: 28rem;
 			}
 		}
+
+		@include small-tablet {
+			padding-right: 0;
+		}
+
+		@include large-mobile {
+			line-height: 21rem;
+
+			& > * {
+				&:not(:last-child){
+					margin-bottom: 20rem;
+				}
+			}
+		}
 	}
 
 	&__more{
 		margin-top: 30rem;
+
+		@include large-mobile {
+			margin-top: 20rem;	
+		}
 	}
 
 	&__heading{
@@ -74,6 +90,14 @@ export default {
 		b{
 			color: #212D38;
 			margin-left: 10rem;
+		}
+
+		@include large-mobile {
+			margin-bottom: 10rem;
+
+			&-item{
+				margin-bottom: 10rem;
+			}
 		}
 	}
 }

@@ -16,6 +16,8 @@
 				:status="item.status"
 				:to="item.to"
 			)
+	
+		button-primary.single-recommend__button(gray) Показать еще
 </template>
 
 <script>
@@ -100,14 +102,33 @@ export default {
 
 <style lang="scss">
 .single-recommend{
-	padding-bottom: 50rem;
 
 	&__title{
 		margin-bottom: 50rem;
+
+		@include large-mobile {
+			margin-bottom: 20rem;
+		}
 	}
 
 	&__list{
-		@include items(3, 5);
+		
+
+		@include min-large-mobile {
+			@include items(3, 5);
+		}
+
+		@include large-mobile {
+			@include items(2, 5);
+		}
+	}
+
+	&__button{
+		width: 100%;
+		margin-top: 45rem;
+		@include large-mobile {
+			margin-top: 30rem;
+		}
 	}
 }
 </style>

@@ -2,6 +2,7 @@
 	component.button-action(
 		:is="to !== '' ? 'NuxtLink' : 'button'"
 		:to="to !== '' ? to : false"
+		:class="Mods"
 	) 
 		svg-icon.button-action__icon(:name="icon" :class="`button-action__icon_${icon}`")
 
@@ -18,6 +19,17 @@ export default {
 			type: String,
 			default: ""
 		},
+		gray: {
+			type: Boolean,
+		}
+	},
+
+	computed: {
+		Mods(){
+			return {
+				'button-action_gray' : this.gray 
+			}
+		}
 	}
 }
 </script>
@@ -33,6 +45,14 @@ export default {
 	background: none;
 	cursor: pointer;
 	border-radius: 10rem;
+
+	&_gray{
+		.button-action__icon_heart{
+			stroke: $light-gray;
+			stroke-width: 2.5;
+		}
+	}
+
 	&:hover {
 		.button-action {
 			&__icon {

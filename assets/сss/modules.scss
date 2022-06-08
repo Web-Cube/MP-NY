@@ -7,6 +7,17 @@
 		border: 1px solid #D2D2D7;
 		border-radius: 10rem;
 		transition-duration: .2s!important;
+
+		&[x-placement="top"]{
+			.tippy-roundarrow{
+				bottom: -7.5px;
+
+				&:after{
+					bottom: auto;
+					top: 0;
+				}
+			}
+		}
 	}
 	&-roundarrow {
 		fill: #fff;
