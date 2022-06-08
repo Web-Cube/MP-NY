@@ -46,6 +46,10 @@
 	font-size: 50rem;
 	line-height: 1;
 
+	@include small-tablet {
+		font-size: 40rem;
+	}
+
 	@include large-mobile {
 		font-size: 28rem;
 	}
