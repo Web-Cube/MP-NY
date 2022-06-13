@@ -59,8 +59,10 @@ export default {
 		font-size: 36rem;
 		font-family: 'Atyp Display';
 		line-height: 1;
+		max-width: 420rem;
 		@include large-mobile {
 			font-size: 20rem;
+			max-width: 230rem;
 		}
 	}
 
