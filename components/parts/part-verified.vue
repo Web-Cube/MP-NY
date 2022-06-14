@@ -1,7 +1,18 @@
 <template lang="pug">
-	span.verified(content="<strong>Phone / Еmail confirmed</strong>" placement="top-start" v-tippy)
+	span.verified(:content="content" placement="top-start" v-tippy)
 		img(src="~/assets/img/verified.svg")
 </template>
+
+<script>
+export default {
+	props: {
+		content: {
+			type: String,
+			default: '<strong>Phone / Еmail confirmed</strong>'
+		},
+	},
+}
+</script>
 
 <style lang="scss">
 .verified{

@@ -29,7 +29,7 @@
 								:verified="SINGLE_INFO.user.verified"
 							)
 
-							button-border.section-single__other(icon="other-posts") 9 User Ads
+							button-border.section-single__other(icon="other-posts" v-b-modal.users-adds) 9 User Ads
 
 					part-single-recommend.section-single__part
 
@@ -40,6 +40,7 @@
 						:cost="SINGLE_INFO.cost"
 						:user="SINGLE_INFO.user"
 					)
+		modal-users-adds
 
 </template>
 

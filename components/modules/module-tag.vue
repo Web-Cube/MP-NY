@@ -2,6 +2,7 @@
 	component.tag(
 			:is="to !== '' ? 'NuxtLink' : 'div'"
 			:to="to !== '' ? to : false"
+			:class="Mods"
 		)
 		span.tag__text {{ text }}
 		span.tag__counter.color-blue(v-if="counter") ({{ counter }})
@@ -21,7 +22,23 @@ export default {
 			type: String,
 			default: ""
 		},
+		button: {
+			type: Boolean,
+			default: false
+		},
+		active: {
+			type: Boolean,
+			default: false
+		},
 	},
+	computed: {
+		Mods(){
+			return {
+				'tag_btn': this.button,
+				'is-active': this.active,
+			}
+		}
+	}
 }
 </script>
 
@@ -30,6 +47,23 @@ export default {
 	display: inline-flex;
 	font-size: 16rem;
 	color: $gray;
+
+	&_btn {
+		font-weight: 600;
+		.tag__counter {
+			color: inherit;
+		}
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&.is-active {
+		color: $default;
+		.tag__counter {
+			color: $blue;
+		}
+	}
 
 	@include large-mobile {
 		font-size: 14rem;

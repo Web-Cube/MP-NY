@@ -125,3 +125,22 @@
 .modal-form {
 	max-width: 740rem;
 }
+
+.modal-users {
+	max-width: 954rem;
+	.modal-content {
+		padding-bottom: 0;
+	}
+
+	@include large-mobile {
+		.modal-content {
+			border-radius: 10rem 10rem 0 0;
+		}
+	}
+}
+
+@include large-mobile {
+	.modal.fade .modal-dialog {
+		transform: none;
+	}
+}

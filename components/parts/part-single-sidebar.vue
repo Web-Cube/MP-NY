@@ -27,7 +27,7 @@
 				v-if="$screen.lt"
 			)
 
-			button-border.single-sidebar__other(icon="other-posts" v-if="$screen.lt") 9 User Ads
+			button-border.single-sidebar__other(icon="other-posts" v-if="$screen.lt" v-b-modal.users-adds) 9 User Ads
 
 		.single-sidebar__bottom.flex
 			.single-sidebar__label.single-sidebar__label_date.color-gray 2 days ago
