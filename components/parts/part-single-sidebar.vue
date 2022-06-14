@@ -7,10 +7,13 @@
 
 		h2.single-sidebar__title.h2 {{ title }}
 		.single-sidebar__price.h2 $ {{ numberWithSpaces(cost) }}
-
+		button-primary.single-sidebar__button.single-sidebar__button_number(blue v-if="phone")
+			span.phone {{ phoneNumber }}
 		button-primary.single-sidebar__button.single-sidebar__button_number(
 			icon="phone"
 			blue
+			v-else
+			@click.native="showPhone"
 		) Show number
 		button-primary.single-sidebar__button.single-sidebar__button_message(
 			icon="chatting"
@@ -26,8 +29,9 @@
 
 				v-if="$screen.lt"
 			)
-
-			button-border.single-sidebar__other(icon="other-posts" v-if="$screen.lt" v-b-modal.users-adds) 9 User Ads
+			button-primary.single-sidebar__more(v-if="moreDetails" gray icon="info") Show more details
+			div(v-else)
+				button-border.single-sidebar__other(icon="other-posts" v-if="$screen.lt" v-b-modal.users-adds) 9 User Ads
 
 		.single-sidebar__bottom.flex
 			.single-sidebar__label.single-sidebar__label_date.color-gray 2 days ago
@@ -46,6 +50,16 @@ export default {
 			type: Number
 		},
 
+		phoneNumber: {
+			type: String,
+			default: "+ 1 376 266 5353"
+		},
+
+		moreDetails: {
+			type: Boolean,
+			default: false
+		},
+
 		user: {
 			type: Object,
 			default: () => ({})
@@ -54,8 +68,14 @@ export default {
 
 	data(){
 		return {
+			phone: false,
 			numberWithSpaces
 		}
+	},
+	methods: {
+		showPhone() {
+			this.phone = true;
+		},
 	}
 }
 </script>
@@ -178,6 +198,11 @@ export default {
 		@include large-mobile {
 			height: 60rem;
 		}
+	}
+
+	&__more {
+		margin-top: 40rem;
+		width: 100%;
 	}
 }
 </style>

@@ -8,7 +8,7 @@
 		.item-card__head
 			NuxtLink.item-card__gallery(:to="to")
 				part-mouse-gallery(:list="gallery")
-			button-action.item-card__zoom(icon="search")
+			button-action.item-card__zoom(icon="search" v-b-modal.modal-card)
 			.item-card__status(v-if="status") {{ status }}
 		.item-card__info
 			.item-card__top
@@ -82,7 +82,7 @@ export default{
 <style lang="scss">
 .item-card{
 	position: relative;
-	@include min-large-mobile {
+	@include min-small-tablet {
 		&:hover {
 			z-index: 31;
 			.item-card {

@@ -3,4 +3,5 @@
 		part-header
 		Nuxt
 		part-footer
+		modal-card
 </template>

@@ -139,6 +139,14 @@
 	}
 }
 
+.modal-card-size {
+	max-width: 1400rem;
+
+	@include large-desktop {
+		max-width: 1200rem;
+	}
+}
+
 @include large-mobile {
 	.modal.fade .modal-dialog {
 		transform: none;

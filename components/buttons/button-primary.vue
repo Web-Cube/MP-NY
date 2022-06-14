@@ -108,12 +108,18 @@ export default {
 		&_chatting {
 			width: 16rem;
 			height: 12rem;
+			margin-right: 0;
 		}
 		&_phone {
 			width: 11rem;
 			height: 10rem;
 			
 			margin-top: -1px;
+		}
+		&_info {
+			width: 12rem;
+			height: 12rem;
+			fill: #C3C8CB;
 		}
 
 		@include large-mobile {
@@ -122,6 +128,15 @@ export default {
 				height: 8rem;
 				margin-right: 5rem;
 			}
+		}
+	}
+
+	.phone {
+		font-size: 22rem;
+		font-family: 'Gilroy';
+
+		@include large-mobile {
+			font-size: 18rem;
 		}
 	}
 }
