@@ -4,7 +4,7 @@
 			.need-help__title {{ title }}
 			.need-help__text.color-gray
 				slot
-			button-primary.need-help__btn(to="/contacts" blue) Contact Us
+			button-primary.need-help__btn(blue v-b-modal.form-contact) Contact Us
 		.need-help__img
 			img(:src="require(`~/assets/img/${img}`)")
 </template>

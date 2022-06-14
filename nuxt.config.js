@@ -78,11 +78,11 @@ export default {
 	],
 
 	bootstrapVue: {
-		bootstrapCSS: false, // Or `css: false`
-		bootstrapVueCSS: false, // Or `bvCSS: false`
+		bootstrapCSS: true, // Or `css: false`
+		bootstrapVueCSS: true, // Or `bvCSS: false`
 		bootstrapVue: {
 			componentPlugins: [
-				'CollapsePlugin',
+				'ModalPlugin',
 			],
 		}
 	},

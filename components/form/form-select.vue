@@ -49,6 +49,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		default: {
+			type: Boolean,
+			default: false
+		},
 		items: {
 			type: [Array, Object],
 			default: () => ([])
@@ -69,6 +73,7 @@ export default {
 				'select_big': this.big,
 				'select_border-right': this.borderRight,
 				'select_no-border': this.noBorder,
+				'select_default': this.default,
 			}
 		}
 	},
@@ -164,6 +169,30 @@ export default {
 		}
 	}
 
+	&_default {
+		height: 60rem;
+		display: flex;
+		font-size: 17rem;
+		font-weight: 600;
+		font-family: 'Gilroy';
+		.select {
+			&__wrap {
+				width: 100%;
+				height: 100%;
+			}
+			&__head {
+				height: 100%;
+				border: 1px solid $light-gray;
+				border-radius: 10rem;
+				padding: 15rem 20rem;
+				width: 100%;
+			}
+			&__list {
+				width: 100%;
+			}
+		}
+	}
+
 	@include large-mobile {
 		&_no-border {
 			.select {
@@ -176,6 +205,9 @@ export default {
 					left: -15rem;
 				}
 			}
+		}
+		&_default {
+			height: 50rem;
 		}
 	}
 
@@ -228,8 +260,8 @@ export default {
 		}
 
 		@include large-mobile {
-			width: 8rem;
-			height: 5rem;
+			width: 9rem;
+			height: 6rem;
 		}
 	}
 
@@ -248,6 +280,7 @@ export default {
 
 	&__btn {
 		cursor: pointer;
+		display: block;
 		&-input {
 			display: none;
 			&:checked {

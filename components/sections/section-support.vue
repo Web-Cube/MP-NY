@@ -8,6 +8,8 @@
 			part-faq.section-support__faq(:faqList="faqList")
 			part-need-help.section-support__help(title="Didn't find the answer for your question?" img="need-help__img2.svg")
 				| You can ask us here
+
+		modal-form-contact
 			
 </template>
 

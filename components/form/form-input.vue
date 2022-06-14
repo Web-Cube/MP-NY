@@ -1,6 +1,7 @@
 <template lang="pug">
 	.input(:class="Mods")
-		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder")
+		textarea.input__field.input__field_textarea(:name="name" :value="value" :placeholder="placeholder" v-if="textarea")
+		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder" v-else)
 
 </template>
 
@@ -25,6 +26,10 @@ export default {
 			default: ''
 		},
 		separator: {
+			type: Boolean,
+			default: false
+		},
+		textarea: {
 			type: Boolean,
 			default: false
 		},
@@ -87,7 +92,7 @@ export default {
 		font-weight: 600;
 		font-family: 'Gilroy';
 		padding: 0 10rem 0 20rem;
-		border: 1px solid #D2D2D7;
+		border: 1px solid $light-gray;
 		border-radius: 10rem;
 		display: block;
 		&::placeholder {
@@ -95,9 +100,20 @@ export default {
 			color: $gray;
 		}
 
+		&_textarea {
+			height: 110rem;
+			padding-top: 20rem;
+			overflow: hidden;
+			resize: none;
+		}
+
 		@include large-mobile {
 			height: 50rem;
 			font-size: 14rem;
+			&_textarea {
+				height: 90rem;
+				padding-top: 15rem;
+			}
 		}
 	}
 	

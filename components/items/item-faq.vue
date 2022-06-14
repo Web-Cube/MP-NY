@@ -1,5 +1,5 @@
 <template lang="pug">
-	.item-faq(:class="Mods")
+	.item-faq
 		.item-faq__head
 			.item-faq__title.h5 {{title}}
 			.item-faq__arrow
@@ -17,18 +17,10 @@ export default{
 		content: {
 			type: String
 		},
-		active: false
 	},
 	data(){
 		return {
 			active: false
-		}
-	},
-	computed: {
-		Mods(){
-			return {
-				'isActive': this.active,
-			}
 		}
 	},
 	methods:{

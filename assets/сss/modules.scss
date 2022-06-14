@@ -76,3 +76,52 @@
 .tippy-hide {
 	display: none;
 }
+
+.modal-backdrop {
+	background: rgba(6, 36, 57, 0.34);
+	opacity: 1;
+}
+
+.modal-content {
+	border-radius: 30rem;
+	border: 0;
+	display: block;
+	padding: 60rem;
+
+	@include small-tablet {
+		padding: 40rem 30rem;
+	}
+
+	@include large-mobile {
+		padding: 30rem 20rem;
+		border-radius: 15rem;
+	}
+}
+
+.modal {
+	padding: 15rem;
+
+	&__close {
+		position: absolute;
+		right: 20rem;
+		top: 20rem;
+
+		@include large-mobile {
+			right: 15rem;
+			top: 15rem;
+		}
+	}
+}
+
+.modal-header {
+	border: 0;
+	padding: 0;
+}
+
+.modal-body {
+	padding: 0;
+}
+
+.modal-form {
+	max-width: 740rem;
+}
