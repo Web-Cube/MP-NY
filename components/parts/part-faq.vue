@@ -10,6 +10,15 @@
 							@click.native="tabList(i)"
 						) {{ item.question }}
 			.faq__column.faq__column_right
+				.faq__list
+					item-faq.faq__item(
+						v-for="(item, i) in faqList"
+						:key="i"
+						:title="item.question"
+						:content="item.answer"
+						:class="{isActive:number == i}"
+						@click.native="tabList(i)"
+					)
 </template>
 
 <script>
@@ -45,6 +54,10 @@ export default {
 	&__row {
 		display: flex;
 		margin-top: 44rem;
+
+		@include large-mobile {
+			margin-top: 10rem;
+		}
 	}
 
 	&__column {
@@ -52,9 +65,33 @@ export default {
 			width: 225rem;
 			min-width: 225rem;
 		}
+		&_right {
+			margin-left: 80rem;
+			width: 100%;
+		}
+
+		@include large-tablet {
+			&_right {
+				margin-left: 40rem;
+			}
+		}
+
+		@include large-mobile {
+			&_left {
+				display: none;
+			}
+			&_right {
+				margin-left: 0;
+			}
+		}
 	}
 
-	&__nav {
+	&__list {
+		margin-top: -30rem;
+
+		@include large-mobile {
+			margin-top: 0;
+		}
 	}
 }
 </style>

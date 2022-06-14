@@ -45,6 +45,7 @@ export default {
 			'./assets/сss/variables.scss',
 			'./assets/сss/media.scss',
 			'./assets/сss/data.scss',
+			'./assets/сss/transitions.scss',
 			
 		],
 	},
