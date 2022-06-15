@@ -48,6 +48,22 @@ export default {
 	&:hover, &.is-active {
 		color: $blue;
 	}
+	@include large-mobile {
+		position: relative;
+		&:after {
+			content: '';
+			display: block;
+			width: 3px;
+			height: 3px;
+			background: $red;
+			border-radius: 3px;
+			position: absolute;
+			top: 100%;
+			margin-top: 2px;
+			left: 50%;
+			margin-left: -1px;
+		}
+	}
 	&.is-active {
 		.profile__arrow {
 			svg {
@@ -63,12 +79,22 @@ export default {
 		overflow: hidden;
 		position: relative;
 		border-radius: 100%;
+
+		@include large-mobile {
+			margin-right: 0;
+			width: 24rem;
+			height: 24rem;
+		}
 	}
 	&__name {
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		max-width: 86rem;
+
+		@include large-mobile {
+			display: none;
+		}
 	}
 
 	&__arrow {
@@ -90,6 +116,7 @@ export default {
 			margin-left: 10rem;
 			width: 8rem;
 			height: 5rem;
+			display: none;
 		}
 	}
 }

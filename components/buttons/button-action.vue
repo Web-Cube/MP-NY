@@ -83,6 +83,26 @@ export default {
 			fill: $gray;
 		}
 
+		&_home {
+			max-height: 18rem;
+			fill: $default;
+		}
+
+		&_search {
+			fill: $default;
+		}
+
+		&_heart {
+			stroke: $default;
+			stroke-width: 2;
+		}
+
+		&_add {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.7;
+		}
+
 		&_zoom {
 			width: 16rem;
 			height: 16rem;
@@ -98,6 +118,14 @@ export default {
 			&_zoom {
 				width: 14rem;
 				height: 14rem;
+			}
+			&_home, &_search, &_add {
+				max-width: 18rem;
+				max-height: 18rem;
+			}
+			&_heart {
+				max-width: 18rem;
+				max-height: 16rem;
 			}
 		}
 	}

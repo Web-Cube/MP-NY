@@ -50,6 +50,10 @@ export default {
 .footer{
 	width: 100%;
 
+	@include large-mobile {
+		margin-bottom: 48rem;
+	}
+
 	&__top {
 		padding: 23rem 0;
 		border-top: 1px solid rgba(195, 200, 203, 0.6);

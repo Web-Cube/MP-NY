@@ -343,7 +343,7 @@ export default {
 			@include items(3, 10);
 		}
 		@include large-mobile {
-			@include items(2, 10);
+			@include items(2, 5);
 		}
 	}
 
