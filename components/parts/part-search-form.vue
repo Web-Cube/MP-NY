@@ -74,10 +74,10 @@ export default {
 
 	@include small-tablet {
 		height: 70rem;
+		border-radius: 8px;
 	}
 
 	@include large-mobile {
-		border-radius: 8px;
 		height: 48rem;
 	}
 
@@ -87,7 +87,7 @@ export default {
 		border-radius: 14rem;
 		width: 100%;
 		height: 100%;
-		@include large-mobile {
+		@include small-tablet {
 			border-radius: 6px;
 		}
 	}
@@ -107,7 +107,7 @@ export default {
 		z-index: 100;
 		border-radius: 0 0 15rem 15rem;
 
-		@include large-mobile {
+		@include small-tablet {
 			padding: 10rem;
 		}
 	}
@@ -137,7 +137,7 @@ export default {
 			transition: ease .2s;
 		}
 
-		@include large-mobile {
+		@include small-tablet {
 			padding-left: 25rem;
 			padding-right: 10rem;
 			font-size: 12px;
@@ -168,8 +168,17 @@ export default {
 		margin-top: -19rem;
 
 		@include small-tablet {
+			left: 2rem;
+			margin-top: -20rem;
+		}
+
+		@include large-mobile {
 			left: 5rem;
 			margin-top: -18rem;
+			svg {
+				width: 14rem;
+				height: 14rem;
+			}
 		}
 	}
 	&__options {
@@ -180,7 +189,7 @@ export default {
 		display: flex;
 		align-items: center;
 
-		@include large-mobile {
+		@include small-tablet {
 			display: none;
 		}
 	}
@@ -197,7 +206,7 @@ export default {
 		font-weight: 600;
 		padding: 0 40rem;
 		cursor: pointer;
-		@include large-mobile {
+		@include small-tablet {
 			display: none;
 		}
 	}

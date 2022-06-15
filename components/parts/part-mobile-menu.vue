@@ -29,7 +29,7 @@ export default {
 	padding: 0 22rem;
 	z-index: 200;
 	display: none;
-	@include large-mobile {
+	@include small-tablet {
 		display: block;
 	}
 	&__list {

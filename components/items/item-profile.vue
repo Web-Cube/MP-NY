@@ -48,7 +48,7 @@ export default {
 	&:hover, &.is-active {
 		color: $blue;
 	}
-	@include large-mobile {
+	@include small-tablet {
 		position: relative;
 		&:after {
 			content: '';
@@ -80,7 +80,7 @@ export default {
 		position: relative;
 		border-radius: 100%;
 
-		@include large-mobile {
+		@include small-tablet {
 			margin-right: 0;
 			width: 24rem;
 			height: 24rem;
@@ -92,7 +92,7 @@ export default {
 		text-overflow: ellipsis;
 		max-width: 86rem;
 
-		@include large-mobile {
+		@include small-tablet {
 			display: none;
 		}
 	}
@@ -112,10 +112,7 @@ export default {
 			transition: ease .15s;
 		}
 
-		@include large-mobile {
-			margin-left: 10rem;
-			width: 8rem;
-			height: 5rem;
+		@include small-tablet {
 			display: none;
 		}
 	}
