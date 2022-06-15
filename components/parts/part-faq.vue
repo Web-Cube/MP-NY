@@ -4,11 +4,11 @@
 		.faq__row
 			.faq__column.faq__column_left
 				.faq__nav
-					.faq__nav-item(v-for="(item, i) in faqList" :key="i")
+					.faq__nav-item(v-for="(category, i) in categories" :key="i")
 						button-faq.faq__nav-btn(
 							:class="{isActive:number == i}"
 							@click.native="tabList(i)"
-						) {{ item.question }}
+						) {{ category }}
 			.faq__column.faq__column_right
 				.faq__list
 					item-faq.faq__item(
@@ -16,9 +16,17 @@
 						:key="i"
 						:title="item.question"
 						:content="item.answer"
-						:class="{isActive:number == i}"
-						@click.native="tabList(i)"
+						:active="item.active"
 					)
+		.faq__mobile
+			.faq__mobile-nav
+				.faq__mobile-item(v-for="(category, i) in categories" :key="i")
+					.faq__mobile-link(v-b-modal.modal-faq)
+						.faq__mobile-text {{ category }}
+						svg-icon.faq__mobile-arrow(name="arrowRight" viewBox="0 0 9 14")
+
+		modal-faq(:faqList="faqList")
+
 </template>
 
 <script>
@@ -27,6 +35,11 @@ export default {
 		title: {
 			type: String,
 			default: 'Answers & Questions'
+		},
+		categories: {
+			type: Array,
+			default: () => ([
+			]),
 		},
 		faqList: {
 			type: Array,
@@ -43,7 +56,6 @@ export default {
 	methods:{
 		tabList(i) {
 			this.number = i;
-			console.log(this.number);
 		},
 	}
 }
@@ -56,7 +68,7 @@ export default {
 		margin-top: 44rem;
 
 		@include large-mobile {
-			margin-top: 10rem;
+			display: none;
 		}
 	}
 
@@ -75,15 +87,6 @@ export default {
 				margin-left: 40rem;
 			}
 		}
-
-		@include large-mobile {
-			&_left {
-				display: none;
-			}
-			&_right {
-				margin-left: 0;
-			}
-		}
 	}
 
 	&__list {
@@ -91,6 +94,34 @@ export default {
 
 		@include large-mobile {
 			margin-top: 0;
+		}
+	}
+
+	&__mobile {
+		display: none;
+
+		@include large-mobile {
+			display: block;
+			margin-top: 10rem;
+			&-item {
+				border-bottom: 1px solid $light-gray;
+			}
+			&-link {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 20rem 10rem 20rem 0;
+				font-size: 16rem;
+				line-height: 1;
+				font-weight: 500;
+			}
+			&-arrow {
+				width: 6rem;
+				height: 10rem;
+				fill: none;
+				stroke: #9A9A9A;
+				stroke-width: 1.5;
+			}
 		}
 	}
 }

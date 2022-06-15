@@ -5,7 +5,7 @@
 				.section-support__preview-img
 					img.object-fit(:src="require(`~/assets/img/${img}`)")
 				h1.section-support__title.h1 {{title}}
-			part-faq.section-support__faq(:faqList="faqList")
+			part-faq.section-support__faq(:faqList="faqList" :categories="categories")
 			part-need-help.section-support__help(title="Didn't find the answer for your question?" img="need-help__img2.svg")
 				| You can ask us here
 
@@ -27,6 +27,16 @@ export default {
 	},
 	data(){
 		return{
+			categories: [
+				'How it works?',
+				'Safety',
+				'Beware of scrammers!',
+				'Something more',
+				'How it works?',
+				'Safety',
+				'Beware of scrammers!',
+				'Something more',
+			],
 			faqList: [
 				{
 					question: 'How it works?',
@@ -37,6 +47,7 @@ export default {
 				},
 				{
 					question: 'How is electricity saved?',
+					active: true,
 					answer: `
 						<p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
 						<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat vo</p>

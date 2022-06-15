@@ -152,3 +152,14 @@
 		transform: none;
 	}
 }
+
+.modal-faq {
+	max-width: 954rem;
+
+	@include large-mobile {
+		.modal-content {
+			border-radius: 15rem 15rem 0 0;
+			padding: 30rem 15rem;
+		}
+	}
+}

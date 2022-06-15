@@ -1,6 +1,6 @@
 <template lang="pug">
-	.item-faq
-		.item-faq__head
+	.item-faq(:class="Mods" ref="item")
+		.item-faq__head(@click="toggle")
 			.item-faq__title.h5 {{title}}
 			.item-faq__arrow
 				svg-icon(name="close" viewBox="0 0 10 9")
@@ -17,15 +17,33 @@ export default{
 		content: {
 			type: String
 		},
+		active: {
+			type: Boolean,
+			default: false
+		}
 	},
-	data(){
-		return {
-			active: false
+	computed: {
+		Mods(){
+			return {
+				'isActive': this.active,
+			}
 		}
 	},
 	methods:{
 		toggle() {
-			this.active = !this.active;
+
+			if ( this.$refs.item.classList.contains('isActive') ) {
+				this.$refs.item.classList.remove('isActive');
+			} else {
+
+				var matches = document.querySelectorAll('.item-faq');
+	       		for(var i = 0; i < matches.length; i++) {
+	       			matches[i].classList.remove('isActive');
+	      		}
+
+	      		this.$refs.item.classList.add('isActive');
+
+			}
 		},
 	}
 }
@@ -61,13 +79,15 @@ export default{
 
 		@include large-mobile {
 			min-height: 56rem;
-			padding-right: 0;
+			padding-right: 5rem;
+			padding-left: 10rem;
 		}
 	}
 	&__title {
 		@include large-mobile {
 			font-size: 16rem;
-			font-weight: 500;
+			font-weight: 600;
+			line-height: 1;
 		}
 	}
 	&__arrow {
@@ -89,6 +109,11 @@ export default{
 	&__body {
 		padding-bottom: 30rem;
 		display: none;
+
+		@include large-mobile {
+			padding-left: 10rem;
+			padding-bottom: 25rem;
+		}
 	}
 
 	&__content {
@@ -103,7 +128,9 @@ export default{
 		}
 
 		@include large-mobile {
-			margin-top: 0;
+			font-size: 14rem;
+			margin-top: -5rem;
+			font-family: 'Gilroy';
 		}
 	}
 }
