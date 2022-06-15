@@ -23,7 +23,7 @@
 							:img="item.img"
 							:to="item.to"
 						)
-				.section-categories__btn-wrap
+				//.section-categories__btn-wrap
 					button-primary.section-categories__btn(gray) {{ buttonText }}
 </template>
 
@@ -78,9 +78,38 @@ export default {
 
 		@include large-mobile {
 			margin-top: 20rem;
-			display: none;
-			&:nth-child(-n+6) {
-				display: block;
+
+			&:nth-last-child(-n+1):not(:nth-child(even)) {
+				width: 100%;
+
+				.card-premium {
+					height: 105rem;
+					overflow: hidden;
+					&__wrap {
+						position: static;
+						padding-left: 50%;
+						text-align: left;
+						& > * {
+							position: relative;
+						}
+					}
+					&__img {
+						position: absolute;
+						left: 0;
+						top: 11rem;
+						width: 50%;
+						text-align: center;
+						img {
+							max-height: 135rem;
+						}
+					}
+					&__name {
+						font-weight: 600;
+					}
+					&__arrow {
+						display: none;
+					}
+				}
 			}
 		}
 	}

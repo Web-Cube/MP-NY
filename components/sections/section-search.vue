@@ -71,6 +71,12 @@ export default {
 		padding: 80rem 0 40rem 0;
 	}
 
+	&__title {
+		@include large-mobile {
+			color: #CED2D9;
+		}
+	}
+
 	&__images {
 		position: absolute;
 		left: 0;

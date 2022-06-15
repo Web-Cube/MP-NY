@@ -67,6 +67,14 @@ export default {
 
 	@include large-mobile {
 		font-size: 14rem;
+
+		&:not(.tag_btn) {
+			height: 25rem;
+			align-items: center;
+			padding: 0 8rem;
+			background: #F4F3F4;
+			border-radius: 3px;
+		}
 	}
 	&__counter {
 		margin-left: 3rem;

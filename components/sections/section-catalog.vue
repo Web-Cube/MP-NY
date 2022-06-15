@@ -365,8 +365,8 @@ export default {
 		}
 
 		@include large-mobile {
-			margin: 0 -15rem 16rem -15rem;
-			padding-bottom: 20rem;
+			margin: 0 -15rem 0 -15rem;
+			padding-bottom: 16rem;
 			overflow: hidden;
 			&-list {
 				display: flex;
@@ -390,17 +390,24 @@ export default {
 		@include large-mobile {
 			margin-top: 0;
 			margin-bottom: 0;
+			&:not(:last-child) {
+				margin-right: 5rem;
+			}
 		}
 	}
 
 	&__nav {
 		@include large-mobile {
-			padding-bottom: 16rem;
-			border-bottom: 1px solid $light-gray;
+			padding-bottom: 18rem;
+			padding-top: 18rem;
 			margin-left: -15rem;
 			margin-right: -15rem;
 			padding-left: 15rem;
 			padding-right: 15rem;
+			position: sticky;
+			top: 0;
+			background: #FFFFFF;
+			z-index: 100;
 		}
 	}
 

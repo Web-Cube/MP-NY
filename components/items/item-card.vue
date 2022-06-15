@@ -114,6 +114,10 @@ export default{
 
 		@include large-mobile {
 			padding-top: div(140, 167) * 100%;
+
+			.mouse-gallery__item:not(:first-child), .mouse-gallery__nav {
+				display: none;
+			}
 		}
 	}
 	&__info {

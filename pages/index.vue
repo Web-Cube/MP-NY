@@ -140,10 +140,9 @@ export default {
 						]
 					},
 					{
-						status: 'VIP',
-						gallery: [
-							'item-card__img4.jpg',
-						]
+						img: 'card-premium__img1.png',
+						name: 'Объектив <br>SLR Magic. Sony E. 25mm f1.4',
+						type: 'premium'
 					},
 					{
 						status: 'VIP',
@@ -172,14 +171,14 @@ export default {
 						]
 					},
 					{
-						gallery: [
-							'item-card__img1.jpg',
-						]
-					},
-					{
 						img: 'card-premium__img1.png',
 						name: 'Объектив <br>SLR Magic. Sony E. 25mm f1.4',
 						type: 'premium'
+					},
+					{
+						gallery: [
+							'item-card__img1.jpg',
+						]
 					},
 					{
 						gallery: [
@@ -194,11 +193,6 @@ export default {
 					{
 						gallery: [
 							'item-card__img2.jpg'
-						]
-					},
-					{
-						gallery: [
-							'item-card__img3.jpg',
 						]
 					},
 					{
@@ -208,6 +202,11 @@ export default {
 					},
 					{
 						gallery: [
+							'item-card__img3.jpg',
+						]
+					},
+					{
+						gallery: [
 							'item-card__img5.jpg'
 						]
 					},
@@ -227,9 +226,9 @@ export default {
 						]
 					},
 					{
-						gallery: [
-							'item-card__img4.jpg'
-						]
+						img: 'card-premium__img1.png',
+						name: 'Объектив <br>SLR Magic. Sony E. 25mm f1.4',
+						type: 'premium'
 					},
 				]
 			}
