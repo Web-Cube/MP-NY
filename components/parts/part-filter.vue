@@ -1,6 +1,6 @@
 <template lang="pug">
 	.filter.js-filter(:class="mods" ref="filter")
-		.filter__bg
+		.filter__bg(@click="closeFilter()")
 		.filter__box
 			.filter__nav.flex.flex_vertical
 				button-filter.filter__title(:counter="counter")
@@ -21,15 +21,12 @@
 							:visible="item.visible"
 							:name="item.name"
 						)
-						module-accordion.filter__accordion(
-							content
-							title="Cost"
-							visible
-						)
-							.accordion__fields
-								form-input(:value="`${'$ ' + numberWithSpaces(costFrom)}`" placeholder="From" separator)
-								form-input(:value="`${'$ ' + numberWithSpaces(costTo)}`" placeholder="To" separator)
 			.filter__bottom
+				.filter__cost
+					.filter__cost-title.b Cost
+					.filter__cost-fields
+						form-input(:value="`${'$ ' + numberWithSpaces(costFrom)}`" placeholder="From" separator)
+						form-input(:value="`${'$ ' + numberWithSpaces(costTo)}`" placeholder="To" separator)
 				button-primary.filter__btn(blue) {{ btnText }}
 </template>
 
@@ -103,6 +100,9 @@ export default {
 
 <style lang="scss">
 .filter{
+	position: sticky;
+	top: 20rem;
+	height: calc( 100vh - 50rem );
 	@include small-tablet {
 		position: fixed;
 		left: 0;
@@ -141,6 +141,10 @@ export default {
 	}
 
 	&__box {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		height: 100%;
 		@include small-tablet {
 			position: absolute;
 			background: #fff;
@@ -233,20 +237,26 @@ export default {
 	}
 	&__body {
 		margin-top: 20rem;
+		flex: 1 1 auto;
+		position: relative;
+		&-wrap {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: calc( 100% + 8rem );
+			padding-right: 7rem;
+			padding-bottom: 10rem;
+			height: 100%;
+			overflow-x: hidden;
+			overflow-y: auto;
+
+		}
 		@include small-tablet {
 			margin-top: 10rem;
 			flex: 1 1 auto;
 			position: relative;
 			&-wrap {
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: calc( 100% + 8rem );
-				padding-right: 7rem;
 				padding-bottom: 10rem;
-				height: 100%;
-				overflow-x: hidden;
-				overflow-y: auto;
 
 			}
 		}
@@ -259,12 +269,24 @@ export default {
 		}
 	}
 	&__cost {
-		margin-top: 20rem;
+		border-top: 1px solid $light-gray;
+		padding-top: 20rem;
 		&-fields {
 			display: flex;
 			margin-top: 20rem;
 			.input {
 				width: 50%;
+			}
+		}
+
+		@include large-mobile {
+			&-title {
+				padding-left: 10rem;
+				font-size: 15rem;
+			}
+			&-fields {
+				@include items(2, 5);
+				margin-top: 15rem;
 			}
 		}
 	}
@@ -275,6 +297,12 @@ export default {
 		@include small-tablet {
 			margin-top: 25rem;
 		}
+	}
+
+	&__bottom {
+		background: #fff;
+		position: sticky;
+		bottom: 30rem;
 	}
 }
 </style>

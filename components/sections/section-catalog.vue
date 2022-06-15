@@ -267,7 +267,7 @@ export default {
 	methods: {
 	    openFilter() {
 
-			document.querySelector("body").classList.add("js-locked");
+			document.querySelector("html").classList.add("js-lock");
 			let div = document.createElement('div');
 
 			div.style.overflowY = 'scroll';
@@ -278,7 +278,7 @@ export default {
 
 			div.remove();
 
-			document.querySelector("body").style.marginRight = scrollWidth + "px";
+			document.querySelector("html").style.marginRight = scrollWidth + "px";
 
 			document.querySelector(".js-filter").classList.add('visible');
 	    }
@@ -297,7 +297,6 @@ export default {
 	&__row {
 		display: flex;
 		margin-top: 50rem;
-		align-items: flex-start;
 
 		@include small-tablet {
 			flex-wrap: wrap;

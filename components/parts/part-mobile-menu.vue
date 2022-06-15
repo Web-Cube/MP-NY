@@ -28,6 +28,10 @@ export default {
 	border-top: 1px solid #DDE1E3;
 	padding: 0 22rem;
 	z-index: 200;
+	display: none;
+	@include large-mobile {
+		display: block;
+	}
 	&__list {
 		min-height: 48rem;
 	}
