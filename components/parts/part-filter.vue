@@ -131,6 +131,7 @@ export default {
 				&__box {
 					opacity: 1;
 					margin-top: 0;
+					transform: translateY(0);
 				}
 			}
 		}
@@ -168,8 +169,8 @@ export default {
 			padding: 16rem 15rem 26rem 15rem;
 			border-radius: 10rem 10rem 0 0;
 			opacity: 0;
-			margin-top: 50px;
 			transition: ease .5s;
+			transform: translateY(30rem);
 		}
 		@include large-mobile {
 			height: calc( 100vh - 90rem );
