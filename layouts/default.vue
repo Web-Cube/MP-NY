@@ -5,4 +5,5 @@
 		part-footer
 		part-mobile-menu
 		modal-card
+		modal-search
 </template>

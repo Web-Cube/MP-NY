@@ -82,6 +82,11 @@ export default {
 
 		@include small-tablet {
 			margin-right: 0;
+			width: 28rem;
+			height: 28rem;
+		}
+
+		@include large-mobile {
 			width: 24rem;
 			height: 24rem;
 		}

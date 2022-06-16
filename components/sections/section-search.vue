@@ -12,8 +12,9 @@
 				h2.section-search__title.h1
 					| Search. Buy. 
 					span.color-blue Sell.
-				part-search-form.section-search__form(:searchList="searchList")
+				part-search-form.section-search__form(:searchList="searchList" v-if="$screen.st")
 					form-select.search-form__select(value="New Yourk" name="city" :items="['Chicago', 'San Diego', 'Houston']")
+				part-search-mobile.section-search__form(v-else)
 			.section-search__list
 				.section-search__list-wrap.flex
 					item-category.section-search__item(

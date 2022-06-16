@@ -95,6 +95,9 @@ export default {
 		border: 1px solid $light-gray;
 		border-radius: 10rem;
 		display: block;
+		&:focus {
+			border-color: $blue;
+		}
 		&::placeholder {
 			font-weight: 500;
 			color: $gray;

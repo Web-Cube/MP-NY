@@ -1,7 +1,7 @@
 <template lang="pug">
 	section.section-catalog
 		.section-catalog__wrap.wrap
-			part-search-form.section-catalog__form(:searchList="searchList")
+			part-search-form.section-catalog__form(:searchList="searchList" v-if="$screen.st")
 				template(v-slot:left)
 					button-select.search-form__select(borderRight name="tippyCategories") Categories
 					tippy.tippy-hide(to="tippyCategories" placement="bottom-start" trigger="click" )
@@ -9,6 +9,7 @@
 
 				form-select.search-form__select(value="New Yourk" name="city" :items="['Chicago', 'San Diego', 'Houston']")
 				form-select.search-form__select(value="+0 km" name="distanse" :items="['+1 km', '+2 km', '+3 km']")
+			part-search-mobile.section-catalog__form(v-else)
 			.section-catalog__row
 				.section-catalog__column.section-catalog__column_left
 					part-filter.section-catalog__filter(:filters="filters" :counter="counter" ref="catalogFilter")

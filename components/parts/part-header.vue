@@ -129,6 +129,10 @@ export default {
 	}
 	&__profile {
 		margin: 0 20rem;
+
+		@include small-tablet {
+			margin-right: 10rem;
+		}
 	}
 }
 </style>

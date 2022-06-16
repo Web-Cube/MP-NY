@@ -50,7 +50,7 @@ export default {
 .footer{
 	width: 100%;
 
-	@include large-mobile {
+	@include small-tablet {
 		margin-bottom: 48rem;
 	}
 

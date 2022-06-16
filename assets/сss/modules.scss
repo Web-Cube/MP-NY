@@ -105,6 +105,7 @@
 		position: absolute;
 		right: 20rem;
 		top: 20rem;
+		z-index: 50;
 
 		@include large-mobile {
 			right: 15rem;
@@ -147,10 +148,16 @@
 	}
 }
 
-@include large-mobile {
-	.modal.fade .modal-dialog {
-		transform: none;
+.modal.fade .modal-dialog {
+	transform: translate(0, 50rem);
+
+	@include large-mobile {
+		transform: translate(0, 30rem);
 	}
+}
+
+.modal.show .modal-dialog {
+	transform: translate(0, 0)
 }
 
 .modal-faq {

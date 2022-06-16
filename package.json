@@ -21,8 +21,7 @@
     "vue": "^2.6.14",
     "vue-screen": "^1.5.6",
     "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "vue-template-compiler": "^2.6.14"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
@@ -30,11 +29,12 @@
     "fibers": "^5.0.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
-    "sass": "^1.50.0",
+    "sass": "^1.52.3",
     "sass-loader": "^10.2.1",
     "v-click-outside": "^3.2.0",
     "vue-bootstrap-modal": "^0.1.13",
     "vue-click-outside": "^1.1.0",
-    "vue-tippy": "^4.13.0"
+    "vue-tippy": "^4.13.0",
+    "webpack": "^4.46.0"
   }
 }
