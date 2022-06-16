@@ -79,16 +79,6 @@ export default {
 			}
 		}
 	}
-
-	@include large-mobile {
-		&.is-active {
-			.accordion {
-				&__head {
-					padding-bottom: 20rem;
-				}
-			}
-		}
-	}
 	&__head {
 		padding: 20rem 10rem 20rem 0;
 		display: flex;

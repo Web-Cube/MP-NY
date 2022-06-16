@@ -11,7 +11,7 @@
 				.filter__close(@click="closeFilter()")
 					svg-icon(name="close" viewBox="0 0 10 9")
 			.filter__body
-				.filter__body-wrap.css-scrollbar
+				.filter__body-wrap.css-scrollbar(ref="container")
 					.filter__list
 						module-accordion.filter__accordion(
 							v-for="(item, i) in filters"
@@ -94,7 +94,18 @@ export default {
 
 			document.querySelector("body").style.marginRight = scrollWidth + "px";
 	    }
-	}
+	},
+	/*beforeMount() {
+		window.addEventListener('load resize', function() {
+
+			let topHeight = document.querySelector(".filter__nav").clientHeight;
+			let bottomHeight = document.querySelector(".filter__bottom").clientHeight;
+			let filterHeight = document.querySelector(".filter").clientHeight;
+			let height = filterHeight - topHeight - bottomHeight;
+
+			document.querySelector(".filter__body-wrap").style.maxHeight = height + 'px';
+		});
+	}*/
 }
 </script>
 
@@ -102,7 +113,7 @@ export default {
 .filter{
 	position: sticky;
 	top: 20rem;
-	height: calc( 100vh - 50rem );
+	height: calc( 100vh - 60rem );
 	@include small-tablet {
 		position: fixed;
 		left: 0;
@@ -237,18 +248,15 @@ export default {
 	}
 	&__body {
 		margin-top: 20rem;
-		flex: 1 1 auto;
 		position: relative;
 		&-wrap {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: calc( 100% + 8rem );
+			width: calc( 100% + 18rem );
 			padding-right: 7rem;
-			padding-bottom: 10rem;
-			height: 100%;
+			max-height: calc( 100vh - 300rem );
 			overflow-x: hidden;
 			overflow-y: auto;
+			padding-left: 10rem;
+			margin-left: -10rem;
 
 		}
 		@include small-tablet {
@@ -256,8 +264,16 @@ export default {
 			flex: 1 1 auto;
 			position: relative;
 			&-wrap {
-				padding-bottom: 10rem;
-
+				position: absolute;
+				left: 0;
+				top: 0;
+				max-height: inherit;
+				height: auto;
+				margin-left: 0;
+				padding-left: 0;
+				height: 100%;
+				width: calc( 100% + 30px );
+				padding-right: 28px;
 			}
 		}
 	}
@@ -301,7 +317,7 @@ export default {
 
 	&__bottom {
 		background: #fff;
-		position: sticky;
+		//position: sticky;
 		bottom: 30rem;
 	}
 }
