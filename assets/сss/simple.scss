@@ -83,6 +83,26 @@ body {
 	display: flex;
     flex-direction: column;
     padding: 0;
+
+    &__row {
+    	min-height: 100vh;
+    	display: flex;
+    }
+
+    &__column {
+    	&_left {
+    		width: 210rem;
+    		min-width: 210rem;
+    		background: #F4F3F4;
+    		display: flex;
+    	}
+    	&_right {
+    		width: 100%;
+    		max-width: 1400rem;
+    		margin-left: 50rem;
+    		margin-right: 50rem;
+    	}
+    }
 }
 
 .main {
@@ -116,6 +136,9 @@ a {
 	color: inherit;
 	text-decoration-skip-ink: none;
 	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 .inline {

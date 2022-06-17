@@ -1,5 +1,5 @@
 <template lang="pug">
-	header.header
+	header.header(:class="Mods")
 		.header__wrap.wrap
 			.header__row.flex.flex_vertical.flex_justify
 				.header__column.header__column_left.flex.flex_vertical
@@ -25,6 +25,10 @@
 export default {
 	props: {
 		login: {
+			type: Boolean,
+			default: true
+		},
+		back: {
 			type: Boolean,
 			default: true
 		},
@@ -75,6 +79,13 @@ export default {
 		return {
 			menuList
 		}
+	},
+	computed: {
+		Mods(){
+			return {
+				'header_back': this.back,
+			}
+		}
 	}
 }
 </script>
@@ -83,6 +94,12 @@ export default {
 .header{
 	padding: 30rem 0;
 	width: 100%;
+	&_back {
+		padding: 20rem 0;
+		.header__wrap {
+			padding: 0;
+		}
+	}
 	@include large-mobile {
 		padding: 20rem 0;
 	}
