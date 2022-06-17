@@ -5,6 +5,8 @@
 				part-back-sidebar
 			.container__column.container__column_right
 				part-header(back)
-				Nuxt
+				main.main
+					Nuxt
 				part-mobile-menu
+				modal-search
 </template>

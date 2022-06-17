@@ -2,7 +2,6 @@
 	component.button-back(
 		:is="to !== '' ? 'NuxtLink' : 'button'"
 		:to="to !== '' ? to : false"
-		:class="Mods"
 	)
 		span.button-back__arrow
 			svg-icon.button-back__icon(name="prev")

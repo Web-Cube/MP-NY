@@ -1,5 +1,5 @@
 <template lang="pug">
-	
+	section-annoucements
 </template>
 
 <script>

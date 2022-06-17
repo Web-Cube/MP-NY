@@ -93,6 +93,7 @@
 .h4,
 .content h4 {
 	font-size: 20rem;
+	line-height: 1.2;
 
 	@include large-mobile {
 		font-size: 14rem;

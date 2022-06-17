@@ -112,6 +112,12 @@ export default {
 		}
 	}
 
+	@include small-desktop {
+		&:not(.button-nav_small) {
+			padding-left: 12rem;
+		}
+	}
+
 	&__icon {
 		width: 24rem;
 		height: 24rem;
@@ -163,6 +169,10 @@ export default {
 			stroke-linecap: round;
 			stroke-linejoin: round;
 			stroke-width: 1.5;
+		}
+
+		@include small-desktop {
+			margin-right: 10rem;
 		}
 	}
 }

@@ -71,10 +71,6 @@ body {
 	color: $default;
 	font-weight: 500;
 	position: relative;
-
-	@include large-mobile {
-		font-size: 12rem;
-	}
 }
 
 .container {
@@ -101,6 +97,24 @@ body {
     		max-width: 1400rem;
     		margin-left: 50rem;
     		margin-right: 50rem;
+    	}
+
+    	@include large-desktop {
+    		&_right {
+	    		margin-left: 40rem;
+	    		margin-right: 40rem;
+	    	}
+    	}
+
+    	@include small-tablet {
+    		&_left {
+    			display: none;
+    		}
+    		&_right {
+	    		margin-left: 0;
+	    		margin-right: 0;
+	    		padding: 0 var(--wrapper-offset);
+	    	}
     	}
     }
 }

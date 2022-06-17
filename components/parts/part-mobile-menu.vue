@@ -4,7 +4,7 @@
 			.mobile-menu__item
 				button-action.mobile-menu__btn(icon="home")
 			.mobile-menu__item
-				button-action.mobile-menu__btn(icon="search")
+				button-action.mobile-menu__btn(icon="search" v-b-modal.modal-search)
 			.mobile-menu__item
 				button-action.mobile-menu__btn(icon="add")
 			.mobile-menu__item
