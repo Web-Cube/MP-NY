@@ -20,7 +20,7 @@ export default {
 		},
 		icon: {
 			type: String,
-			default: "prev"
+			default: ""
 		},
 		red: {
 			type: Boolean,
@@ -33,7 +33,7 @@ export default {
 		notif: {
 			type: Boolean,
 			default: false
-		}
+		},
 	},
 	computed: {
 		Mods(){
@@ -110,6 +110,11 @@ export default {
 				}
 			}
 		}
+	}
+
+	&_medium {
+		padding: 0 15rem;
+		height: 40rem;
 	}
 
 	@include small-desktop {

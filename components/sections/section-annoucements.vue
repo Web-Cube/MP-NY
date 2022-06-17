@@ -1,6 +1,7 @@
 <template lang="pug">
 	section.section-annoucements
 		part-analytics-box.section-annoucements__analytics(:statistics="statistics")
+		part-annoucements.section-annoucements__section
 			
 </template>
 
@@ -38,6 +39,14 @@ export default {
 
 		@include large-mobile {
 			margin-top: 15rem;
+		}
+	}
+
+	&__section {
+		margin-top: 60rem;
+
+		@include large-mobile {
+			margin-top: 35rem;
 		}
 	}
 }

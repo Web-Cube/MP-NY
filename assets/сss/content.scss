@@ -79,12 +79,12 @@
 
 .h3,
 .content h3 {
+	font-family: 'Gilroy';
 	font-size: 26rem;
 	line-height: 1;
 
 	@include large-mobile {
 		font-size: 20rem;
-		font-family: 'Gilroy';
 		font-weight: 600;
 		line-height: 1.1;
 	}
@@ -97,7 +97,6 @@
 
 	@include large-mobile {
 		font-size: 14rem;
-		line-height: 1.2
 	}
 }
 
@@ -111,6 +110,13 @@
 
 .h6,
 .content h6 {
+	font-family: 'Gilroy';
+	font-size: 16rem;
+	font-weight: 500;
+	line-height: 1.2;
+	@include large-mobile {
+		font-size: 15rem;
+	}
 }
 
 .content{

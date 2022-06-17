@@ -1,7 +1,7 @@
 <template lang="pug">
 	.analytics-box
 		.analytics-box__inner
-			.analytics-box__title.h2.h2_big {{title}}
+			h2.analytics-box__title.h2.h2_big {{title}}
 			.analytics-box__desc {{desc}}
 			part-statistic.analytics-box__statistic(:statistics="statistics")
 		.analytics-box__img

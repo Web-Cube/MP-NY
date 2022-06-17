@@ -62,16 +62,19 @@ export default {
 		justify-content: center;
 		transition: ease .15s;
 		flex-shrink: 0;
-		margin-right: 10rem;
 		svg {
 			width: 11rem;
-			height: 9em;
+			height: 9rem;
 			fill: none;
 			stroke: #fff;
 			stroke-width: 1.5;
 			opacity: 0;
 			transition: ease .15s;
 		}
+	}
+
+	&__text {
+		margin-left: 10rem;
 	}
 }
 </style>

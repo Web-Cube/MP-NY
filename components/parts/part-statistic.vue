@@ -1,5 +1,5 @@
 <template lang="pug">
-	.statistic
+	.statistic(:class="Mods")
 		.statistic__list.flex
 			.statistic__item(v-for="(item, i) in statistics" :key="i")
 				.statistic__number.color-blue {{item.number}}
@@ -17,12 +17,54 @@ export default {
 				
 			])
 		},
+		light: {
+			type: Boolean,
+			default: false
+		},
 	},
+	computed: {
+		Mods(){
+			return {
+				'statistic_light': this.light,
+			}
+		}
+	}
 }
 </script>
 
 <style lang="scss">
 .statistic{
+	&_light {
+		.statistic {
+			&__item {
+				display: flex;
+				flex-direction: column-reverse;
+				&:not(:first-child) {
+					&:before {
+						display: none;
+					}
+				}
+			}
+			&__name {
+				margin-top: 0;
+				display: flex;
+				align-items: center;
+			}
+			&__number {
+				font-size: 24rem;
+				font-family: 'Gilroy';
+				margin-top: 7rem;
+			}
+			&__icon {
+				width: 13rem;
+				height: 13rem;
+				flex-shrink: 0;
+				display: block;
+				margin-right: 7rem;
+				fill: #9A9A9A;
+			}
+		}
+	}
 	&__icon {
 		display: none;
 
