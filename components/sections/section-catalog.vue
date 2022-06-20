@@ -22,7 +22,7 @@
 								:key="i"
 								:text="tag.text"
 								:counter="tag.counter"
-								:to="tag.to"
+								to="#"
 							)
 
 					.section-catalog__nav.flex.flex_vertical.flex_justify

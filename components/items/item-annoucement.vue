@@ -2,25 +2,30 @@
 	.item-annoucement
 		.item-annoucement__row
 			.item-annoucement__column.item-annoucement__column_left
-				form-checkbox.item-annoucement__checkbox
+				form-checkbox.item-annoucement__checkbox(@change.native="$emit('showPanel')")
 				NuxtLink.item-annoucement__preview(:to="to")
 					img.object-fit(:src="require(`~/assets/img/${preview}`)" v-if="preview")
 				.item-annoucement__info
 					.item-annoucement__name
 						.item-annoucement__title.h4 {{name}}
+					.item-annoucement__price(v-if="$screen.width < 1121") $ {{ numberWithSpaces(price) }}
+					.item-annoucement__days.color-gray(v-if="$screen.width < 1121")
+						| Left: 
+						span.color-blue {{days}}
 					.item-annoucement__distance.color-gray.h6 {{distance}}
 					.item-annoucement__date.color-gray.h6 {{date}}
 					.item-annoucement__nav.flex
 						button-medium.item-annoucement__nav-btn(icon="chatBorder") Chat
 						button-medium.item-annoucement__nav-btn(icon="closeBig" white) Deactivate
+					part-statistic.item-annoucement__statistic(:statistics="statistics" light v-if="$screen.width < 1121")
 			.item-annoucement__column.item-annoucement__column_right
-				.item-annoucement__price $ {{ numberWithSpaces(price) }}
-				part-statistic.item-annoucement__statistic(:statistics="statistics" light)
+				.item-annoucement__price(v-if="$screen.sd") $ {{ numberWithSpaces(price) }}
+				part-statistic.item-annoucement__statistic(:statistics="statistics" light v-if="$screen.sd")
 				.item-annoucement__bottom.flex.flex_justify
 					.item-annoucement__bottom-column
-						button-medium.item-annoucement__bottom-btn(icon="chart") Statistics
+						button-medium.item-annoucement__bottom-btn(icon="chart" v-b-modal.modal-statistic v-if="$screen.sd") Statistics
 					.item-annoucement__bottom-column.flex
-						button-medium.item-annoucement__bottom-btn(icon="zipper" blue) Sale faster
+						button-medium.item-annoucement__bottom-btn(icon="zipper" blue v-if="$screen.sd") Sale faster
 						button-medium.item-annoucement__more(icon="dots" border square)
 </template>
 
@@ -30,7 +35,7 @@ export default{
 	props: {
 		name: {
 			type: String,
-			default: "Объектив SLR Magic. Sony E. 25mm f1.4 Sony E. 25mm f1.4"
+			default: "Объектив SLR Magic. Sony E. 25mm f1.4"
 		},
 		city: {
 			type: String,
@@ -44,13 +49,13 @@ export default{
 			type: String,
 			default: "11.12.2022 - 13.12.2022"
 		},
+		days: {
+			type: String,
+			default: "3 days"
+		},
 		price: {
 			type: Number,
 			default: 228
-		},
-		status: {
-			type: String,
-			default: ""
 		},
 		phoneNumber: {
 			type: String,
@@ -106,6 +111,12 @@ export default{
 		display: flex;
 		justify-content: space-between;
 		@include items (2, 15);
+
+		@include large-tablet {
+			flex-wrap: wrap;
+			position: relative;
+			margin: 0;
+		}
 	}
 	&__column {
 		&_left {
@@ -123,6 +134,11 @@ export default{
 				width: calc( 40% - 30rem );
 			}
 		}
+
+		@include large-tablet {
+			width: 100%;
+			margin: 0;
+		}
 	}
 
 	&__preview {
@@ -133,15 +149,35 @@ export default{
 		border-radius: 10rem;
 		margin-right: 20rem;
 		flex-shrink: 0;
+
+		@include large-tablet {
+			height: 175rem;
+		}
+		@include small-tablet {
+			width: 175rem;
+		}
+
+		@include large-mobile {
+			width: 108rem;
+			height: 111rem;
+			margin-right: 13rem;
+		}
 	}
 	&__info {
 		padding-top: 8rem;
 		width: 100%;
+		@include large-tablet {
+			padding-top: 0;
+		}
 	}
 
 	&__name {
 		position: relative;
 		height: 24rem;
+
+		@include large-tablet {
+			height: auto;
+		}
 	}
 
 	&__title {
@@ -155,13 +191,39 @@ export default{
 		top: 0;
 		width: 100%;
 		height: 100%;
+
+		@include large-tablet {
+			padding-right: 50rem;
+			position: static;
+			overflow: visible;
+			white-space: inherit;
+		}
 	}
 
 	&__distance {
 		margin-top: 15rem;
+
+		@include large-tablet {
+			display: none;
+		}
+	}
+	&__days {
+		display: inline-flex;
+		background: #F4F3F4;
+		border-radius: 3px;
+		padding: 4rem 6rem;
+		margin-top: 10rem;
+
+		@include large-mobile {
+			font-size: 12rem;
+			line-height: 1;
+		}
 	}
 	&__date {
 		margin-top: 10rem;
+		@include large-tablet {
+			display: none;
+		}
 	}
 
 	&__nav {
@@ -172,6 +234,10 @@ export default{
 				padding: 0 15rem;
 			}
 		}
+
+		@include large-tablet {
+			display: none;
+		}
 	}
 
 	&__price {
@@ -181,18 +247,48 @@ export default{
 		text-align: right;
 		font-weight: 600;
 		letter-spacing: 0.01em;
+		@include large-tablet {
+			text-align: left;
+			padding-top: 0;
+			margin-top: 10rem;
+		}
+
+		@include large-mobile {
+			margin-top: 8rem;
+			font-size: 15rem;
+		}
 	}
 
 	&__statistic {
 		margin-top: 20rem;
+
+		@include large-tablet {
+			margin-top: 10rem;
+		}
 	}
 
 	&__bottom {
 		margin-top: 30rem;
+		@include large-tablet {
+			margin-top: 0;
+		}
 	}
 
 	&__more {
 		margin-left: 6rem;
+		@include large-tablet {
+			margin-left: 0;
+			position: absolute;
+			right: 0;
+			top: 10rem;
+		}
+
+		@include large-mobile {
+			background: #fff;
+			border: 0;
+			right: -10rem;
+			top: -6rem;
+		}
 	}
 }
 </style>

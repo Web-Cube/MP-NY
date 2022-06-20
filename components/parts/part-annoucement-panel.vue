@@ -1,17 +1,14 @@
 <template lang="pug">
-	.back-sidebar
-		.back-sidebar__top
-			button-back.back-sidebar__roll-up Roll up
-		.back-sidebar__body
-			.back-sidebar__nav
-				.back-sidebar__nav-item(v-for="(item, i) in nav" :key="i")
-					button-nav.back-sidebar__nav-btn(
-						:icon="item.icon"
-						:to="item.to"
-						:notif="item.notif"
-					) {{item.name}}
-		.back-sidebar__bottom
-			button-nav.back-sidebar__logout(red small icon="logout") Exit
+	.annoucement-panel
+		.annoucement-panel__row.flex.flex_vertical.flex_justify
+			.annoucement-panel__column
+				form-checkbox.annoucement-panel__select(checked light)
+					strong.p 3 ad selected
+			.annoucement-panel__column.flex.flex_vertical
+				button-medium.annoucement-panel__btn(icon="delete" blue small) Delete
+				button-medium.annoucement-panel__btn(icon="setting" blue small) Setting
+				button-medium.annoucement-panel__btn(icon="cross" blue small) Deactivate
+				button-medium.annoucement-panel__cancel(blue small @click.native="$emit('closePanel')") Cancel
 </template>
 
 <script>
@@ -63,37 +60,21 @@ export default {
 </script>
 
 <style lang="scss">
-.back-sidebar{
-	height: 100vh;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 30rem 15rem;
+.annoucement-panel {
+	background: $blue;
+	color: #fff;
+	padding: 25rem 30rem;
+	border-radius: 10rem;
 	position: sticky;
-	top: 0;
+	bottom: 30rem;
 
-	&__body {
-		margin-top: 75rem;
-		flex: 1 1 auto;
-	}
-
-	&__bottom {
-		margin-top: 75rem;
-	}
-
-	&__logout {
-		width: 100%;
-	}
-
-	&__nav {
-		&-item {
-			&:not(:first-child) {
-				margin-top: 20rem;
-			}
+	&__btn {
+		&:not(:first-child) {
+			margin-left: 15rem;
 		}
-		&-btn {
-			width: 100%;
-		}
+	}
+	&__cancel {
+		margin-left: 30rem;
 	}
 }
 </style>

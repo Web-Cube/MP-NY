@@ -4,7 +4,7 @@
 			.statistic__item(v-for="(item, i) in statistics" :key="i")
 				.statistic__number.color-blue {{item.number}}
 				.statistic__name
-					svg-icon.statistic__icon(:name="item.icon" :class="`button-nav__icon_${item.icon}`")
+					svg-icon.statistic__icon(:name="item.icon" :class="`statistic__icon__icon_${item.icon}`")
 					.statistic__text {{item.name}}
 </template>
 
@@ -62,6 +62,29 @@ export default {
 				display: block;
 				margin-right: 7rem;
 				fill: #9A9A9A;
+			}
+		}
+		@include large-mobile {
+			.statistic {
+				&__item {
+					flex-direction: row-reverse;
+					align-items: center;
+				}
+				&__icon {
+					fill: $blue;
+					width: 11rem;
+					height: 11rem;
+					margin-right: 5rem;
+				}
+				&__text {
+					display: none;
+				}
+				&__number {
+					color: $gray;
+					font-weight: 500;
+					font-size: 12rem;
+					margin-top: 0;
+				}
 			}
 		}
 	}

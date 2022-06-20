@@ -5,6 +5,7 @@
 		:class="Mods"
 	) 
 		svg-icon.button-action__icon(:name="icon" :class="`button-action__icon_${icon}`")
+		span.button-action__text(v-if="text") {{text}}
 
 </template>
 
@@ -19,15 +20,30 @@ export default {
 			type: String,
 			default: ""
 		},
+		text: {
+			type: String,
+			default: ""
+		},
 		gray: {
 			type: Boolean,
+			default: false,
+		},
+		small: {
+			type: Boolean,
+			default: false,
+		},
+		blue: {
+			type: Boolean,
+			default: false,
 		}
 	},
 
 	computed: {
 		Mods(){
 			return {
-				'button-action_gray' : this.gray 
+				'button-action_gray' : this.gray,
+				'button-action_small' : this.small,
+				'button-action_blue' : this.blue,
 			}
 		}
 	}
@@ -45,11 +61,28 @@ export default {
 	background: none;
 	cursor: pointer;
 	border-radius: 10rem;
+	font-size: 16rem;
 
 	&_gray{
 		.button-action__icon_heart{
 			stroke: $light-gray;
 			stroke-width: 2.5;
+		}
+	}
+
+	&_small {
+		width: auto;
+		height: auto;
+		.button-action__icon{
+			width: 14rem;
+			height: 14rem;
+		}
+
+	}
+
+	&_blue{
+		.button-action__icon{
+			fill: $blue;
 		}
 	}
 
@@ -128,6 +161,10 @@ export default {
 				max-height: 16rem;
 			}
 		}
+	}
+
+	&__text {
+		margin-left: 10rem;
 	}
 }
 </style>

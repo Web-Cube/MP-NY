@@ -1,6 +1,6 @@
 <template lang="pug">
-	label.checkbox
-		input.checkbox__input(:name="name" :value="value" type="checkbox")
+	label.checkbox(:class="Mods")
+		input.checkbox__input(:name="name" :value="value" type="checkbox" :checked="checked")
 		.checkbox__btn
 			.checkbox__icon
 				svg-icon(name="check" viewBox="0 0 9 8")
@@ -20,7 +20,22 @@ export default {
 			type: String,
 			default: 'name'
 		},
+		checked: {
+			type: Boolean,
+			default: false
+		},
+		light: {
+			type: Boolean,
+			default: false
+		},
 	},
+	computed: {
+		Mods(){
+			return {
+				'checkbox_light': this.light,
+			}
+		}
+	}
 }
 </script>
 
@@ -30,6 +45,21 @@ export default {
 	display: inline-flex;
 	cursor: pointer;
 	font-size: 14rem;
+
+	&_light {
+		.checkbox {
+			&__input {
+				&:checked + .checkbox__btn {
+					.checkbox {
+						&__icon {
+							border-color: #7A8DF1;
+							background: #7A8DF1;
+						}
+					}
+				}
+			}
+		}
+	}
 
 	&__btn {
 		display: flex;

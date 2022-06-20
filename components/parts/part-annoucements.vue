@@ -15,10 +15,25 @@
 			.annoucements__sort
 				form-select.annoucements__select(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
 		.annoucements__container
-			form-checkbox.annoucements__select-all
+			form-checkbox.annoucements__select-all(@change.native="panelOpen = true")
 				span.color-gray.h6 Select all
 			.annoucements__list
-				item-annoucement.annoucements__item
+				item-annoucement.annoucements__item(
+					v-for="(item, i) in list"
+					:key="i"
+					:name="item.name"
+					:city="item.city"
+					:distance="item.distance"
+					:date="item.date"
+					:price="item.price"
+					:phoneNumber="item.phoneNumber"
+					:to="item.to"
+					:preview="item.preview"
+					:statistics="item.statistics"
+					@showPanel="panelOpen = true"
+				)
+			transition(name="fade")
+				part-annoucement-panel.annoucements__panel(v-if="panelOpen" @closePanel="panelOpen = false")
 </template>
 
 <script>
@@ -27,14 +42,6 @@ export default {
 		title: {
 			type: String,
 			default: "My advertises"
-		},
-		desc: {
-			type: String,
-			default: "Your analytics on all ads"
-		},
-		img: {
-			type: String,
-			default: "analytics-box__img.svg"
 		},
 		tags: {
 			type: Array,
@@ -54,12 +61,51 @@ export default {
 				}
 			])
 		},
+		list: {
+			type: Array,
+			default: () => ([
+				{
+					name: 'Объектив SLR Magic. Sony E. 25mm f1.4',
+					city: 'New Your',
+					to: '#',
+					distance: '2 km near you',
+					date: '11.12.2022 - 13.12.2022',
+					price: 124,
+					preview: 'item-card__img1.jpg',
+					statistics: [
+						{
+							icon: 'favorites',
+							name: 'Favorites',
+							number: '8'
+						},
+						{
+							icon: 'view',
+							name: 'Views',
+							number: '5 К'
+						},
+						{
+							icon: 'call',
+							name: 'Calls',
+							number: '95'
+						}
+					]
+				},
+				{},
+				{}
+			])
+		},
+	},
+	data() {
+		return {
+			panelOpen: false,
+		};
 	},
 }
 </script>
 
 <style lang="scss">
 .annoucements {
+	padding-bottom: 60rem;
 	&__nav {
 		margin-top: 40rem;
 		border-bottom: 1px solid $light-gray;
@@ -99,11 +145,22 @@ export default {
 
 	&__container {
 		margin-top: 40rem;
+
+		@include large-mobile {
+			margin-top: 20rem;
+		}
 	}
 
 	&__item {
 		padding: 25rem 15rem 25rem 0;
 		border-bottom: 1px solid $light-gray;
+
+		@include large-mobile {
+			padding: 20rem 0;
+			&:first-child {
+				padding-bottom: 15rem;
+			}
+		}
 	}
 
 	&__sort {
@@ -125,6 +182,10 @@ export default {
 		@include large-mobile {
 			display: none;
 		}
+	}
+
+	&__panel {
+		margin-top: 30rem;
 	}
 }
 </style>

@@ -4,7 +4,7 @@
 		:to="to !== '' ? to : false"
 		:class="Mods"
 	)
-		span.button-medium__icon(:class="`button-medium__icon_${icon}`")
+		span.button-medium__icon(:class="`button-medium__icon_${icon}`" v-if="icon")
 			svg-icon(:name="icon")
 		span.button-medium__text
 			slot
@@ -37,6 +37,10 @@ export default {
 		square: {
 			type: Boolean,
 			default: false
+		},
+		small: {
+			type: Boolean,
+			default: false
 		}
 	},
 	computed: {
@@ -45,7 +49,8 @@ export default {
 				'button-medium_white': this.white,
 				'button-medium_blue': this.blue,
 				'button-medium_border': this.border,
-				'button-medium_square': this.square
+				'button-medium_square': this.square,
+				'button-medium_small': this.small
 			}
 		}
 	}
@@ -80,6 +85,9 @@ export default {
 				stroke: #fff;
 			}
 		}
+		&:hover {
+			background: #7A8DF1;
+		}
 	}
 
 	&_square {
@@ -90,6 +98,11 @@ export default {
 	&_border {
 		background: #FFF;
 		border: 1px solid $light-gray;
+	}
+	&_small {
+		border-radius: 4px;
+		padding: 0 10rem;
+		height: 36rem;
 	}
 
 	&__icon {

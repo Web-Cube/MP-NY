@@ -2,6 +2,7 @@
 	section.section-annoucements
 		part-analytics-box.section-annoucements__analytics(:statistics="statistics")
 		part-annoucements.section-annoucements__section
+		modal-statistic
 			
 </template>
 
