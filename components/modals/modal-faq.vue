@@ -20,6 +20,7 @@
 				:title="item.question"
 				:content="item.answer"
 				:active="item.active"
+				groupName="i"
 			)
 
 </template>
