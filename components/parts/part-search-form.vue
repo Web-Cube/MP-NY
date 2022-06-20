@@ -63,5 +63,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~/assets/сss/search-form.scss';
+@import '~/assets/сss/components/search-form.scss';
 </style>

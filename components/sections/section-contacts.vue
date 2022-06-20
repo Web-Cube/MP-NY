@@ -1,10 +1,7 @@
 <template lang="pug">
 	section.section-contacts
 		.wrap
-			.section-contacts__preview
-				.section-contacts__preview-img
-					img.object-fit(:src="require(`~/assets/img/${img}`)")
-				h1.section-contacts__title.h1 {{title}}
+			part-page-preview.section-contacts__preview(title="Contacts" img="contacts__img.jpg")
 			.section-contacts__row.flex.flex_justify
 				.section-contacts__column.section-contacts__column_left
 					.section-contacts__list
@@ -26,14 +23,6 @@
 <script>
 export default {
 	props: {
-		title: {
-			type: String,
-			default: "Contacts"
-		},
-		img: {
-			type: String,
-			default: "contacts__img.jpg"
-		},
 		contacts: {
 			type: Array,
 			default: () => ([
@@ -51,34 +40,22 @@ export default {
 		padding-top: 36rem;
 	}
 	&__preview {
-		position: relative;
-		&-img {
-			position: relative;
-			overflow: hidden;
-			padding-top: div(550, 1400) * 100%;
-			border-radius: 20rem;
-		}
-		@include large-mobile {
-			&-img {
-				display: none;
+		.page-preview {
+			&__img {
+				padding-top: div(550, 1400) * 100%;
 			}
 		}
-	}
-	&__title {
-		position: absolute;
-		left: 50rem;
-		top: 50rem;
-		color: #fff;
-		font-weight: 500;
-
-		@include small-tablet {
-			left: 40rem;
-			top: 40rem;
-		}
-
 		@include large-mobile {
-			position: static;
-			color: inherit;
+			margin: 0;
+			.page-preview {
+				&__img {
+					display: none;
+				}
+				&__title {
+					position: static;
+					color: inherit;
+				}
+			}
 		}
 	}
 	&__row {

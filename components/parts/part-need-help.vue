@@ -50,8 +50,11 @@ export default {
 		position: relative;
 		z-index: 2;
 		max-width: 50%;
+		padding-right: 50rem;
 		@include large-mobile {
 			max-width: inherit;
+			padding-right: 0;
+			max-width: 400rem;
 		}
 	}
 

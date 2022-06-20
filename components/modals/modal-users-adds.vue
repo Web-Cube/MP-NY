@@ -192,13 +192,19 @@ export default {
 		overflow: hidden;
 	}
 
+	.modal-dialog.modal-users {
+	 	transform: none;
+	}
+
 	@include large-mobile {
 		padding: 0!important;
+		.modal-dialog.modal-users {
+		 	transform: translate(0, 30rem);
+		}
+		&.show .modal-dialog.modal-users {
+			transform: none;
+		}
 		.modal-content {
-			position: absolute;
-			left: -1px;
-			bottom: 0;
-			width: calc( 100% + 1px );
 			padding: 30rem 15rem 0 15rem;
 
 		}

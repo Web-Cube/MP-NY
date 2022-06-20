@@ -51,10 +51,19 @@ export default {
 
 <style lang="scss">
 .modal-card {
+	.modal-dialog.modal-card-size {
+	 	transform: none;
+	}
 	@include large-tablet {
 		.modal-content {
 			padding-left: 30rem;
 			padding-right: 30rem;
+		}
+		.modal-dialog.modal-card-size {
+		 	transform: translate(0, 30rem);
+		}
+		&.show .modal-dialog.modal-card-size {
+			transform: none;
 		}
 	}
 	&__row {

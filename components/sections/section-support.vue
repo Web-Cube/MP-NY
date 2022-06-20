@@ -1,10 +1,7 @@
 <template lang="pug">
 	section.section-support
 		.wrap
-			.section-support__preview
-				.section-support__preview-img
-					img.object-fit(:src="require(`~/assets/img/${img}`)")
-				h1.section-support__title.h1 {{title}}
+			part-page-preview.section-support__preview(title="Support page" img="support__img.jpg")
 			part-faq.section-support__faq(:faqList="faqList" :categories="categories")
 			part-need-help.section-support__help(title="Didn't find the answer for your question?" img="need-help__img2.svg")
 				| You can ask us here
@@ -98,22 +95,6 @@ export default {
 	padding-bottom: 120rem;
 	@include large-mobile {
 		padding-bottom: 50rem;
-	}
-	&__preview {
-		position: relative;
-		&-img {
-			position: relative;
-			overflow: hidden;
-			padding-top: div(500, 1400) * 100%;
-			border-radius: 20rem;
-		}
-		@include large-mobile {
-			margin-left: -15rem;
-			margin-right: -15rem;
-			&-img {
-				padding-top: div(220, 375) * 100%;
-			}
-		}
 	}
 	&__title {
 		position: absolute;

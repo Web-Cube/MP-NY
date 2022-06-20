@@ -38,8 +38,12 @@
 <style lang="scss">
 .form-contact{
 	@include large-mobile {
+		padding-left: 15px!important;
 		.modal-content {
 			padding-bottom: 40rem;
+		}
+		.modal-form {
+			align-items: center;
 		}
 	}
 	&__field {

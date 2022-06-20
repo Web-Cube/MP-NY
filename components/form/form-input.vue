@@ -55,6 +55,9 @@ export default {
 				border-left-width: 0;
 				border-right-width: 0;
 				border-radius: 0;
+				&:focus {
+					border-color: $light-gray;
+				}
 			}
 			&:before {
 				content: '';

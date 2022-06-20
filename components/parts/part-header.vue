@@ -30,7 +30,7 @@ export default {
 		},
 		back: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 	},
 	data(){

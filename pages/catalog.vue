@@ -118,30 +118,37 @@ export default {
 				{
 					text: 'Electronics',
 					counter: 274,
+					to: '#',
 				},
 				{
 					text: 'Sport',
 					counter: 33,
+					to: '#',
 				},
 				{
 					text: 'Appliances',
 					counter: 274,
+					to: '#',
 				},
 				{
 					text: 'Electronics',
 					counter: 74,
+					to: '#',
 				},
 				{
 					text: 'Computers',
 					counter: 569,
+					to: '#',
 				},
 				{
 					text: 'Appliances',
 					counter: 74,
+					to: '#',
 				},
 				{
 					text: 'Electronics',
 					counter: 569,
+					to: '#',
 				},
 			]
 		}

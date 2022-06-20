@@ -1,11 +1,15 @@
 <template lang="pug">
 	.item-faq(:class="Mods" ref="item")
-		.item-faq__head(@click="toggle")
+		.item-faq__head(@click="ToggleFaq")
 			.item-faq__title.h5 {{title}}
 			.item-faq__arrow
 				svg-icon(name="close" viewBox="0 0 10 9")
-		.item-faq__body
-			.item-faq__content(v-html="content")
+		b-collapse.item-faq__body(
+			v-model="active" 
+			:accordion="groupName" 
+			role="tabpanel" 
+		)
+			.item-faq__content.content(v-html="content")
 </template>
 
 <script>
@@ -17,9 +21,18 @@ export default{
 		content: {
 			type: String
 		},
-		active: {
+		visible: {
 			type: Boolean,
 			default: false
+		},
+		groupName: {
+			type: String,
+			default: null
+		},
+	},
+	data(){
+		return {
+			active: this.visible
 		}
 	},
 	computed: {
@@ -30,7 +43,7 @@ export default{
 		}
 	},
 	methods:{
-		toggle() {
+		/*toggle() {
 
 			if ( this.$refs.item.classList.contains('isActive') ) {
 				this.$refs.item.classList.remove('isActive');
@@ -44,7 +57,10 @@ export default{
 	      		this.$refs.item.classList.add('isActive');
 
 			}
-		},
+		},*/
+		ToggleFaq(){
+			this.active = !this.active
+		}
 	}
 }
 </script>
@@ -62,9 +78,6 @@ export default{
 					transform: rotate(0);
 					stroke: $blue;
 				}
-			}
-			&__body {
-				display: block;
 			}
 		}
 	}
@@ -107,20 +120,19 @@ export default{
 	}
 
 	&__body {
-		padding-bottom: 30rem;
-		display: none;
 
+		transform: translateY(-10rem);
 		@include large-mobile {
 			padding-left: 10rem;
-			padding-bottom: 25rem;
+			transform: translateY(-5rem);
 		}
 	}
 
 	&__content {
-		margin-top: -10rem;
 		max-width: 790rem;
 		color: $gray;
 		line-height: 1.4;
+		padding-bottom: 20rem;
 		p {
 			&:not(:first-child) {
 				margin-top: 10rem;
@@ -129,8 +141,8 @@ export default{
 
 		@include large-mobile {
 			font-size: 14rem;
-			margin-top: -5rem;
 			font-family: 'Gilroy';
+			padding-bottom: 15rem;
 		}
 	}
 }

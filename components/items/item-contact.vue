@@ -28,7 +28,8 @@ export default{
 .item-contact {
 	&__row {
 		display: flex;
-		margin-top: 30rem;
+		margin: 30rem -10rem 0 -10rem;
+		
 
 		@include large-mobile {
 			margin-top: 24rem;
@@ -36,6 +37,7 @@ export default{
 	}
 	&__column {
 		width: 100%;
+		padding: 0 10rem;
 	}
 	&__label {
 		font-size: 18rem;

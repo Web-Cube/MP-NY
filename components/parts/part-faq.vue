@@ -17,6 +17,7 @@
 						:title="item.question"
 						:content="item.answer"
 						:active="item.active"
+						groupName="i"
 					)
 		.faq__mobile
 			.faq__mobile-nav

@@ -44,13 +44,6 @@ export default{
 .modal-faq {
 	@include large-mobile {
 		padding: 0!important;
-		.modal-content {
-			position: absolute;
-			left: -1px;
-			bottom: 0;
-			width: calc( 100% + 1px );
-
-		}
 	}
 	&__title {
 		padding-left: 10rem;

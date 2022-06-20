@@ -123,10 +123,6 @@ export default{
 .modal-search {
 	padding: 0!important;
 	.modal-content {
-		position: absolute;
-		left: -1px;
-		bottom: 0;
-		width: calc( 100% + 1px );
 		border-radius: 15rem 15rem 0 0;
 		padding: 16rem 15rem 0 15rem;
 		display: flex;
