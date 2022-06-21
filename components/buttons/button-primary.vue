@@ -36,6 +36,14 @@ export default {
 		small: {
 			type: Boolean,
 			default: false
+		},
+		border: {
+			type: Boolean,
+			default: false
+		},
+		verysmall: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -45,7 +53,9 @@ export default {
 				'button-primary_light': this.light,
 				'button-primary_gray': this.gray,
 				'button-primary_small': this.small,
-				'button-primary_blue': this.blue
+				'button-primary_blue': this.blue,
+				'button-primary_border': this.border,
+				'button-primary_verysmall': this.verysmall
 			}
 		}
 	}
@@ -100,6 +110,14 @@ export default {
 		&:hover{
 			background: #4257C7;
 		}
+	}
+	&_border {
+		background: #fff;
+		border: 1px solid #C4C4C4;
+	}
+	&_verysmall {
+		height: 32rem;
+		font-weight: 500;
 	}
 	&__icon {
 		flex-shrink: 0;

@@ -120,13 +120,7 @@ export default {
 		margin-top: 40rem;
 		border-bottom: 1px solid $light-gray;
 		&-btn {
-			padding: 0 28rem 10rem 28rem;
 			margin-bottom: -1px;
-			border-bottom: 2px solid transparent;
-			color: #9A9A9A;
-			&.is-active {
-				border-color: $default;
-			}
 		}
 
 		@include large-mobile {

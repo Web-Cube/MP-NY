@@ -287,7 +287,7 @@ export default{
 			background: #fff;
 			border: 0;
 			right: -10rem;
-			top: -6rem;
+			top: -12rem;
 		}
 	}
 }

@@ -141,6 +141,10 @@
 	}
 }
 
+.modal-question-size {
+	max-width: 720rem;
+}
+
 .modal-card-size {
 	max-width: 1400rem;
 
@@ -154,17 +158,22 @@
 }
 
 .modal.fade .modal-dialog {
-	transform: translate(0, 50rem);
-	opacity: 0;
-	transition: ease-in-out .3s;
-	transition-delay: .15s;
+	transform: none;
+	.modal-content {
+		transform: translate(0, 50rem);
+		opacity: 0;
+		transition: ease-in-out .3s;
+		transition-delay: .15s;
+	}
 
 	@include large-mobile {
-		transform: translate(0, 30rem);
+		.modal-content {
+			transform: translate(0, 30rem);
+		}
 	}
 }
 
-.modal.show .modal-dialog {
+.modal.show .modal-dialog .modal-content {
 	transform: translate(0, 0);
 	opacity: 1;
 }

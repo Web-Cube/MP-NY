@@ -27,7 +27,7 @@ export default {
 				},
 				{
 					icon: 'plus',
-					to: '/create',
+					to: '/create-ad',
 					name: 'Create Advertise'
 				},
 				{

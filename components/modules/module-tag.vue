@@ -49,7 +49,13 @@ export default {
 	color: $gray;
 
 	&_btn {
-		font-weight: 600;
+		font-weight: 600; 
+		padding: 0 28rem 10rem 28rem;
+		border-bottom: 2px solid transparent;
+		color: #9A9A9A;
+		&.is-active {
+			border-color: $default;
+		}
 		.tag__counter {
 			color: inherit;
 		}
