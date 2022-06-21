@@ -15,7 +15,7 @@
 			.annoucements__sort
 				form-select.annoucements__select(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
 		.annoucements__container
-			form-checkbox.annoucements__select-all(@change.native="panelOpen = true")
+			form-checkbox.annoucements__select-all(@change.native="panel")
 				span.color-gray.h6 Select all
 			.annoucements__list
 				item-annoucement.annoucements__item(
@@ -30,10 +30,11 @@
 					:to="item.to"
 					:preview="item.preview"
 					:statistics="item.statistics"
-					@showPanel="panelOpen = true"
+					@showPanel="panel"
 				)
 			transition(name="fade")
 				part-annoucement-panel.annoucements__panel(v-if="panelOpen" @closePanel="panelOpen = false")
+		modal-panel
 </template>
 
 <script>
@@ -99,6 +100,15 @@ export default {
 		return {
 			panelOpen: false,
 		};
+	},
+	methods: {
+	    panel() {
+	    	if ( window.innerWidth > 580 ) {
+	    		this.panelOpen = true;
+	    	} else {
+	    		this.$root.$emit('bv::show::modal', 'modal-panel')
+	    	}
+	    },
 	},
 }
 </script>
@@ -186,6 +196,11 @@ export default {
 
 	&__panel {
 		margin-top: 30rem;
+
+		@include small-tablet {
+			margin-top: 20rem;
+			bottom: 60rem;
+		}
 	}
 }
 </style>

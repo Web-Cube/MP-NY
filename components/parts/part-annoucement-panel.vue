@@ -67,14 +67,33 @@ export default {
 	border-radius: 10rem;
 	position: sticky;
 	bottom: 30rem;
+	margin-left: -20rem;
+	margin-right: -20rem;
+
+	@include large-tablet {
+		padding: 20rem;
+	}
 
 	&__btn {
 		&:not(:first-child) {
 			margin-left: 15rem;
 		}
+
+		@include small-tablet {
+			&:not(:first-child) {
+				margin-left: 10rem;
+			}
+		}
 	}
 	&__cancel {
 		margin-left: 30rem;
+
+		@include large-tablet {
+			margin-left: 20rem;
+		}
+		@include small-tablet {
+			margin-left: 10rem;
+		}
 	}
 }
 </style>

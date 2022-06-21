@@ -1,6 +1,8 @@
 .p {
 	font-size: 17rem;
-
+	@include small-tablet {
+		font-size: 16rem;
+	}
 	@include large-mobile {
 		font-size: 14rem;
 	}

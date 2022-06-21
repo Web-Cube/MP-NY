@@ -22,13 +22,27 @@ export default {
 		},
 		icon: {
 			type: String
+		},
+		blue: {
+			type: Boolean,
+			default: false
+		},
+		BigIcon: {
+			type: Boolean,
+			default: false
+		},
+		gray: {
+			type: Boolean,
+			default: false
 		}
 	},
 
 	computed: {
 		Mods(){
 			return {
-				
+				'button-border_blue': this.blue,
+				'button-border_big-icon': this.BigIcon,
+				'button-border_gray': this.gray
 			}
 		}
 	}
@@ -49,6 +63,53 @@ export default {
 	font-weight: 600;
 	color: #212D38;
 	fill: #212D38;
+	padding: 0 20rem;
+
+	&_blue {
+		color: $blue;
+		border-color: $blue;
+		.button-border {
+			&__icon {
+				fill: $blue;
+				&_zipper {
+					fill: none;
+					stroke: $blue;
+				}
+			}
+		}
+	}
+
+	&_big-icon {
+		justify-content: flex-start;
+		.button-border {
+			&__icon {
+				width: 20rem;
+				height: 20rem;
+				margin-right: 15rem;
+			}
+		}
+	}
+
+	&_gray {
+		color: $gray;
+		.button-border {
+			&__icon {
+				fill: $gray;
+				&_zipper {
+					fill: none;
+					stroke: $gray;
+				}
+				&_chatBorder {
+					fill: none;
+					stroke: $gray;
+				}
+				&_cross {
+					fill: none;
+					stroke: $gray;
+				}
+			}
+		}
+	}
 
 	@include large-mobile {
 		height: 50rem;
@@ -59,6 +120,23 @@ export default {
 		width: 13rem;
 		height: 13rem;
 		margin-right: 10rem;
+		flex-shrink: 0;
+		fill: $default;
+		&_zipper {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_chatBorder {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_cross {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
 	}
 }
 </style>
