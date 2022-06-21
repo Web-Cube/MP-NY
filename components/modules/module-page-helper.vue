@@ -54,6 +54,7 @@ export default {
 		padding: 24rem;
 
 		width: 500rem;
+		max-width: calc(100vw - 60rem);
 
 		position: absolute;
 		bottom: 100%;
@@ -61,6 +62,8 @@ export default {
 		margin-right: 30rem;
 		right: 0;
 		border: 2px solid #fff;
+
+		//
 	}
 
 	&__scroll{
@@ -109,6 +112,10 @@ export default {
 			background: $blue;
 			border-color: $blue;
 			color: #fff;
+		}
+
+		@include large-mobile {
+			margin-bottom: 80rem;
 		}
 	}
 }
