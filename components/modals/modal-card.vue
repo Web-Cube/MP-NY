@@ -12,6 +12,7 @@
 	
 		template(#modal-header='{ close }')
 			button-close.modal__close(@click.native='close()')
+		swiper-nav.modal-card__nav(light)
 		.modal-card__row.flex.flex_justify
 			.modal-card__column.modal-card__column_left
 			
@@ -54,6 +55,9 @@ export default {
 	.modal-dialog.modal-card-size {
 	 	transform: none;
 	}
+	.modal-content {
+		position: relative;
+	}
 	@include large-tablet {
 		.modal-content {
 			padding-left: 30rem;
@@ -65,6 +69,36 @@ export default {
 		&.show .modal-dialog.modal-card-size {
 			transform: none;
 		}
+	}
+	&__nav {
+		.swiper-button {
+			position: absolute;
+			top: 50%;
+			margin-top: -25rem;
+			z-index: 100;
+			&.swiper-button-prev, &-prev {
+				right: 100%;
+				margin-right: 20rem;
+			}
+			&-next {
+				left: 100%;
+				margin-left: 20rem;
+			}
+		}
+
+		@include large-tablet {
+			.swiper-button {
+				&.swiper-button-prev, &-prev {
+					margin-right: -40rem;
+				}
+				&-next {
+					margin-left: -40rem;
+				}
+			}
+		}
+	}
+	&__body {
+		position: static;
 	}
 	&__row {
 		flex-wrap: nowrap;

@@ -10,11 +10,16 @@
 <script>
 export default {
 	props: {
+		light: {
+			type: Boolean,
+			default: false,
+		}
 	},
 
 	computed: {
 		Mods(){
 			return {
+				'swiper-nav_light': this.light
 			}
 		}
 	}
@@ -24,12 +29,30 @@ export default {
 <style lang="scss">
 .swiper{
 
-	--button-size: 50rem;
-
 	&-nav{
 		z-index: 200;
 		display: flex;
-		// position: relative;	
+		--button-size: 50rem;
+
+		@include min-large-tablet {
+			&_light {
+				.swiper-button {
+					background: none;
+					border-color: #fff;
+					border-color: #fff;
+					stroke: #fff;
+				}
+			}
+		}
+		@include large-tablet {
+			&_light {
+				.swiper-button {
+					background: #fff;
+					stroke: $default;
+					border-color: $light-gray;
+				}
+			}
+		}
 	}
 
 	&-button{
@@ -45,7 +68,7 @@ export default {
 		background: #FFFFFF;
 		/* Apple Gray Stroke */
 
-		border: 2px solid $light-gray;
+		border: 1px solid transparent;
 		border-radius: 10rem;
 
 		stroke-width: 2;
@@ -62,6 +85,13 @@ export default {
 			.swiper-button__icon{
 				transform: rotate(-180deg);
 			}
+		}
+
+		&-prev {
+			padding-right: 3rem;
+		}
+		&-next {
+			padding-left: 3rem;
 		}
 
 		// &.swiper-button-next{
