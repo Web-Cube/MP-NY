@@ -2,7 +2,9 @@
 	.input(:class="Mods")
 		textarea.input__field.input__field_textarea(:name="name" :value="value" :placeholder="placeholder" v-if="textarea")
 		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder" v-else)
-
+		.input__clear(v-if="adress")
+			svg-icon(name="closeBig")
+		a.input__btn-map.p(:href="mapLink" target="_blank" v-if="adress") Map
 </template>
 
 <script>
@@ -14,6 +16,10 @@ export default {
 			default: ''
 		},
 		name: {
+			type: String,
+			default: ''
+		},
+		mapLink: {
 			type: String,
 			default: ''
 		},
@@ -33,12 +39,17 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		adress: {
+			type: Boolean,
+			default: false
+		},
 	},
 
 	computed: {
 		Mods(){
 			return {
 				'is-separator': this.separator,
+				'input_adress': this.adress,
 			}
 		}
 	},
@@ -88,6 +99,22 @@ export default {
 		}
 	}
 
+	&_adress {
+		.input {
+			&__field {
+				padding-right: 133rem;
+			}
+		}
+
+		@include large-mobile {
+			.input {
+				&__field {
+					padding-right: 105rem;
+				}
+			}
+		}
+	}
+
 	&__field {
 		width: 100%;
 		height: 60rem;
@@ -119,6 +146,58 @@ export default {
 			&_textarea {
 				height: 90rem;
 				padding-top: 15rem;
+			}
+		}
+	}
+
+	&__clear {
+		width: 24rem;
+		height: 24rem;
+		fill: $gray;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: 50%;
+		margin-top: -12rem;
+		right: 100rem;
+		cursor: pointer;
+
+		svg {
+			width: 16rem;
+			height: 16rem;
+		}
+
+		@include large-mobile {
+			right: 78rem;
+		}
+	}
+
+	&__btn-map {
+		position: absolute;
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		right: 0;
+		top: 0;
+		width: 86rem;
+		height: 100%;
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 13rem;
+			width: 1px;
+			height: calc( 100% - 26rem );
+			background: $light-gray;
+		}
+		@include large-mobile {
+			width: 69rem;
+			&:before {
+				top: 10rem;
+				height: calc( 100% - 20rem );
 			}
 		}
 	}

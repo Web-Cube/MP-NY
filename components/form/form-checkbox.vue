@@ -105,6 +105,9 @@ export default {
 
 	&__text {
 		margin-left: 10rem;
+		.p {
+			font-size: 17rem;
+		}
 	}
 }
 </style>

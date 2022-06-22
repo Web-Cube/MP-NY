@@ -179,7 +179,7 @@ export default {
 		height: 60rem;
 		display: flex;
 		font-size: 17rem;
-		font-weight: 600;
+		font-weight: 500;
 		font-family: 'Gilroy';
 		.select {
 			&__wrap {

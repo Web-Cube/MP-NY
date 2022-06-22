@@ -1,8 +1,26 @@
 <template lang="pug">
-	button.button-close
+	button.button-close(:class="Mods")
 		svg-icon(name="close" viewBox="0 0 10 9")
 
 </template>
+<script>
+export default {
+	props: {
+		white: {
+			type: Boolean,
+			default: false
+		}
+	},
+
+	computed: {
+		Mods(){
+			return {
+				'button-close_white': this.white,
+			}
+		}
+	}
+}
+</script>
 
 <style lang="scss">
 .button-close{
@@ -15,6 +33,10 @@
 	background: #F4F3F4;
 	border: 0;
 	cursor: pointer;
+
+	&_white {
+		background: #fff;
+	}
 
 	svg {
 		width: 13rem;

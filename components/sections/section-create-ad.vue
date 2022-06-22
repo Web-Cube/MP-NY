@@ -13,8 +13,9 @@
 					button-primary.create-ad__bottom-btn(border) Cancel
 				.create-ad__bottom-column.flex
 					button-primary.create-ad__bottom-btn(gray) Skip
-					button-primary.create-ad__bottom-btn(blue) Next
+					button-primary.create-ad__bottom-btn(blue v-b-modal.modal-create) Next
 		modal-question
+		modal-create
 </template>
 
 <script>

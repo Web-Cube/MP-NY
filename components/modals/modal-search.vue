@@ -11,7 +11,6 @@
 	)
 	
 		template(#modal-header='{ close }')
-			//button-close.modal__close(@click.native='close()')
 			form.modal-search__form(action="/#search")
 				.modal-search__field
 					form-input.modal-search__input(:placeholder="placeholder")
@@ -19,14 +18,6 @@
 					button-close.modal-search__clear(type="button")
 				.modal-search__cancel-wrap
 					.modal-search__cancel(@click='close()') Cancel
-			//.modal-search__categories
-				.modal-search__categories-wrap.flex
-					item-category.modal-search__category(
-						v-for="(category, i) in categories" :key="i"
-						:img="category.img"
-						:to="category.to"
-						:text="category.text"
-					)
 		.modal-search__container
 			.modal-search__box
 				.modal-search__box-title Categories

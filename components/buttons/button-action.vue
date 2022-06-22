@@ -64,20 +64,19 @@ export default {
 	font-size: 16rem;
 
 	&_gray{
-		.button-action__icon_heart{
-			stroke: $light-gray;
-			stroke-width: 2.5;
-		}
-	}
-
-	&_small {
-		width: auto;
-		height: auto;
+		color: $gray;
 		.button-action__icon{
-			width: 14rem;
-			height: 14rem;
+			&_heart{
+				stroke: $light-gray;
+				stroke-width: 2.5;
+			}
+			&_search {
+				fill: $gray;
+			}
 		}
-
+		&:hover {
+			color: $blue;
+		}
 	}
 
 	&_blue{
@@ -106,6 +105,19 @@ export default {
 		width: 36rem;
 		height: 36rem;
 	}
+	&_small {
+		width: auto;
+		height: auto;
+		.button-action__icon{
+			width: 14rem;
+			height: 14rem;
+			&_search {
+				width: 17rem;
+				height: 17rem;
+			}
+		}
+
+	}
 	&__icon {
 		max-width: 18rem;
 		max-height: 16rem;
@@ -121,6 +133,8 @@ export default {
 
 		&_search {
 			fill: $default;
+			width: 17rem;
+			height: 17rem;
 		}
 
 		&_heart {
