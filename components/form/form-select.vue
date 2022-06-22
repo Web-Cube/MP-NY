@@ -156,12 +156,18 @@ export default {
 		}
 	}
 	&_no-border {
+		font-size: 17rem;
+		font-weight: 600;
 		.select {
 			&__head {
 				height: auto;
 				padding: 0 15rem;
 				height: auto;
 				border: 0;
+				color: $default;
+			}
+			&__arrow {
+				margin-left: 6rem;
 			}
 			&__list {
 				left: -15rem;

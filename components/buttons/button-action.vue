@@ -83,6 +83,9 @@ export default {
 	&_blue{
 		.button-action__icon{
 			fill: $blue;
+			&_heart {
+				stroke: none;
+			}
 		}
 	}
 
@@ -107,11 +110,6 @@ export default {
 		max-width: 18rem;
 		max-height: 16rem;
 		transition: ease .1s;
-		&_heart {
-			fill: none;
-			stroke: #000;
-			stroke-width: 2;
-		}
 		&_search {
 			fill: $gray;
 		}
@@ -126,6 +124,7 @@ export default {
 		}
 
 		&_heart {
+			fill: none;
 			stroke: $default;
 			stroke-width: 2;
 		}

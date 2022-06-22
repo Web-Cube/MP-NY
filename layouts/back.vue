@@ -9,4 +9,5 @@
 					Nuxt
 				part-mobile-menu
 				modal-search
+		module-page-helper
 </template>

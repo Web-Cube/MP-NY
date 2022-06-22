@@ -13,7 +13,7 @@
 		.item-card__info
 			.item-card__top
 				NuxtLink.item-card__name.p(:to="to") {{ name }}
-				button-action.item-card__favorite(to="#")
+				button-action.item-card__favorite(:blue="favorite")
 			.item-card__text.color-gray {{ city }}, {{ distance }}  •  {{ date }}
 			.item-card__price $ {{ numberWithSpaces(price) }}
 </template>
@@ -64,6 +64,10 @@ export default{
 				'item-card__img5.jpg'
 			])
 		},
+		favorite: {
+			type: Boolean,
+			default: false,
+		}
 	},
 	data(){
 		return {

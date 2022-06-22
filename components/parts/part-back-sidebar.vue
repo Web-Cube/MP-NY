@@ -32,7 +32,7 @@ export default {
 				},
 				{
 					icon: 'favorites',
-					to: '/favorites',
+					to: '/favorites-ad',
 					name: 'Favorites ad'
 				},
 				{
