@@ -20,7 +20,26 @@
 					.create-ad__field
 						label.create-ad__label.h4 Name advertise
 						form-input(placeholder="Name of advertise")
-				
+					.create-ad__tabs
+						.create-ad__nav.flex.flex_justify
+							.create-ad__nav-list.flex
+								module-tag.create-ad__nav-btn(
+									v-for="(tag, i) in tags"
+									:key="i"
+									:text="tag.text"
+									:counter="tag.counter"
+									:to="tag.to"
+									:active="tag.active"
+									button
+								)
+						.create-ad__tabs-list
+							.create-ad__tab
+								.create-ad__field
+									form-input(placeholder="$ 0.00")
+									form-radio-switch.create-ad__switch Availabale cost
+								.create-ad__field
+									label.create-ad__label.h4 Decription
+									form-input(placeholder="Tell us about the product" textarea)
 			.create-ad__bottom.flex.flex_justify
 				.create-ad__bottom-column
 					button-primary.create-ad__bottom-btn(border) Cancel
@@ -43,6 +62,25 @@ export default {
 			type: String,
 			default: "What do you want to sell?"
 		},
+	},
+	data() {
+		return {
+			tags: [
+				{
+					text: 'Cost',
+					active: true,
+					to: '#'
+				},
+				{
+					text: 'For free',
+					to: '#'
+				},
+				{
+					text: 'Exchange',
+					to: '#'
+				}
+			]
+		}
 	}
 }
 </script>
@@ -150,6 +188,42 @@ export default {
 		margin-bottom: 14rem;
 		font-family: 'Gilroy';
 		font-weight: 600;
+	}
+
+	&__nav {
+		border-bottom: 1px solid $light-gray;
+		&-btn {
+			margin-bottom: -1px;
+			&.is-active {
+				color: $blue;
+				border-color: $blue;
+			}
+		}
+
+		@include large-mobile {
+			&-list {
+				width: 100%;
+			}
+			&-btn {
+				width: 33.33%;
+			}
+		}
+	}
+
+	&__tabs {
+		position: relative;
+		margin-top: 53rem;
+		&-list {
+			margin-top: 25rem;
+		}
+		@include large-mobile {
+			margin-top: 20rem;
+		}
+	}
+	&__switch {
+		position: absolute;
+		right: 0;
+		top: 0;
 	}
 }
 </style>

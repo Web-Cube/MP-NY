@@ -17,7 +17,7 @@
 					li.item-tariff__item(v-for="(item, i) in list" :key="i") {{item}}
 				button-link-arrow.item-tariff__more(v-if="list" more small blue @click.native="toggle" :class="Mods") More
 			.item-tariff__bottom
-				button-primary.item-tariff__btn(border small)
+				button-primary.item-tariff__btn(border small v-b-modal.modal-thank @click.native="$bvModal.hide('modal-tariffs');")
 					span.color-gray Choose
 
 </template>

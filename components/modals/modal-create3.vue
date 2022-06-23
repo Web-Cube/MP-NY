@@ -18,8 +18,8 @@
 			.modal-create__footer-row.flex.flex_justify
 				button-primary.modal-create__cancel.modal-create__cancel_desktop(border @click.native='close()') Cancel
 				.modal-create__footer-buttons.flex
-					button-primary.modal-create__footer-btn(gray v-b-modal.modal-thank @click.native="$bvModal.hide('modal-create3');") Save as Draft
-					button-primary.modal-create__footer-btn(blue v-b-modal.modal-thank @click.native="$bvModal.hide('modal-create3');") Publish now
+					button-primary.modal-create__footer-btn(gray v-b-modal.modal-tariffs @click.native="$bvModal.hide('modal-create3');") Save as Draft
+					button-primary.modal-create__footer-btn(blue v-b-modal.modal-tariffs @click.native="$bvModal.hide('modal-create3');") Publish now
 </template>
 
 <script>

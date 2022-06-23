@@ -1,18 +1,18 @@
 <template lang="pug">
-	.radio-switcher
-		.radio-switcher__list
-			label.radio-switcher__item(
+	.button-switcher
+		.button-switcher__list
+			label.button-switcher__item(
 					v-for="(item, i) in items"
 					:key="i"
 				)
-				input.radio-switcher__input(
+				input.button-switcher__input(
 					:name="name"
 					:value="item.value"
 					type="radio"
 					:checked="item.checked"
 				)
-				span.radio-switcher__btn
-					.radio-switcher__text(v-html="item.text")
+				span.button-switcher__btn
+					.button-switcher__text(v-html="item.text")
 
 </template>
 
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
-.radio-switcher{
+.button-switcher{
 	border: 1px solid $light-gray;
 	border-radius: 10rem;
 	padding: 3px;
@@ -46,7 +46,7 @@ export default {
 	&__input {
 		display: none;
 
-		&:checked + .radio-switcher__btn {
+		&:checked + .button-switcher__btn {
 			color: $default;
 			background: #F4F3F4;
 		}

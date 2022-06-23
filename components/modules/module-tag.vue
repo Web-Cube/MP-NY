@@ -47,6 +47,8 @@ export default {
 	display: inline-flex;
 	font-size: 16rem;
 	color: $gray;
+	text-align: center;
+	justify-content: center;
 
 	&_btn {
 		font-weight: 600; 

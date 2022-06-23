@@ -15,7 +15,7 @@
 		.modal-tariffs__container.css-scrollbar
 			h3.modal-tariffs__title.h3 {{title}}
 			.modal-tariffs__desc.color-gray.h4(v-html="desc") {{desc}}
-			form-radio-switcher.modal-tariffs__switcher(:items="switchers")
+			button-switcher.modal-tariffs__switcher(:items="switchers")
 			.modal-tariffs__list.flex.flex_center
 				item-tariff.modal-tariffs__item(
 					v-for="(tariff, i) in tariffs"
