@@ -10,6 +10,7 @@
 						:to="categoryLink"
 						:text="categoryText"
 						edit
+						v-b-modal.modal-create4
 					)
 				.form-create__column.form-create__column_left
 				.form-create__column.form-create__column_right

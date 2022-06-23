@@ -109,6 +109,7 @@ export default {
 		fill: #fff;
 		&:hover{
 			background: #4257C7;
+			color: #fff;
 		}
 	}
 	&_border {

@@ -1,6 +1,6 @@
 <template lang="pug">
 	section.create-ad
-		.create-ad__step
+		//.create-ad__step
 			.create-ad__inner
 				h3.create-ad__title.h3 {{title}}
 				.create-ad__desc.p.color-gray.flex.flex_center.flex_vertical
@@ -13,10 +13,27 @@
 					button-primary.create-ad__bottom-btn(border) Cancel
 				.create-ad__bottom-column.flex
 					button-primary.create-ad__bottom-btn(gray) Skip
-					button-primary.create-ad__bottom-btn(blue v-b-modal.modal-tariffs) Next
+					button-primary.create-ad__bottom-btn(blue v-b-modal.modal-create3) Next
+		.create-ad__step
+			.create-ad__inner
+				form.create-ad__form(action="/")
+					.create-ad__field
+						label.create-ad__label.h4 Name advertise
+						form-input(placeholder="Name of advertise")
+				
+			.create-ad__bottom.flex.flex_justify
+				.create-ad__bottom-column
+					button-primary.create-ad__bottom-btn(border) Cancel
+				.create-ad__bottom-column.flex
+					button-primary.create-ad__bottom-btn(gray) Save as draft
+					button-primary.create-ad__bottom-btn(blue v-b-modal.modal-create) Next
 		modal-question
 		modal-create
+		modal-create2
+		modal-create3
+		modal-create4
 		modal-tariffs
+		modal-thank
 </template>
 
 <script>
@@ -120,6 +137,19 @@ export default {
 				background: none !important;
 			}
 		}
+	}
+
+	&__field {
+		&:not(:first-child) {
+			margin-top: 28rem;
+		}
+	}
+
+	&__label {
+		display: block;
+		margin-bottom: 14rem;
+		font-family: 'Gilroy';
+		font-weight: 600;
 	}
 }
 </style>

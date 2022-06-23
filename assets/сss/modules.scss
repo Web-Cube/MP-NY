@@ -118,6 +118,7 @@
 .modal-header {
 	border: 0;
 	padding: 0;
+	display: block;
 }
 
 .modal-body {
@@ -139,6 +140,10 @@
 			border-radius: 10rem 10rem 0 0;
 		}
 	}
+}
+
+.modal-thank-size {
+	max-width: 608rem;
 }
 
 .modal-question-size {
