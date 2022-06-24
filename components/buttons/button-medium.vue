@@ -41,16 +41,31 @@ export default {
 		small: {
 			type: Boolean,
 			default: false
+		},
+		big: {
+			type: Boolean,
+			default: false
+		},
+		borderWhite: {
+			type: Boolean,
+			default: false
+		},
+		transparent: {
+			type: Boolean,
+			default: false
 		}
 	},
 	computed: {
 		Mods(){
 			return {
 				'button-medium_white': this.white,
+				'button-medium_big': this.big,
 				'button-medium_blue': this.blue,
 				'button-medium_border': this.border,
 				'button-medium_square': this.square,
-				'button-medium_small': this.small
+				'button-medium_small': this.small,
+				'button-medium_border-white': this.borderWhite,
+				'button-medium_transparent': this.transparent
 			}
 		}
 	}
@@ -65,13 +80,35 @@ export default {
 	justify-content: center;
 	cursor: pointer;
 	color: $default;
-	font-size: 15rem;
 	line-height: 1;
 	border-radius: 10rem;
 	transition: ease .15s;
 	background: #F4F3F4;
 	padding: 0 20rem;
 	height: 40rem;
+
+	&_big {
+		height: 44rem;
+		padding: 0 15rem 0 10rem;
+		.button-medium {
+			&__icon {
+				width: 24rem;
+				height: 24rem;
+				margin-right: 3rem;
+			}
+		}
+
+		@include large-mobile {
+			height: 35rem;
+			border-radius: 8rem;
+			.button-medium {
+				&__icon {
+					width: 20rem;
+					height: 20rem;
+				}
+			}
+		}
+	}
 
 	&_white {
 		background: none;
@@ -83,6 +120,13 @@ export default {
 		.button-medium {
 			&__icon {
 				stroke: #fff;
+				&_pinned {
+					fill: #fff;
+				}
+				&_deleteBig {
+					stroke: none;
+					fill: #fff;
+				}
 			}
 		}
 		&:hover {
@@ -93,6 +137,51 @@ export default {
 	&_square {
 		padding: 0;
 		width: 40rem;
+		.button-medium {
+			&__icon {
+				margin-right: 0;
+			}
+		}
+		&.button-medium_big {
+			width: 44rem;
+		}
+	}
+
+	&_border-white {
+		background: none;
+		border: 1px solid #fff;
+		color: #fff;
+		.button-medium {
+			&__icon {
+				stroke: #fff;
+				&_pinned {
+					fill: #fff;
+				}
+				&_deleteBig {
+					stroke: none;
+					fill: #fff;
+				}
+			}
+		}
+	}
+
+	&_transparent {
+		background: rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10px);
+		border: 0;
+		color: #fff;
+		.button-medium {
+			&__icon {
+				stroke: #fff;
+				&_pinned {
+					fill: #fff;
+				}
+				&_deleteBig {
+					stroke: none;
+					fill: #fff;
+				}
+			}
+		}
 	}
 
 	&_border {
@@ -148,6 +237,10 @@ export default {
 			stroke: none;
 			fill: $default;
 			margin-right: 0;
+		}
+		&_pinned {
+			fill: $default;
+			stroke: none;
 		}
 	}
 }

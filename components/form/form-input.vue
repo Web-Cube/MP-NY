@@ -1,7 +1,7 @@
 <template lang="pug">
 	.input(:class="Mods")
 		textarea.input__field.input__field_textarea(:name="name" :value="value" :placeholder="placeholder" v-if="textarea")
-		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder" v-else)
+		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder" :disabled="disabled" v-else)
 		.input__clear(v-if="adress")
 			svg-icon(name="closeBig")
 		a.input__btn-map.p(:href="mapLink" target="_blank" v-if="adress") Map
@@ -43,6 +43,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		disabled: {
+			type: Boolean,
+			default: false
+		}
 	},
 
 	computed: {
@@ -131,6 +135,15 @@ export default {
 		&::placeholder {
 			font-weight: 500;
 			color: $gray;
+		}
+
+		&:disabled {
+			border-color: transparent;
+			background: #F4F3F4;
+			color: #83929D;
+			&::placeholder {
+				color: #83929D;
+			}
 		}
 
 		&_textarea {

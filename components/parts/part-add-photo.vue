@@ -156,7 +156,7 @@ export default {
 		}
 
 		@include large-mobile {
-			padding-top: div( 280, 345 ) *100%;
+			padding-top: div( 334, 345 ) *100%;
 		}
 	}
 

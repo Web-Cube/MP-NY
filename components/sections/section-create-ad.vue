@@ -20,6 +20,7 @@
 					.create-ad__field
 						label.create-ad__label.h4 Name advertise
 						form-input(placeholder="Name of advertise")
+					part-create-gallery.create-ad__gallery
 					.create-ad__tabs
 						.create-ad__nav.flex.flex_justify
 							.create-ad__nav-list.flex
@@ -31,22 +32,42 @@
 									:to="tag.to"
 									:active="tag.active"
 									button
+									:class="{isActive:number == i}"
+									@click.native="tabList(i)"
 								)
 						.create-ad__tabs-list
-							.create-ad__tab
+							.create-ad__tab.js-tab.isActive
 								.create-ad__field
 									form-input(placeholder="$ 0.00")
 									form-radio-switch.create-ad__switch Availabale cost
 								.create-ad__field
 									label.create-ad__label.h4 Decription
 									form-input(placeholder="Tell us about the product" textarea)
+							.create-ad__tab.js-tab
+								.create-ad__field
+									form-input(placeholder="For free" disabled)
+								.create-ad__field
+									label.create-ad__label.h4 Decription
+									form-input(placeholder="Tell us about the product" textarea)
+							.create-ad__tab.js-tab
+								.create-ad__field
+									form-input(placeholder="Exchange" disabled)
+								.create-ad__field
+									label.create-ad__label.h4 Decription
+									form-input(placeholder="Tell us about the product" textarea)
 			.create-ad__bottom.flex.flex_justify
 				.create-ad__bottom-column
 					button-primary.create-ad__bottom-btn(border) Cancel
-				.create-ad__bottom-column.flex
-					button-primary.create-ad__bottom-btn(gray) Save as draft
+				.create-ad__bottom-column.flex(v-if="$screen.st")
+					button-primary.create-ad__bottom-btn Save as draft
 					button-primary.create-ad__bottom-btn(blue v-b-modal.modal-create) Next
+				.create-ad__bottom-column.flex(v-if="$screen.width < 581")
+					button-primary.create-ad__bottom-btn(gray v-if="$screen.width < 581" v-b-modal.modal-question) 
+						span.color-gray Draft
+					button-primary.create-ad__bottom-btn.create-ad__bottom-btn_create(blue v-b-modal.modal-create) Create
+
 		modal-question
+		modal-question2
 		modal-create
 		modal-create2
 		modal-create3
@@ -68,19 +89,30 @@ export default {
 			tags: [
 				{
 					text: 'Cost',
-					active: true,
-					to: '#'
 				},
 				{
 					text: 'For free',
-					to: '#'
 				},
 				{
 					text: 'Exchange',
-					to: '#'
 				}
-			]
+			],
+			number: 0,
+			i: 0
 		}
+	},
+	methods:{
+		tabList(i) {
+			this.number = i;
+
+			let index = i+1;
+
+			var tabs = document.querySelectorAll('.js-tab');
+			for(var j = 0; j < tabs.length; j++) {
+				tabs[j].classList.remove('isActive');
+			}
+			document.querySelector('.js-tab:nth-child(' +index+ ')').classList.add('isActive');
+		},
 	}
 }
 </script>
@@ -121,6 +153,7 @@ export default {
 		z-index: 100;
 		bottom: 0;
 		background: #fff;
+		background: linear-gradient(to top, #fff 0%, #fff 66%, rgba(#fff, 0) 100%);
 		&-btn {
 			min-width: 160rem;
 			&:not(:last-child) {
@@ -133,12 +166,16 @@ export default {
 			width: calc( 100% + 30rem );
 			padding: 10rem 15rem;
 			border-top: 1px solid $light-gray;
+			margin-top: 30rem;
 			&-btn {
 				min-width: 86rem;
 				padding: 0 20rem;
 				height: 40rem;
 				&:not(:last-child) {
 					margin-right: 5rem;
+				}
+				&_create {
+					min-width: 120rem;
 				}
 			}
 		}
@@ -177,6 +214,12 @@ export default {
 		}
 	}
 
+	&__form {
+		@include large-mobile {
+			margin-top: -18rem;
+		}
+	}
+
 	&__field {
 		&:not(:first-child) {
 			margin-top: 28rem;
@@ -188,13 +231,18 @@ export default {
 		margin-bottom: 14rem;
 		font-family: 'Gilroy';
 		font-weight: 600;
+
+		@include large-mobile {
+			margin-bottom: 10rem;
+		}
 	}
 
 	&__nav {
 		border-bottom: 1px solid $light-gray;
 		&-btn {
 			margin-bottom: -1px;
-			&.is-active {
+			cursor: pointer;
+			&.isActive {
 				color: $blue;
 				border-color: $blue;
 			}
@@ -206,6 +254,9 @@ export default {
 			}
 			&-btn {
 				width: 33.33%;
+				font-size: 16rem;
+				padding-left: 15rem;
+				padding-right: 15rem;
 			}
 		}
 	}
@@ -220,10 +271,26 @@ export default {
 			margin-top: 20rem;
 		}
 	}
+	&__tab {
+		display: none;
+		&.isActive {
+			display: block;
+			animation: fadeIn .3s ease-in-out;
+		}
+	}
 	&__switch {
 		position: absolute;
 		right: 0;
 		top: 0;
+
+		@include large-mobile {
+			position: static;
+			margin-top: 15rem;
+		}
+	}
+
+	&__gallery {
+		margin-top: 17rem;
 	}
 }
 </style>

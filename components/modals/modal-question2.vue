@@ -1,6 +1,6 @@
 <template lang="pug">
 	b-modal(
-		id="modal-question" 
+		id="modal-question2" 
 		size="question-size" 
 		modal-class="modal-question" 
 		body-class="modal-question__body" 
@@ -16,10 +16,9 @@
 		.modal-question__desc.p(v-html="desc")
 
 		template(#modal-footer='{ close }')
-			form-checkbox.modal-question__checkbox Don’t ask me again
 			.modal-question__buttons.flex
-				button-primary.modal-question__btn(gray) Not now
-				button-primary.modal-question__btn(blue @click.native='close()') Add a photo
+				button-primary.modal-question__btn(gray @click.native='close()') Remove
+				button-primary.modal-question__btn(blue @click.native='close()') Save a draft
 
 </template>
 <script>
@@ -27,11 +26,11 @@ export default{
 	props: {
 		title: {
 			type: String,
-			default: 'Add photos?'
+			default: 'Save as a draft?'
 		},
 		desc: {
 			type: String,
-			default: 'Are you sure you want to continue without photos? People view ads with a photo more often by 60%'
+			default: 'You leave the ad creation page. <br>Save your ad as a draft?'
 		},
 	}
 }
