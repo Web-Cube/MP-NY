@@ -42,6 +42,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		verysmall: {
+			type: Boolean,
+			default: false
+		},
 		big: {
 			type: Boolean,
 			default: false
@@ -64,6 +68,7 @@ export default {
 				'button-medium_border': this.border,
 				'button-medium_square': this.square,
 				'button-medium_small': this.small,
+				'button-medium_verysmall': this.verysmall,
 				'button-medium_border-white': this.borderWhite,
 				'button-medium_transparent': this.transparent
 			}
@@ -145,6 +150,9 @@ export default {
 		&.button-medium_big {
 			width: 44rem;
 		}
+		&.button-medium_verysmall {
+			width:30rem;
+		}
 	}
 
 	&_border-white {
@@ -192,6 +200,21 @@ export default {
 		border-radius: 4px;
 		padding: 0 10rem;
 		height: 36rem;
+	}
+
+	&_verysmall {
+		height: 30rem;
+		border-radius: 7rem;
+		.button-medium {
+			&__icon {
+				width: 18rem;
+				height: 18rem;
+				&_deleteBig {
+					width: 16rem;
+					height: 16rem;
+				}
+			}
+		}
 	}
 
 	&__icon {

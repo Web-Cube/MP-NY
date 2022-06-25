@@ -26,25 +26,25 @@
 		.add-photo__thumbnails
 			.add-photo__thumbnails-list.flex
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 				.add-photo__thumbnails-item
-					.add-photo__thumbnails-btn
+					item-photo-thumbnail.add-photo__thumbnails-btn
 		
 </template>
 
@@ -226,22 +226,6 @@ export default {
 		margin-top: 10rem;
 		&-list {
 			@include items(10, 4);
-		}
-		&-btn {
-			position: relative;
-			padding-top: 100%;
-			&:before {
-				content: '';
-				display: block;
-				box-sizing: border-box;
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				border: 1px dashed $light-gray;
-				border-radius: 7rem;
-			}
 		}
 
 		@include large-mobile {

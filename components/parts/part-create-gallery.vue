@@ -8,6 +8,20 @@
 				button-medium.create-gallery__btn-main(big blue icon="pinned" type="button") main photo
 			.create-gallery__preview-img
 				img.object-fit(:src="require(`~/assets/img/${preview}`)")
+		.create-gallery__thumbnails
+			.create-gallery__thumbnails-list.flex
+				.create-gallery__thumbnails-item(
+					v-for="(item, i) in thumbnails"
+					:key="i"
+				)
+					item-photo-thumbnail.create-gallery__thumbnails-btn(
+						:img="item.img"
+						:main="item.main"
+						:loading="item.loading"
+						@click.native="thumbnail(i)"
+						:class="{isActive:number == i}"
+					)
+		.create-gallery__text.color-gray * Drag to change the cover
 </template>
 
 <script>
@@ -17,24 +31,47 @@ export default {
 			type: String,
 			default: "create-gallery__img5_big.jpg"
 		},
-		secondText: {
-			type: String,
-			default: "Click to upload or drop a photo"
-		},
-		img: {
-			type: String,
-			default: "analytics-box__img.svg"
-		},
-		list: {
+		thumbnails: {
 			type: Array,
 			default: () => ([
-				'You can upload up to 10 photos',
-				'Format JPG or PNG format',
-				'Only upload media you own the rights to',
-				'The maximum photo size is 25MB.'
+				{
+					img: 'create-gallery__img1_small.jpg',
+					main: true,
+				},
+				{
+					img: 'create-gallery__img2_small.jpg',
+				},
+				{
+					img: 'create-gallery__img3_small.jpg',
+				},
+				{
+					img: 'create-gallery__img4_small.jpg',
+				},
+				{
+					img: 'create-gallery__img5_small.jpg',
+				},
+				{
+					img: 'create-gallery__img5_small.jpg',
+				},
+				{
+					loading: true
+				},
+				{
+				}
 			])
 		},
 	},
+	data(){
+		return {
+			number: 1,
+			i: 1
+		}
+	},
+	methods:{
+		thumbnail(i) {
+			this.number = i;
+		},
+	}
 }
 </script>
 
@@ -118,29 +155,12 @@ export default {
 		&-list {
 			@include items(10, 4);
 		}
-		&-btn {
-			position: relative;
-			padding-top: 100%;
-			&:before {
-				content: '';
-				display: block;
-				box-sizing: border-box;
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				border: 1px dashed $light-gray;
-				border-radius: 7rem;
-			}
-		}
 
 		@include large-mobile {
 			overflow: hidden;
-			margin: 5rem -15rem 0 -15rem;
+			margin: 2px -15rem 0 -15rem;
 			&-list {
-				padding: 0 15rem;
-				padding-bottom: 40rem;
+				padding: 4px 15rem 44rem 15rem;
 				margin: 0 0 -40rem 0;
 				overflow-y: hidden;
 				overflow-x: auto;
@@ -155,6 +175,10 @@ export default {
 				}
 			}
 		}
+	}
+
+	&__text {
+		margin-top: 20rem;
 	}
 }
 </style>
