@@ -23,9 +23,9 @@ export default {
 				"Контакты": "/contacts",
 				"Карточка": "/single",
 				"Помощь": "/support",
-				"My advertises": "/announcements",
-				"Creat Advertise": "/create-ad",
-				"Favorites ad": "/favorites-ad",
+				"Мои объявления": "/announcements",
+				"Создать объявлениe": "/create-ad",
+				// "Favorites ad": "/favorites-ad",
 			}
 		}
 	},
