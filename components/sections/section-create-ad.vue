@@ -22,19 +22,6 @@
 						form-input(placeholder="Name of advertise")
 					part-create-gallery.create-ad__gallery
 					.create-ad__tabs
-						.create-ad__nav.flex.flex_justify
-							.create-ad__nav-list.flex
-								module-tag.create-ad__nav-btn(
-									v-for="(tag, i) in tags"
-									:key="i"
-									:text="tag.text"
-									:counter="tag.counter"
-									:to="tag.to"
-									:active="tag.active"
-									button
-									:class="{isActive:number == i}"
-									@click.native="tabList(i)"
-								)
 						part-back-nav.create-ad__nav(:nav="nav" blue)
 						.create-ad__tabs-list
 							.create-ad__tab.js-tab.isActive

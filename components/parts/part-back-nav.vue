@@ -140,5 +140,16 @@ export default {
 			padding-right: 15rem;
 		}
 	}
+
+	&__grid-switch {
+		margin-left: 30rem;
+		padding-top: 3rem;
+	}
+	&__buttons {
+		@include large-mobile {
+			width: 100%;
+			justify-content: space-between;
+		}
+	}
 }
 </style>

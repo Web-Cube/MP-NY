@@ -1,21 +1,11 @@
 <template lang="pug">
 	section.favorites-ad
 		h1.favorites-ad__title.h3 {{title}}
-		.favorites-ad__nav.flex.flex_justify
-			.favorites-ad__nav-list.flex
-				module-tag.favorites-ad__nav-btn(
-					v-for="(tag, i) in tags"
-					:key="i"
-					:text="tag.text"
-					:counter="tag.counter"
-					:to="tag.to"
-					:active="tag.active"
-					button
-				)
-			.favorites-ad__buttons.flex
-				.favorites-ad__sort
+		part-back-nav.favorites-ad__nav(:nav="nav")
+			.back-nav__buttons.flex
+				.back-nav__sort
 					form-select.favorites-ad__select(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
-				module-grid-switch.favorites-ad__grid-switch
+				module-grid-switch.back-nav__grid-switch
 
 		.favorites-ad__list.flex
 			item-card.favorites-ad__item(
@@ -42,26 +32,25 @@ export default {
 			type: String,
 			default: "Favorites ad"
 		},
-		tags: {
-			type: Array,
-			default: () => ([
-				{
-					text: 'Favorites',
-					active: true,
-					to: '#'
-				},
-				{
-					text: 'Recently viewed',
-					to: '#'
-				}
-			])
-		},
 		list: {
 			type: Array,
 			default: () => ([
 			])
 		},
-	}
+	},
+	data() {
+		return {
+			nav: [
+				{
+					text: 'Favorites',
+					class: 'isActive'
+				},
+				{
+					text: 'Recently viewed',
+				},
+			],
+		};
+	},
 }
 </script>
 
@@ -88,16 +77,25 @@ export default {
 
 	&__nav {
 		margin-top: 30rem;
-		border-bottom: 1px solid $light-gray;
-		&-btn {
-			margin-bottom: -1px;
-		}
 
 		@include large-mobile {
 			margin: 10rem -15rem 0 -15rem;
 			padding: 0 15rem;
-			&-list {
-				display: none;
+
+			.back-nav {
+				&__column {
+					&_left {
+						display: none;
+					}
+					&_right {
+						display: block;
+						width: 100%;
+						padding: 15rem 0;
+					}
+				}
+				&__sort {
+					margin-right: auto;
+				}
 			}
 		}
 	}
@@ -117,10 +115,6 @@ export default {
 				color: #9A9A9A;
 			}
 		}
-	}
-	&__grid-switch {
-		margin-left: 30rem;
-		padding-top: 3rem;
 	}
 
 	&__list {
