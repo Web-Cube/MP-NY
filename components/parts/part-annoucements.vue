@@ -1,7 +1,7 @@
 <template lang="pug">
 	.annoucements
 		h3.annoucements__inner.h3 {{title}}
-		.annoucements__nav.flex.flex_justify
+		//.annoucements__nav.flex.flex_justify
 			.annoucements__nav-list.flex
 				module-tag.annoucements__nav-btn(
 					v-for="(tag, i) in tags"
@@ -14,6 +14,8 @@
 				)
 			.annoucements__sort
 				form-select.annoucements__select(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
+		part-back-nav.annoucements__nav(:nav="nav" mobile)
+			form-select.back-nav__sort(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
 		.annoucements__container
 			form-checkbox.annoucements__select-all(@change.native="panel")
 				span.color-gray.h6 Select all
@@ -43,24 +45,6 @@ export default {
 		title: {
 			type: String,
 			default: "My advertises"
-		},
-		tags: {
-			type: Array,
-			default: () => ([
-				{
-					text: 'Active',
-					active: true,
-					to: '#'
-				},
-				{
-					text: 'Non active',
-					to: '#'
-				},
-				{
-					text: 'Draft',
-					to: '#'
-				}
-			])
 		},
 		list: {
 			type: Array,
@@ -99,6 +83,18 @@ export default {
 	data() {
 		return {
 			panelOpen: false,
+			nav: [
+				{
+					text: 'Active',
+					class: 'isActive'
+				},
+				{
+					text: 'Non active',
+				},
+				{
+					text: 'Draft',
+				},
+			],
 		};
 	},
 	methods: {
@@ -119,15 +115,9 @@ export default {
 	&__nav {
 		margin-top: 40rem;
 		border-bottom: 1px solid $light-gray;
-		&-btn {
-			margin-bottom: -1px;
-		}
 
 		@include large-mobile {
 			margin-top: 15rem;
-			border: 1px solid $light-gray;
-			border-radius: 10rem;
-			padding: 2px;
 			&-list {
 				@include items(3, 1);
 				width: 100%;
@@ -164,27 +154,6 @@ export default {
 			&:first-child {
 				padding-bottom: 15rem;
 			}
-		}
-	}
-
-	&__sort {
-		font-weight: 600;
-		font-size: 17rem;
-		color: $default;
-		.select {
-			&__value {
-				color: $default;
-			}
-			&__arrow {
-				margin-left: 6rem;
-			}
-			&__label {
-				color: #9A9A9A;
-			}
-		}
-
-		@include large-mobile {
-			display: none;
 		}
 	}
 

@@ -1,6 +1,6 @@
 <template lang="pug">
 	section.section-annoucements
-		part-analytics-box.section-annoucements__analytics(:statistics="statistics")
+		part-analytics-box.section-annoucements__analytics(:slides="slides")
 		part-annoucements.section-annoucements__section
 		modal-statistic
 			
@@ -11,21 +11,50 @@ export default {
 	
 	data(){
 		return{
-			statistics: [
+			slides: [
 				{
-					icon: 'favorites',
-					name: 'Favorites',
-					number: '20'
+					title: 'Hello, Sergey!',
+					desc: 'Your analytics on all ads',
+					img: 'analytics-box__img.svg',
+					statistics: [
+						{
+							icon: 'favorites',
+							name: 'Favorites',
+							number: '20'
+						},
+						{
+							icon: 'view',
+							name: 'Views',
+							number: '2.1 К'
+						},
+						{
+							icon: 'call',
+							name: 'Calls',
+							number: '9'
+						}
+					]
 				},
 				{
-					icon: 'view',
-					name: 'Views',
-					number: '2.1 К'
-				},
-				{
-					icon: 'call',
-					name: 'Calls',
-					number: '9'
+					title: 'Hello, Misha!',
+					desc: 'Your analytics on all ads 2',
+					img: 'analytics-box__img.svg',
+					statistics: [
+						{
+							icon: 'favorites',
+							name: 'Favorites',
+							number: '23'
+						},
+						{
+							icon: 'view',
+							name: 'Views',
+							number: '4.1 К'
+						},
+						{
+							icon: 'call',
+							name: 'Calls',
+							number: '19'
+						}
+					]
 				}
 			]
 		}

@@ -1,6 +1,6 @@
 <template lang="pug">
 	section.create-ad
-		//.create-ad__step
+		.create-ad__step.js-step.isActive
 			.create-ad__inner
 				h3.create-ad__title.h3 {{title}}
 				.create-ad__desc.p.color-gray.flex.flex_center.flex_vertical
@@ -12,9 +12,9 @@
 				.create-ad__bottom-column
 					button-primary.create-ad__bottom-btn(border) Cancel
 				.create-ad__bottom-column.flex
-					button-primary.create-ad__bottom-btn(gray) Skip
-					button-primary.create-ad__bottom-btn(blue v-b-modal.modal-create3) Next
-		.create-ad__step
+					button-primary.create-ad__bottom-btn(gray @click.native="nextStep") Skip
+					button-primary.create-ad__bottom-btn(blue @click.native="nextStep") Next
+		.create-ad__step.js-step
 			.create-ad__inner
 				form.create-ad__form(action="/")
 					.create-ad__field
@@ -35,6 +35,7 @@
 									:class="{isActive:number == i}"
 									@click.native="tabList(i)"
 								)
+						part-back-nav.create-ad__nav(:nav="nav" blue)
 						.create-ad__tabs-list
 							.create-ad__tab.js-tab.isActive
 								.create-ad__field
@@ -86,20 +87,21 @@ export default {
 	},
 	data() {
 		return {
-			tags: [
+			number: 0,
+			i: 0,
+			nav: [
 				{
 					text: 'Cost',
+					class: 'isActive'
 				},
 				{
 					text: 'For free',
 				},
 				{
 					text: 'Exchange',
-				}
+				},
 			],
-			number: 0,
-			i: 0
-		}
+		};
 	},
 	methods:{
 		tabList(i) {
@@ -113,6 +115,10 @@ export default {
 			}
 			document.querySelector('.js-tab:nth-child(' +index+ ')').classList.add('isActive');
 		},
+		nextStep() {
+			document.querySelector('.js-step:nth-child(1)').classList.remove('isActive');
+			document.querySelector('.js-step:nth-child(2)').classList.add('isActive');
+		}
 	}
 }
 </script>
@@ -137,6 +143,10 @@ export default {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+		animation: fadeIn .3s ease-in-out;
+		&:not(.isActive) {
+			display: none;
+		}
 	}
 
 	&__inner {
@@ -234,30 +244,6 @@ export default {
 
 		@include large-mobile {
 			margin-bottom: 10rem;
-		}
-	}
-
-	&__nav {
-		border-bottom: 1px solid $light-gray;
-		&-btn {
-			margin-bottom: -1px;
-			cursor: pointer;
-			&.isActive {
-				color: $blue;
-				border-color: $blue;
-			}
-		}
-
-		@include large-mobile {
-			&-list {
-				width: 100%;
-			}
-			&-btn {
-				width: 33.33%;
-				font-size: 16rem;
-				padding-left: 15rem;
-				padding-right: 15rem;
-			}
 		}
 	}
 

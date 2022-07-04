@@ -51,9 +51,6 @@ export default {
 					img: 'create-gallery__img5_small.jpg',
 				},
 				{
-					img: 'create-gallery__img5_small.jpg',
-				},
-				{
 					loading: true
 				},
 				{

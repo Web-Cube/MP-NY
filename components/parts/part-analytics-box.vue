@@ -1,37 +1,43 @@
 <template lang="pug">
 	.analytics-box
-		.analytics-box__inner
-			h2.analytics-box__title.h2.h2_big {{title}}
-			.analytics-box__desc {{desc}}
-			part-statistic.analytics-box__statistic(:statistics="statistics")
-		.analytics-box__img
-			img(:src="require(`~/assets/img/${img}`)")
-		.analytics-box__nav
-			button-arrow.analytics-box__btn(prev)
-			button-arrow.analytics-box__btn
+		swiper.analytics-box__slider(:options="SwiperOptions")
+			swiper-slide.analytics-box__slide(
+				v-for="(slide, i) in slides"
+				:key="i"
+			)
+				.analytics-box__inner
+					h2.analytics-box__title.h2.h2_big {{slide.title}}
+					.analytics-box__desc {{slide.desc}}
+					part-statistic.analytics-box__statistic(:statistics="slide.statistics")
+				.analytics-box__img
+					img(:src="require(`~/assets/img/${slide.img}`)")
+			template(v-slot:nav)
+				swiper-nav.analytics-box__nav
 </template>
 
 <script>
+import { Navigation } from "swiper";
 export default {
 	props: {
-		title: {
-			type: String,
-			default: "Hello, Sergey!"
-		},
-		desc: {
-			type: String,
-			default: "Your analytics on all ads"
-		},
-		img: {
-			type: String,
-			default: "analytics-box__img.svg"
-		},
-		statistics: {
+		slides: {
 			type: Array,
-			default: () => ([
-				
-			])
+			default: () => [],
 		},
+	},
+	data() {
+		const SwiperOptions = {
+			slidesPerView: 1,
+			spaceBetween: 20,
+			loop: true,
+			modules: [Navigation],
+			navigation: {
+				nextEl: ".analytics-box__nav .swiper-button-next",
+				prevEl: ".analytics-box__nav .swiper-button-prev",
+			},
+		};
+		return {
+			SwiperOptions,
+		};
 	},
 }
 </script>
@@ -40,17 +46,25 @@ export default {
 .analytics-box{
 	border: 1px solid $light-gray;
 	border-radius: 20rem;
-	padding: 50rem 50rem 30rem 50rem;
 	position: relative;
-	overflow: hidden;
+	width: 100%;
 
-	@include large-tablet {
-		padding: 50rem 30rem 30rem 30rem;
-	}
 	@include large-mobile {
-		padding: 0;
 		border: 0;
 		overflow: visible;
+		border-radius: 0;
+	}
+
+	&__slide {
+		position: relative;
+		overflow: hidden;
+		padding: 50rem 50rem 30rem 50rem;
+		@include large-tablet {
+			padding: 50rem 30rem 30rem 30rem;
+		}
+		@include large-mobile {
+			padding: 0;
+		}
 	}
 	&__inner {
 		position: relative;
@@ -120,6 +134,7 @@ export default {
 		position: absolute;
 		right: 20rem;
 		bottom: 20rem;
+		z-index: 5;
 
 		@include small-tablet {
 			bottom: 30rem;
@@ -127,7 +142,7 @@ export default {
 		}
 
 		@include large-mobile {
-			display: none;
+			display: none!important;
 		}
 	}
 

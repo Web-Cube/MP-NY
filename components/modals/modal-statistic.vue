@@ -29,7 +29,7 @@
 						td(
 							v-for="(column, i) in row.list" :key="i"
 						)
-							button-action(:icon="column.icon" :text="column.name" small blue v-if="column.name")
+							button-action.modal-statistic__title(:icon="column.icon" :text="column.name" small blue v-if="column.name")
 							.modal-statistic__desc(v-if="column.desc") {{column.desc}}
 							.modal-statistic__number.color-blue.h3(v-if="column.number") {{column.number}}
 

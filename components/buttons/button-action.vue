@@ -1,6 +1,6 @@
 <template lang="pug">
 	component.button-action(
-		:is="to !== '' ? 'NuxtLink' : 'button'"
+		:is="to !== '' ? 'NuxtLink' : 'span'"
 		:to="to !== '' ? to : false"
 		:class="Mods"
 	) 
@@ -59,7 +59,6 @@ export default {
 	height: 40rem;
 	border: 0;
 	background: none;
-	cursor: pointer;
 	border-radius: 10rem;
 	font-size: 16rem;
 
