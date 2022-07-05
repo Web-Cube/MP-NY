@@ -94,7 +94,7 @@
 
 	@include large-mobile {
 		padding: 30rem 20rem;
-		border-radius: 15rem;
+		border-radius: 10rem 10rem 0 0;
 	}
 }
 
@@ -168,6 +168,10 @@
 
 .modal-statistic-size {
 	max-width: 773rem;
+}
+
+.modal-notification-size {
+	max-width: 743rem;
 }
 
 .modal.fade .modal-dialog {

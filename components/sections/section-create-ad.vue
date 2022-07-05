@@ -79,13 +79,16 @@ export default {
 			nav: [
 				{
 					text: 'Cost',
-					class: 'isActive'
+					class: 'isActive',
+					to: '#'
 				},
 				{
 					text: 'For free',
+					to: '#'
 				},
 				{
 					text: 'Exchange',
+					to: '#'
 				},
 			],
 		};

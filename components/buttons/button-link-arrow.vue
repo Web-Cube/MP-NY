@@ -4,7 +4,8 @@
 		:to="to !== '' ? to : false"
 		:class="Mods"
 	)
-		span.link-arrow__text
+		span.link-arrow__text.link-arrow__text_toggle(v-if="showText" :data-show-text="showText" :data-hide-text="hideText")
+		span.link-arrow__text(v-else)
 			slot
 		svg-icon.link-arrow__icon(name="arrowRight")
 
@@ -14,6 +15,14 @@
 export default {
 	props: {
 		to: {
+			type: String,
+			default: ""
+		},
+		showText: {
+			type: String,
+			default: ""
+		},
+		hideText: {
 			type: String,
 			default: ""
 		},
@@ -33,6 +42,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		black: {
+			type: Boolean,
+			default: false
+		},
 	},
 	computed: {
 		Mods(){
@@ -40,7 +53,8 @@ export default {
 				'link-arrow_more': this.more,
 				'link-arrow_small': this.small,
 				'link-arrow_blue': this.blue,
-				'link-arrow_white': this.white
+				'link-arrow_white': this.white,
+				'link-arrow_black': this.black
 			}
 		}
 	}
@@ -89,12 +103,33 @@ export default {
 			}
 		}
 	}
+	&.isActive {
+		.link-arrow {
+			&__text {
+				&_toggle {
+					&:before {
+						content: attr(data-hide-text);
+					}
+				}
+			}
+		}
+	}
 
 	&_blue {
 		color: $blue;
 		.link-arrow {
 			&__icon {
 				stroke: $blue;
+			}
+		}
+	}
+
+	&_black {
+		color: $default;
+		.link-arrow {
+			&__icon {
+				stroke: $default;
+				stroke-width: 2;
 			}
 		}
 	}
@@ -108,6 +143,14 @@ export default {
 		flex-shrink: 0;
 		margin-left: 4rem;
 		transition: ease .2s;
+	}
+
+	&__text {
+		&_toggle {
+			&:before {
+				content: attr(data-show-text);
+			}
+		}
 	}
 	
 }

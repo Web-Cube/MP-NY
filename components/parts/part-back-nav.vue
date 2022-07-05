@@ -4,7 +4,7 @@
 			.back-nav__column.back-nav__column_left
 				.back-nav__list.flex
 					.back-nav__item(v-for="(item, i) in nav")
-						.back-nav__btn(
+						component.back-nav__btn(
 							:class="item.class"
 						) {{item.text}}
 			.back-nav__column.back-nav__column_right
@@ -120,6 +120,7 @@ export default {
 
 	&__btn {
 		padding: 0 25rem 10rem 25rem;
+		display: inline-flex;
 		margin-bottom: -1px;
 		position: relative;
 		transition: ease .15s;

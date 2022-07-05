@@ -1,19 +1,9 @@
 <template lang="pug">
-	section.section-notifications
-		h1.section-notifications__title.h3 {{title}}
-		part-back-nav.section-notifications__nav(:nav="nav" mobile)
-			a.back-nav__read.color-gray(href="#") Mark all as read
-		.section-notifications__list
-			item-notification.section-notifications__item(
-				v-for="(item, i) in list" 
-				:key="i"
-				:title="item.title"
-				:columns="item.columns"
-				:unread="item.unread"
-				:desc="item.desc"
-				:date="item.date"
-			)
-		modal-notification
+	section.section-notifications.section-notifications_not-found
+		.section-notifications__top
+			h1.section-notifications__title.h3 {{title}}
+		.section-notifications__center
+			part-not-notification.section-notifications__not-notification(:img="img") {{text}}
 </template>
 
 <script>
@@ -23,30 +13,14 @@ export default {
 			type: String,
 			default: "Notifications"
 		},
-		list: {
-			type: Array,
-			default: () => ([
-			])
+		text: {
+			type: String,
+			default: ""
 		},
-	},
-	data() {
-		return {
-			nav: [
-				{
-					text: 'all',
-					to: '/notifications',
-					class: 'isActive'
-				},
-				{
-					text: 'Type one',
-					to: '/notifications2',
-				},
-				{
-					text: 'Type two',
-					to: '#two',
-				},
-			],
-		};
+		img: {
+			type: String,
+			default: "not-notification___img1.svg"
+		},
 	},
 }
 </script>
@@ -54,6 +28,12 @@ export default {
 <style lang="scss">
 .section-notifications{
 	padding: 70rem 0;
+	&_not-found {
+		position: relative;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
 	@include large-mobile {
 		padding: 20rem 0 70rem 0;
 	}
@@ -90,6 +70,23 @@ export default {
 		@include large-mobile {
 			padding-top: 30rem;
 			padding-bottom: 30rem;
+		}
+	}
+
+	&__center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 1 1 auto;
+
+		@include large-mobile {
+			display: block;
+		}
+	}
+	&__not-notification {
+		margin: auto;
+		@include large-mobile {
+			margin-top: 37rem;
 		}
 	}
 }

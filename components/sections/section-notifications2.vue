@@ -2,7 +2,7 @@
 	section.section-notifications
 		h1.section-notifications__title.h3 {{title}}
 		part-back-nav.section-notifications__nav(:nav="nav" mobile)
-			a.back-nav__read.color-gray(href="#") Mark all as read
+			a.back-nav__read(href="#") Mark all as read
 		.section-notifications__list
 			item-notification.section-notifications__item(
 				v-for="(item, i) in list" 
@@ -12,6 +12,7 @@
 				:unread="item.unread"
 				:desc="item.desc"
 				:date="item.date"
+				columns
 			)
 		modal-notification
 </template>
@@ -35,11 +36,11 @@ export default {
 				{
 					text: 'all',
 					to: '/notifications',
-					class: 'isActive'
 				},
 				{
 					text: 'Type one',
 					to: '/notifications2',
+					class: 'isActive'
 				},
 				{
 					text: 'Type two',

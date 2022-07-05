@@ -1,4 +1,4 @@
-.p {
+.content, .p {
 	font-size: 17rem;
 	@include small-tablet {
 		font-size: 16rem;
@@ -23,6 +23,18 @@
 }
 
 .content {
+	p {
+		&:not(:first-child) {
+			margin-top: 15rem;
+		}
+	}
+	@include large-mobile {
+		p {
+			&:not(:first-child) {
+				margin-top: 10rem;
+			}
+		}
+	}
 }
 
 .h1,

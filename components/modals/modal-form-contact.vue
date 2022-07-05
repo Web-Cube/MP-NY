@@ -41,6 +41,7 @@
 		padding-left: 15px!important;
 		.modal-content {
 			padding-bottom: 40rem;
+			border-radius: 15rem;
 		}
 		.modal-form {
 			align-items: center;
