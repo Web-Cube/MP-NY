@@ -57,6 +57,10 @@ export default {
 		transparent: {
 			type: Boolean,
 			default: false
+		},
+		gray: {
+			type: Boolean,
+			default: false
 		}
 	},
 	computed: {
@@ -64,6 +68,7 @@ export default {
 			return {
 				'button-medium_white': this.white,
 				'button-medium_big': this.big,
+				'button-medium_gray': this.gray,
 				'button-medium_blue': this.blue,
 				'button-medium_border': this.border,
 				'button-medium_square': this.square,
@@ -91,6 +96,8 @@ export default {
 	background: #F4F3F4;
 	padding: 0 20rem;
 	height: 40rem;
+	font-weight: 600;
+	font-size: 14rem;
 
 	&_big {
 		height: 44rem;
@@ -169,6 +176,11 @@ export default {
 					stroke: none;
 					fill: #fff;
 				}
+				&_dotsRotate {
+					fill: $default;
+					stroke: $default;
+					stroke-width: .2;
+				}
 			}
 		}
 	}
@@ -217,6 +229,16 @@ export default {
 		}
 	}
 
+	&_gray {
+		background: #F4F3F4;
+		color: $default;
+		border: 1px solid transparent;
+		&:hover {
+			background: #fff;
+			border-color: #E4E4E4;
+		}
+	}
+
 	&__icon {
 		width: 20rem;
 		height: 20rem;
@@ -257,6 +279,13 @@ export default {
 		&_dots {
 			width: 12rem;
 			height: 4rem;
+			stroke: none;
+			fill: $default;
+			margin-right: 0;
+		}
+		&_dotsRotate {
+			width: 3rem;
+			height: 12rem;
 			stroke: none;
 			fill: $default;
 			margin-right: 0;

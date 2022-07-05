@@ -151,5 +151,13 @@ export default {
 			justify-content: space-between;
 		}
 	}
+
+	&__read {
+		font-size: 16rem;
+		font-weight: 500;
+		&.color-gray {
+			color: #9A9A9A;
+		}
+	}
 }
 </style>
