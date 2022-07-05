@@ -8,8 +8,8 @@
 				.item-annoucement__info
 					.item-annoucement__name
 						.item-annoucement__title.h4 {{name}}
-					.item-annoucement__price(v-if="$screen.width < 1121") $ {{ numberWithSpaces(price) }}
-					.item-annoucement__days.color-gray(v-if="$screen.width < 1121")
+					.item-annoucement__price.mobile-visible $ {{ numberWithSpaces(price) }}
+					.item-annoucement__days.color-gray.mobile-visible
 						| Left: 
 						span.color-blue {{days}}
 					.item-annoucement__distance.color-gray.h6 {{distance}}
@@ -17,15 +17,15 @@
 					.item-annoucement__nav.flex
 						button-medium.item-annoucement__nav-btn(icon="chatBorder") Chat
 						button-medium.item-annoucement__nav-btn(icon="closeBig" white) Deactivate
-					part-statistic.item-annoucement__statistic(:statistics="statistics" light v-if="$screen.width < 1121")
+					part-statistic.item-annoucement__statistic.mobile-visible(:statistics="statistics" light)
 			.item-annoucement__column.item-annoucement__column_right
-				.item-annoucement__price(v-if="$screen.sd") $ {{ numberWithSpaces(price) }}
-				part-statistic.item-annoucement__statistic(:statistics="statistics" light v-if="$screen.sd")
+				.item-annoucement__price.mobile-hidden $ {{ numberWithSpaces(price) }}
+				part-statistic.item-annoucement__statistic.mobile-hidden(:statistics="statistics" light)
 				.item-annoucement__bottom.flex.flex_justify
 					.item-annoucement__bottom-column
-						button-medium.item-annoucement__bottom-btn(icon="chart" v-b-modal.modal-statistic v-if="$screen.sd") Statistics
+						button-medium.item-annoucement__bottom-btn.mobile-hidden(icon="chart" v-b-modal.modal-statistic) Statistics
 					.item-annoucement__bottom-column.flex
-						button-medium.item-annoucement__bottom-btn(icon="zipper" blue v-if="$screen.sd") Sale faster
+						button-medium.item-annoucement__bottom-btn.mobile-hidden(icon="zipper" blue) Sale faster
 						button-medium.item-annoucement__more(icon="dots" border square)
 </template>
 
@@ -107,6 +107,19 @@ export default{
 <style lang="scss">
 .item-annoucement{
 	position: relative;
+
+	@include min-large-tablet {
+		.mobile-visible {
+			display: none;
+		}
+	}
+
+	@include large-tablet {
+		.mobile-hidden {
+			display: none;
+		}
+	}
+
 	&__row {
 		display: flex;
 		justify-content: space-between;

@@ -40,7 +40,6 @@ export default {
 
 <style lang="scss">
 .radio-switch{
-	position: relative;
 	display: inline-flex;
 	align-items: center;
 	cursor: pointer;
