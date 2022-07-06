@@ -4,8 +4,14 @@
 			.back-nav__column.back-nav__column_left
 				.back-nav__list.flex
 					.back-nav__item(v-for="(item, i) in nav")
-						component.back-nav__btn(
+						NuxtLink.back-nav__btn(
 							:class="item.class"
+							:to="item.to"
+							v-if="item.to !== '' ? item.to : false"
+						) {{item.text}}
+						.back-nav__btn(
+							:class="item.class"
+							v-else
 						) {{item.text}}
 			.back-nav__column.back-nav__column_right
 				slot
@@ -55,7 +61,7 @@ export default {
 					display: inline-flex;
 					align-items: center;
 					justify-content: center;
-					padding: 0 10rem;
+					padding: 0 10rem!important;
 					border: 0;
 					border-radius: 8rem;
 					margin-bottom: 0;
@@ -64,6 +70,22 @@ export default {
 						background: #F4F3F4;
 					}
 				}	
+			}
+		}
+		&:not(.back-nav_mobile) {
+			overflow: hidden;
+			margin-left: -15rem;
+			margin-right: -15rem;
+			border-bottom: 0;
+			.back-nav {
+				&__list {
+					overflow-x: auto;
+					overflow-y: hidden;
+					padding-left: 15rem;
+					padding-right: 15rem;
+					margin-bottom: -40px;
+					padding-bottom: 41px;
+				}
 			}
 		}
 	}
@@ -131,14 +153,20 @@ export default {
 		cursor: pointer;
 		border-bottom: 2px solid transparent;
 		text-align: center;
-		&.isActive {
+		&.isActive, &.nuxt-link-active {
 			color: $default;
 			border-color: $default;
 		}
 
 		@include large-mobile {
-			padding-left: 15rem;
-			padding-right: 15rem;
+			padding-left: 25rem;
+			padding-right: 25rem;
+			border-bottom: 1px solid $light-gray;
+			padding-bottom: 11rem;
+			&.isActive, &.nuxt-link-active {
+				border-bottom-width: 2px;
+				padding-bottom: 10rem;
+			}
 		}
 	}
 

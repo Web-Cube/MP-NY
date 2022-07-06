@@ -80,15 +80,12 @@ export default {
 				{
 					text: 'Cost',
 					class: 'isActive',
-					to: '#'
 				},
 				{
 					text: 'For free',
-					to: '#'
 				},
 				{
 					text: 'Exchange',
-					to: '#'
 				},
 			],
 		};

@@ -1,9 +1,12 @@
 <template lang="pug">
 	.user-info(:class="Mods")
 		.user-info__avatar
-			img.object-fit(
-				:src="require(`~/assets/img/${avatar}`)"
-			)
+			.user-info__avatar-img
+				img.object-fit(
+					:src="require(`~/assets/img/${avatar}`)"
+				)
+			.user-info__edit(v-if="edit")
+				svg-icon(name="edit")
 		.user-info__data
 			.user-info__name.h5(v-if="name") 
 				| {{ name }}
@@ -33,6 +36,12 @@ export default {
 		vertical: {
 			type: Boolean
 		},
+		big: {
+			type: Boolean
+		},
+		edit: {
+			type: Boolean
+		},
 		content: {
 			type: String,
 			default: '<strong>Phone / Еmail confirmed</strong>'
@@ -42,6 +51,7 @@ export default {
 		Mods(){
 			return {
 				'user-info_vertical': this.vertical,
+				'user-info_big': this.big,
 			}
 		}
 	}
@@ -67,6 +77,89 @@ export default {
 					margin-top: 0;
 					margin-left: 20rem;
 				}
+			}
+		}
+	}
+
+	&_big {
+		text-align: center;
+		display: block;
+		.user-info {
+			&__avatar {
+				width: 165rem;
+				margin: 0 auto 0 auto;
+			}
+			&__data {
+				margin-top: 32rem;
+			}
+			&__name {
+				font-size: 26rem;
+			}
+			&__about {
+				font-size: 18rem;
+				line-height: 1.5;
+				color: rgba(6, 36, 57, 0.5);
+				margin-top: 10rem;
+			}
+		}
+
+		@include large-tablet {
+			text-align: left;
+			display: flex;
+			.user-info {
+				&__avatar {
+					width: 120rem;
+				}
+				&__data {
+					margin-left: 20rem;
+					margin-top: 0;
+				}
+			}
+
+		}
+
+		@include large-mobile {
+			.user-info {
+				&__avatar {
+					width: 63rem;
+				}
+				&__name {
+					font-size: 20rem;
+				}
+				&__about {
+					margin-top: 5rem;
+					font-size: 14rem;
+					line-height: 1;
+				}
+			}
+		}
+	}
+
+	&__edit {
+		width: 38rem;
+		height: 38rem;
+		border-radius: 100%;
+		background: $blue;
+		position: absolute;
+		right: 11rem;
+		bottom: -6rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		svg {
+			fill: #fff;
+			width: 16rem;
+			height: 16rem;
+		}
+
+		@include large-mobile {
+			width: 24rem;
+			height: 24rem;
+			right: -2rem;
+			bottom: 0;
+			svg {
+				width: 10rem;
+				height: 10rem;
 			}
 		}
 	}

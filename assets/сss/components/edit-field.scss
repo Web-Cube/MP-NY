@@ -1,0 +1,85 @@
+.edit-field{
+	&__row {
+		display: flex;
+		align-items: center;
+		min-height: 60rem;
+
+		@include large-mobile {
+			min-height: inherit;
+		}
+	}
+	&__column {
+		&_left {
+			width: 35%;
+		}
+		&_center {
+			width: 45%;
+		}
+		&_right {
+			width: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			min-width: 130rem;
+		}
+
+		@include large-mobile {
+			&_right {
+				min-width: inherit;
+			}
+		}
+	}
+
+	&__placeholder {
+		padding-left: 20rem;
+		font-family: 'Gilroy';
+
+		@include large-mobile {
+			font-size: 16rem;
+		}
+	}
+
+	&__nav {
+		display: flex;
+		&-item {
+			padding: 0 20rem;
+			&:not(:first-child) {
+				border-left: 1px solid $light-gray;
+			}
+		}
+
+		@include small-desktop {
+			&-item {
+				padding: 0 10rem;
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+
+	&__link {
+		font-size: 17rem;
+		font-weight: 600;
+		cursor: pointer;
+		&.color-gray {
+			color: $dark-gray;
+		}
+
+		@include large-mobile {
+			font-size: 16rem;
+		}
+	}
+
+	@include large-mobile {
+		.mobile-hidden {
+			display: none;
+		}
+	}
+
+	@include min-large-mobile {
+		.mobile-visible {
+			display: none;
+		}
+	}
+}
