@@ -137,6 +137,7 @@ export default {
 	&__item {
 		@include large-mobile {
 			width: 100%;
+			border-bottom: 1px solid $light-gray;
 		}
 	}
 
@@ -161,12 +162,7 @@ export default {
 		@include large-mobile {
 			padding-left: 25rem;
 			padding-right: 25rem;
-			border-bottom: 1px solid $light-gray;
-			padding-bottom: 11rem;
-			&.isActive, &.nuxt-link-active {
-				border-bottom-width: 2px;
-				padding-bottom: 10rem;
-			}
+			white-space: nowrap;
 		}
 	}
 

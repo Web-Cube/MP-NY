@@ -7,7 +7,7 @@
 				h1.section-notifications__title.h3 {{title}}
 				.settings__nav
 					part-back-nav.settings__nav-wrap(:nav="nav")
-				.settings__list
+				.settings__list(v-if="list.length > 0")
 					.settings__item(v-for="(item, i) in list" :key="i")
 						.settings__item-title.h3 {{ item.title }}
 						part-edit-fields.settings__field(
@@ -46,6 +46,14 @@
 							:groupName="field.groupName"
 							v-if="field.option == 'select'"
 						)
+				.settings__blacklist(v-else-if="blacklist.length > 0")
+					item-blacklist.settings__blacklist-item(
+						v-for="(item, i) in blacklist"
+						:key="i"
+						:avatar="item.avatar"
+						:name="item.name"
+					)
+				part-not-notification.settings__not-found(v-else img="blacklist__img.svg") The Blacklist is empty
 </template>
 
 <script>
@@ -56,6 +64,11 @@ export default {
 			default: "Settings"
 		},
 		list: {
+			type: Array,
+			default: () => ([
+			])
+		},
+		blacklist: {
 			type: Array,
 			default: () => ([
 			])
@@ -73,12 +86,12 @@ export default {
 					text: 'Safety',
 				},
 				{
-					to: '/other',
-					text: 'Other',
-				},
-				{
 					to: '/blacklist',
 					text: 'Blacklist',
+				},
+				{
+					to: '/not-blacklist',
+					text: 'Blacklist is empty',
 				},
 			],
 		}
@@ -162,6 +175,42 @@ export default {
 
 		@include large-mobile {
 			padding: 27rem 0 20rem 0;
+		}
+	}
+
+	&__blacklist {
+		padding-top: 20rem;
+		&-item {
+			padding: 20rem;
+			margin-left: -20rem;
+			border-bottom: 1px solid $light-gray;
+		}
+
+		@include small-desktop {
+			&-item {
+				padding-right: 0;
+			}
+		}
+
+		@include large-tablet {
+			&-item {
+				padding: 20rem 0;
+				margin-left: 0;
+			}
+		}
+
+		@include large-mobile {
+			padding-top: 12rem;
+			&-item {
+				padding: 15rem 0;
+			}
+		}
+	}
+	&__not-found {
+		margin-top: 150rem;
+
+		@include large-mobile {
+			margin-top: 0;
 		}
 	}
 }
