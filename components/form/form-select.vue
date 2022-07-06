@@ -53,6 +53,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		top: {
+			type: Boolean,
+			default: false
+		},
 		items: {
 			type: [Array, Object],
 			default: () => ([])
@@ -74,6 +78,7 @@ export default {
 				'select_border-right': this.borderRight,
 				'select_no-border': this.noBorder,
 				'select_default': this.default,
+				'select_top': this.top,
 			}
 		}
 	},
@@ -195,6 +200,17 @@ export default {
 			}
 			&__list {
 				width: 100%;
+			}
+		}
+	}
+
+	&_top {
+		.select {
+			&__list {
+				top: auto;
+				bottom: 100%;
+				margin-bottom: 10rem;
+				border-radius: 15rem 15rem 5px 5px;
 			}
 		}
 	}

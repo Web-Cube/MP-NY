@@ -18,6 +18,8 @@
 							:name="field.name"
 							:type="field.type"
 							:placeholder="field.placeholder"
+							:modalName="field.modalName"
+							:groupName="field.groupName"
 							v-if="!field.option"
 						)
 						part-edit-select.settings__field(
@@ -27,7 +29,10 @@
 							:value="field.value"
 							:name="field.name"
 							:type="field.type"
+							:topPosition="field.topPosition"
 							:placeholder="field.placeholder"
+							:modalName="field.modalName"
+							:groupName="field.groupName"
 							v-else-if="field.option == 'select'"
 						)
 </template>

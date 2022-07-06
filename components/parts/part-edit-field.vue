@@ -23,7 +23,17 @@
 						.edit-field__link.color-blue(@click="showEdit") Edit
 				.edit-field__nav.mobile-visible
 					.edit-field__nav-item
-						.edit-field__link.color-blue Edit
+						.edit-field__link.color-blue(@click="$bvModal.show(`${modalName}`)") Edit
+		modal-field(:id="modalName" :title="groupName")
+			.modal-field__list
+				.modal-field__item
+					.modal-field__label {{label}}
+					form-input.modal-field__input(
+						:value="value"
+						:name="name"
+						:placeholder="placeholder"
+						:type="type"
+					)
 
 </template>
 
@@ -47,6 +57,14 @@ export default {
 			default: 'Alexandr'
 		},
 		type: {
+			type: String,
+			default: ''
+		},
+		modalName: {
+			type: String,
+			default: ''
+		},
+		groupName: {
 			type: String,
 			default: ''
 		},

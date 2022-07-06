@@ -9,6 +9,7 @@
 					:value="placeholder"
 					:items="items"
 					default
+					:top="topPosition"
 					v-if="edit"
 				)
 				.edit-field__placeholder.h4(v-else) {{placeholder}}
@@ -23,7 +24,19 @@
 						.edit-field__link.color-blue(@click="showEdit") Edit
 				.edit-field__nav.mobile-visible
 					.edit-field__nav-item
-						.edit-field__link.color-blue Edit
+						.edit-field__link.color-blue(@click="$bvModal.show(`${modalName}`)") Edit
+
+		modal-field(:id="modalName" :title="groupName")
+			.modal-field__list
+				.modal-field__item
+					.modal-field__label {{label}}
+					form-select.modal-field__input(
+						:name="name"
+						:value="placeholder"
+						:items="items"
+						default
+						:top="topPosition"
+					)
 
 </template>
 
@@ -56,7 +69,19 @@ export default {
 				'Ukr',
 				'Ru'
 			])
-		}
+		},
+		topPosition: {
+			type: Boolean,
+			default: false
+		},
+		modalName: {
+			type: String,
+			default: ''
+		},
+		groupName: {
+			type: String,
+			default: ''
+		},
 	},
 	data(){
 		return {
