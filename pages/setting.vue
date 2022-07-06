@@ -1,5 +1,5 @@
 <template lang="pug">
-	section-settings(:list="list" :nav="nav")
+	section-settings(:list="list")
 </template>
 
 <script>
@@ -7,24 +7,6 @@ export default {
 	layout: 'back',
 	data(){
 		return{
-			nav: [
-				{
-					text: 'Profile',
-					to: '/setting',
-				},
-				{
-					to: '/safety',
-					text: 'Safety',
-				},
-				{
-					to: '/other',
-					text: 'Other',
-				},
-				{
-					to: '/blacklist',
-					text: 'Blacklist',
-				},
-			],
 			list: [
 				{
 					title: 'Username',

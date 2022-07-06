@@ -4,6 +4,10 @@
 		align-items: center;
 		min-height: 60rem;
 
+		&:not(:first-child) {
+			margin-top: 15rem;
+		}
+
 		@include large-mobile {
 			min-height: inherit;
 		}
@@ -24,8 +28,12 @@
 		}
 
 		@include large-mobile {
+			&_center {
+				width: 55%;
+			}
 			&_right {
 				min-width: inherit;
+				width: 10%;
 			}
 		}
 	}
@@ -36,6 +44,7 @@
 
 		@include large-mobile {
 			font-size: 16rem;
+			padding-left: 0;
 		}
 	}
 

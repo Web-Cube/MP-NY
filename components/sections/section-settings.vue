@@ -10,6 +10,17 @@
 				.settings__list
 					.settings__item(v-for="(item, i) in list" :key="i")
 						.settings__item-title.h3 {{ item.title }}
+						part-edit-fields.settings__field(
+							v-for="(field, i) in item.fields"
+							:key="i"
+							:label="field.label"
+							:list="field.list"
+							:placeholder="field.placeholder"
+							:modalName="field.modalName"
+							:groupName="field.groupName"
+							:icon="field.icon"
+							v-if="field.option == 'groupFields'"
+						)
 						part-edit-field.settings__field(
 							v-for="(field, i) in item.fields"
 							:key="i"
@@ -33,7 +44,7 @@
 							:placeholder="field.placeholder"
 							:modalName="field.modalName"
 							:groupName="field.groupName"
-							v-else-if="field.option == 'select'"
+							v-if="field.option == 'select'"
 						)
 </template>
 
@@ -49,12 +60,29 @@ export default {
 			default: () => ([
 			])
 		},
-		nav: {
-			type: Array,
-			default: () => ([
-			])
-		},
 	},
+	data(){
+		return{
+			nav: [
+				{
+					text: 'Profile',
+					to: '/setting',
+				},
+				{
+					to: '/safety',
+					text: 'Safety',
+				},
+				{
+					to: '/other',
+					text: 'Other',
+				},
+				{
+					to: '/blacklist',
+					text: 'Blacklist',
+				},
+			],
+		}
+	}
 }
 </script>
 
@@ -82,6 +110,7 @@ export default {
 		&_right {
 			width: 100%;
 			margin-left: 70rem;
+			padding-top: 20rem;
 		}
 
 		@include large-tablet {
@@ -89,6 +118,7 @@ export default {
 			&_right {
 				margin-left: 0;
 				margin-top: 30rem;
+				padding-top: 0;
 			}
 		}
 	}

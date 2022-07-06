@@ -5,6 +5,7 @@
 		.input__clear(v-if="adress")
 			svg-icon(name="closeBig")
 		a.input__btn-map.p(:href="mapLink" target="_blank" v-if="adress") Map
+		svg-icon.input__icon(:name="icon" :class="`input__icon_${icon}`" v-if="icon")
 </template>
 
 <script>
@@ -46,6 +47,10 @@ export default {
 		disabled: {
 			type: Boolean,
 			default: false
+		},
+		icon: {
+			type: String,
+			default: ''
 		}
 	},
 
@@ -212,6 +217,19 @@ export default {
 				top: 10rem;
 				height: calc( 100% - 20rem );
 			}
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		width: 20rem;
+		height: 20rem;
+		top: 50%;
+		margin-top: -10rem;
+		right: 20rem;
+		&_eyeShow {
+			cursor: pointer;
+			fill: #9A9A9A;
 		}
 	}
 	
