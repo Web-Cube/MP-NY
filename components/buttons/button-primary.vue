@@ -95,7 +95,7 @@ export default {
 	&_gray {
 		background: #F5F5F7;
 		border: 1px solid #F5F5F7;
-		&:hover {
+		&:hover:not(:disabled) {
 			background: #fff;
 			border-color: #E4E4E4;
 		}
@@ -107,7 +107,7 @@ export default {
 		background: $blue;
 		color: #fff;
 		fill: #fff;
-		&:hover{
+		&:hover:not(:disabled) {
 			background: #4257C7;
 			color: #fff;
 		}
@@ -119,6 +119,10 @@ export default {
 	&_verysmall {
 		height: 32rem;
 		font-weight: 500;
+	}
+	&:disabled {
+		opacity: .4;
+		cursor: default;
 	}
 	&__icon {
 		flex-shrink: 0;
@@ -139,6 +143,24 @@ export default {
 			width: 12rem;
 			height: 12rem;
 			fill: #C3C8CB;
+		}
+
+		&_facebook {
+			fill: #556DEE;
+			width: 11rem;
+			height: 12rem;
+		}
+
+		&_gmail {
+			fill: #EB5757;
+			width: 15rem;
+			height: 12rem;
+		}
+
+		&_yahoo {
+			fill: #7F40BD;
+			width: 14rem;
+			height: 14rem;
 		}
 
 		@include large-mobile {

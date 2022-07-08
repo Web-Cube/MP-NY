@@ -1,11 +1,14 @@
 <template lang="pug">
 	.input(:class="Mods")
 		textarea.input__field.input__field_textarea(:name="name" :value="value" :placeholder="placeholder" v-if="textarea")
-		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder" :disabled="disabled" v-else)
+		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder" :disabled="disabled" :maxlength="maxlength" v-else)
 		.input__clear(v-if="adress")
 			svg-icon(name="closeBig")
 		a.input__btn-map.p(:href="mapLink" target="_blank" v-if="adress") Map
 		svg-icon.input__icon(:name="icon" :class="`input__icon_${icon}`" v-if="icon")
+
+		slot
+
 </template>
 
 <script>
@@ -48,6 +51,14 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		big: {
+			type: Boolean,
+			default: false
+		},
+		maxlength: {
+			type: Number,
+			default: null
+		},
 		icon: {
 			type: String,
 			default: ''
@@ -59,6 +70,7 @@ export default {
 			return {
 				'is-separator': this.separator,
 				'input_adress': this.adress,
+				'input_big': this.big,
 			}
 		}
 	},
@@ -124,11 +136,27 @@ export default {
 		}
 	}
 
+	&_big {
+		.input {
+			&__field {
+				height: 80rem;
+			}
+		}
+
+		@include large-mobile {
+			.input {
+				&__field {
+					height: 50rem;
+				}
+			}
+		}
+	}
+
 	&__field {
 		width: 100%;
 		height: 60rem;
 		font-size: 17rem;
-		font-weight: 600;
+		font-weight: 500;
 		font-family: 'Gilroy';
 		padding: 0 10rem 0 20rem;
 		border: 1px solid $light-gray;
@@ -231,6 +259,29 @@ export default {
 			cursor: pointer;
 			fill: #9A9A9A;
 		}
+		&_eyeHide {
+			cursor: pointer;
+			stroke: #9A9A9A;
+			stroke-width: 1.5;
+			fill: none;
+			width: 24rem;
+			height: 24rem;
+			margin-top: -12rem;
+			right: 18rem;
+		}
+	}
+
+	&__edit {
+		position: absolute;
+		right: 1px;
+		top: 1px;
+		height: calc( 100% - 2px );
+		background: #fff;
+		cursor: pointer;
+		border-radius: 10rem;
+		padding: 0 20rem;
+		display: flex;
+		align-items: center;
 	}
 	
 }

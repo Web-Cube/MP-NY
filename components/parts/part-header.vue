@@ -9,13 +9,13 @@
 				.header__column.header__column_right.flex.flex_vertical
 					button-action.header__favorite(to="#" content="<strong>Избранное</strong>" v-tippy)
 
-					item-profile.header__profile(v-if="login" name="profileMenu")
+					item-profile.header__profile(v-if="login == true" name="profileMenu")
 					tippy.tippy-hide(to="profileMenu" placement="bottom-start")
 						part-profile-menu(:menuList="menuList")
 					.header__nav(v-if="login !== true")
-						NuxtLink.header__login.link.p(to="#") Login 
+						NuxtLink.header__login.link.p(to="#" v-b-modal.modal-login) Login 
 						span  / 
-						NuxtLink.header__reg.link.p(to="#") Registration
+						NuxtLink.header__reg.link.p(to="/") Registration
 
 					button-primary.header__add(to="/" light) Add advertise
 
@@ -26,9 +26,13 @@ export default {
 	props: {
 		login: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 		back: {
+			type: Boolean,
+			default: false
+		},
+		small: {
 			type: Boolean,
 			default: false
 		},
@@ -84,6 +88,7 @@ export default {
 		Mods(){
 			return {
 				'header_back': this.back,
+				'header_small': this.small,
 			}
 		}
 	}
@@ -94,6 +99,9 @@ export default {
 .header{
 	padding: 30rem 0;
 	width: 100%;
+	&_small {
+		padding: 20rem 0;
+	}
 	&_back {
 		padding: 20rem 0;
 		.header__wrap {

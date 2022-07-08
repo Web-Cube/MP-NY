@@ -46,6 +46,9 @@
 		.modal-form {
 			align-items: center;
 		}
+		.modal-dialog {
+			align-items: center;
+		}
 	}
 	&__field {
 		margin-top: 40rem;

@@ -2,7 +2,7 @@
 	.container
 		module-page-helper
 
-		part-header
+		part-header(login)
 		Nuxt
 		part-footer
 		part-mobile-menu

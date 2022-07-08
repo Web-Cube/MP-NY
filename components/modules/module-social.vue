@@ -1,5 +1,5 @@
 <template lang="pug">
-	.social
+	.social(:class="Mods")
 		ul.social__list.flex
 			li.social__item(
 				v-for="(link, name) in list" :key="name"
@@ -26,6 +26,17 @@ export default {
 				in: 'https://ca.linkedin.com/',
 				youtube: 'https://www.youtube.com'
 			})
+		},
+		small: {
+			type: Boolean,
+			default: false
+		},
+	},
+	computed: {
+		Mods(){
+			return {
+				'social_small': this.small,
+			}
 		}
 	}
 }
@@ -33,6 +44,16 @@ export default {
 
 <style lang="scss">
 .social{
+	&_small {
+		.social {
+			&__link {
+				width: 26rem;
+				height: 26rem;
+				border: 0;
+				fill: #9A9A9A;
+			}
+		}
+	}
 	&__list{
 		margin: -5rem;
 	}
