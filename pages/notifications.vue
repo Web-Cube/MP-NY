@@ -1,5 +1,6 @@
 <template lang="pug">
-	section-notifications(:list="list")
+	main.main
+		section-notifications(:list="list")
 </template>
 
 <script>

@@ -1,5 +1,6 @@
 <template lang="pug">
-	section-favorites-ad(:list="list")
+	main.main
+		section-favorites-ad(:list="list")
 </template>
 
 <script>

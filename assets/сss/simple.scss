@@ -83,6 +83,21 @@ body {
     	display: flex;
     }
 
+    &__inner {
+    	max-width: 1500rem;
+		padding-left: 50rem;
+		padding-right: 50rem;
+
+		@include large-desktop {
+	    	padding-left: 40rem;
+	    	padding-right: 40rem;
+    	}
+
+    	@include small-tablet {
+    		padding: 0;
+    	}
+    }
+
     &__column {
     	&_left {
     		width: 210rem;
@@ -92,19 +107,23 @@ body {
     		position: relative;
     	}
     	&_right {
-    		width: calc( 100% - 310rem );
-    		max-width: 1500rem;
-    		padding-left: 50rem;
-    		padding-right: 50rem;
+    		width: calc( 100% - 210rem );
     		display: flex;
     		flex-direction: column;
+    		.main {
+    			max-width: 1500rem;
+				padding-left: 50rem;
+				padding-right: 50rem;
+    		}
     	}
 
     	@include large-desktop {
     		&_right {
-	    		padding-left: 40rem;
-	    		padding-right: 40rem;
 	    		width: calc( 100% - 210rem );
+	    		.main {
+	    			padding-left: 40rem;
+	    			padding-right: 40rem;
+	    		}
 	    	}
     	}
 
@@ -117,6 +136,9 @@ body {
 	    		padding-right: 0;
 	    		padding: 0 var(--wrapper-offset);
 	    		width: 100%;
+	    		.main {
+	    			padding: 0;
+	    		}
 	    	}
     	}
     }

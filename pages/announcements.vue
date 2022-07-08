@@ -1,5 +1,6 @@
 <template lang="pug">
-	section-annoucements
+	main.main
+		section-annoucements
 </template>
 
 <script>

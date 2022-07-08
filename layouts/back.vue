@@ -4,9 +4,9 @@
 			.container__column.container__column_left
 				part-back-sidebar
 			.container__column.container__column_right
-				part-header(back)
-				main.main
-					Nuxt
+				.container__inner
+					part-header(back)
+				Nuxt
 				part-mobile-menu
 				modal-search
 		module-page-helper

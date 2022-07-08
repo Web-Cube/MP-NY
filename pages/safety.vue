@@ -1,5 +1,6 @@
 <template lang="pug">
-	section-settings(:list="list")
+	main.main
+		section-settings(:list="list")
 </template>
 
 <script>

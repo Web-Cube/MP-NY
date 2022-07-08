@@ -9,6 +9,10 @@ export default {
 		white: {
 			type: Boolean,
 			default: false
+		},
+		light: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -16,6 +20,7 @@ export default {
 		Mods(){
 			return {
 				'button-close_white': this.white,
+				'button-close_light': this.light,
 			}
 		}
 	}
@@ -42,6 +47,13 @@ export default {
 		width: 13rem;
 		height: 13rem;
 		stroke: $gray;
+	}
+
+	&_light {
+		background: #798CEF;
+		svg {
+			stroke: #fff;
+		}
 	}
 
 	@include large-mobile {

@@ -1,5 +1,6 @@
 <template lang="pug">
-	section-settings(:blacklist="blacklist")
+	main.main
+		section-settings(:blacklist="blacklist")
 </template>
 
 <script>

@@ -1,5 +1,6 @@
 <template lang="pug">
-	section-notifications3(:text="text" :img="img")
+	main.main
+		section-notifications3(:text="text" :img="img")
 </template>
 
 <script>

@@ -28,11 +28,16 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		all: {
+			type: Boolean,
+			default: false
+		},
 	},
 	computed: {
 		Mods(){
 			return {
 				'checkbox_light': this.light,
+				'checkbox_all': this.all,
 			}
 		}
 	}
@@ -56,6 +61,23 @@ export default {
 							background: #7A8DF1;
 						}
 					}
+				}
+			}
+		}
+	}
+
+	&_all {
+		.checkbox {
+			&__icon {
+				&:before {
+					content: '';
+					display: block;
+					width: 7rem;
+					height: 1px;
+					background: #fff;
+				}
+				svg {
+					display: none;
 				}
 			}
 		}

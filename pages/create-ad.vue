@@ -1,5 +1,6 @@
 <template lang="pug">
-	section-create-ad
+	main.main
+		section-create-ad
 </template>
 
 <script>

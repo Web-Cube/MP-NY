@@ -1,10 +1,13 @@
 <template lang="pug">
-	main.main
-		section-settings
+	section-chat
 </template>
 
 <script>
 export default {
 	layout: 'back',
+	data(){
+		return{
+		}
+	}
 }
 </script>
