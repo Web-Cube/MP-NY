@@ -1,9 +1,16 @@
 <template lang="pug">
-	section.chat
-		.chat__row
-			.chat__column.chat__column_left
-				part-chat-sidebar.chat__sidebar(:list="list")
-			.chat__column.chat__column_right
+	section.section-chat
+		.section-chat__row
+			.section-chat__column.section-chat__column_left
+				part-chat-sidebar.section-chat__sidebar(:list="list")
+			.section-chat__column.section-chat__column_right
+				part-chat-body.section-chat__body
+
+		modal-safety
+			p
+				| Pick it up from the pick-up point before 21:00 on Thursday, January 27, then the order will have to be canceled. Entering the pick—up point only with a mask and gloves - this will help.
+			p
+				| Pick it up from the pick-up point before 21:00 on Thursday, January 27, then the order will have to be canceled. Entering the pick—up point only with a mask and gloves - this will help.
 				
 </template>
 
@@ -93,7 +100,7 @@ export default {
 </script>
 
 <style lang="scss">
-.chat {
+.section-chat {
 	position: relative;
 	border-top: 1px solid $light-gray;
 	overflow: hidden;

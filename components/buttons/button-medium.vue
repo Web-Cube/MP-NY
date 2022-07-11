@@ -294,6 +294,19 @@ export default {
 			fill: $default;
 			stroke: none;
 		}
+		&_infoCircle {
+			position: relative;
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: 6rem;
+				left: 9rem;
+				width: 2rem;
+				height: 2rem;
+				background: $default;
+			}
+		}
 	}
 }
 </style>
