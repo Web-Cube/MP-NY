@@ -114,6 +114,7 @@ export default {
 		justify-content: center;
 		transition: ease .15s;
 		flex-shrink: 0;
+		background: #fff;
 		svg {
 			width: 11rem;
 			height: 9rem;

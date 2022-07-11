@@ -2,7 +2,7 @@
 	section.chat
 		.chat__row
 			.chat__column.chat__column_left
-				part-chat-sidebar.chat__sidebar
+				part-chat-sidebar.chat__sidebar(:list="list")
 			.chat__column.chat__column_right
 				
 </template>
@@ -14,11 +14,6 @@ export default {
 			type: String,
 			default: "Settings"
 		},
-		list: {
-			type: Array,
-			default: () => ([
-			])
-		},
 		blacklist: {
 			type: Array,
 			default: () => ([
@@ -27,22 +22,69 @@ export default {
 	},
 	data(){
 		return{
-			nav: [
+			list: [
 				{
-					text: 'Profile',
-					to: '/setting',
+					text: 'A pleasure to contact with you pleasure to contact with you',
 				},
 				{
-					to: '/safety',
-					text: 'Safety',
+					name: 'Johnson',
+					avatar: 'User4.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+					counter: 2
 				},
 				{
-					to: '/blacklist',
-					text: 'Blacklist',
+					name: 'Johnson',
+					avatar: 'User4.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
 				},
 				{
-					to: '/not-blacklist',
-					text: 'Blacklist is empty',
+					name: 'Alexandr',
+					avatar: 'User3.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+					counter: 2
+				},
+				{
+					name: 'Johnson',
+					avatar: 'User4.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+					counter: 2
+				},
+				{
+					name: 'Johnson',
+					avatar: 'User4.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+				},
+				{
+					name: 'Alexandr',
+					avatar: 'User3.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+					counter: 2
+				},
+				{
+					name: 'Johnson',
+					avatar: 'User4.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+					counter: 2
+				},
+				{
+					name: 'Johnson',
+					avatar: 'User4.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+				},
+				{
+					name: 'Alexandr',
+					avatar: 'User3.jpg',
+					desc: 'Macbook pro 2016 text',
+					text: 'A pleasure to contact with you pleasure to contact with you',
+					counter: 2
 				},
 			],
 		}

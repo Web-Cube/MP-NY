@@ -8,7 +8,22 @@
 				span.color-gray.h6 Select all
 		.chat-sidebar__container
 			.chat-sidebar__container-wrap
-				div(style="height: 1200px")
+				.chat-sidebar__list
+					item-chat.chat-sidebar__item(
+						v-for="(item, i) in list"
+						:key="i"
+						:name="item.name"
+						:avatar="item.avatar"
+						:time="item.time"
+						:counter="item.counter"
+						:desc="item.desc"
+						checkbox
+						button
+						:class="{isActive:number == i}"
+						@change="tabList(i)"
+						@showPanel="panel"
+					)
+						| {{item.text}}
 		transition(name="fade")
 			part-chat-panel.chat-sidebar__panel(v-if="panelOpen" @closePanel="panelOpen = false")
 </template>
@@ -24,21 +39,31 @@ export default {
 			type: Number,
 			default: 20
 		},
+		list: {
+			type: Array,
+			default: () => ([
+			])
+		}
 	},
-	data() {
+	data(){
 		return {
 			panelOpen: false,
-		};
+			number: 2,
+			i: 2
+		}
 	},
-	methods: {
-	    panel() {
+	methods:{
+		tabList(i) {
+			this.number = i;
+		},
+		panel() {
 	    	if ( window.innerWidth > 580 ) {
 	    		this.panelOpen = true;
 	    	} else {
 	    		this.$root.$emit('bv::show::modal', 'modal-panel')
 	    	}
 	    },
-	},
+	}
 }
 </script>
 
