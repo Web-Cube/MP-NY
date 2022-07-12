@@ -1,5 +1,5 @@
 <template lang="pug">
-	.button-switcher
+	.button-switcher(:class="Mods")
 		.button-switcher__list
 			label.button-switcher__item(
 					v-for="(item, i) in items"
@@ -28,7 +28,19 @@ export default {
 			default: () => ([
 			]),
 		},
+		blue: {
+			type: Boolean,
+			default: false
+		}
 	},
+
+	computed: {
+		Mods(){
+			return {
+				'button-switcher_blue': this.blue,
+			}
+		}
+	}
 }
 </script>
 
@@ -63,6 +75,7 @@ export default {
 		font-size: 20rem;
 		color: $gray;
 		cursor: pointer;
+		white-space: nowrap;
 		&:hover {
 			color: $blue;
 		}
@@ -70,6 +83,33 @@ export default {
 		@include large-mobile {
 			font-size: 15rem;
 			font-weight: 600;
+		}
+	}
+
+	&_blue {
+		.button-switcher {
+			&__btn {
+				font-size: 16rem;
+				padding: 10rem 25rem;
+				font-weight: 600;
+			}
+			&__input {
+				&:checked + .button-switcher__btn {
+					color: #fff;
+					background: $blue;
+				}
+			}
+		}
+
+		@include large-mobile {
+			padding: 2px;
+			.button-switcher {
+				&__btn {
+					font-size: 15rem;
+					padding: 5rem 17rem;
+					height: 38rem;
+				}
+			}
 		}
 	}
 }
