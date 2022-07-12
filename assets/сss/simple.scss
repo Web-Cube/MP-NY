@@ -342,3 +342,15 @@ svg {
 	color: $blue;
 	font-weight: 600;
 }
+
+@include min-large-mobile {
+	.mobile-visible {
+		display: none!important;
+	}
+}
+
+@include large-mobile {
+	.mobile-hidden {
+		display: none!important;
+	}
+}

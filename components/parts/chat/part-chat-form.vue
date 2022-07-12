@@ -1,9 +1,9 @@
 <template lang="pug">
 	form.chat-form(action="/chat")
-		button-file.chat-form__file
+		button-file.chat-form__file(@change.native="showFiles")
 		.chat-form__field
 			form-textarea.chat-form__textarea(placeholder="Enter your message" small)
-			.chat-form__files(v-if="files.length > 0")
+			.chat-form__files(v-if="files.length > 0" style="display:none")
 				.chat-form__files-wrap
 					.chat-form__files-item(v-for="(file, i) in files" :key="i")
 						item-file.chat-form__item-file(
@@ -24,6 +24,11 @@ export default {
 			])
 		}
 	},
+	methods:{
+		showFiles() {
+			document.querySelector(".chat-form__files").removeAttribute("style");
+		}
+	}
 }
 </script>
 
@@ -64,7 +69,7 @@ export default {
 		@include large-mobile {
 			border: 1px solid $light-gray;
 			border-radius: 10rem;
-			width: 100%;
+			width: calc( 100% - 90rem );
 		}
 	}
 	&__textarea {
@@ -124,14 +129,34 @@ export default {
 	}
 	&__files {
 		margin: 10rem -5rem 0 -5rem;
+		overflow: hidden;
 		&-wrap {
 			display: flex;
 			padding: 0 5rem;
+			overflow-y: hidden;
+			overflow-x: auto;
+			margin-bottom: -40rem;
+			padding-bottom: 40rem;
 		}
 		&-item {
 			width: 100rem;
+			flex-shrink: 0;
 			&:not(:last-child) {
 				margin-right: 10rem;
+			}
+		}
+
+		@include large-mobile {
+			margin: -5rem 10rem 10rem 10rem;
+			&-wrap {
+				padding-left: 0;
+				padding-right: 0;
+			}
+			&-item {
+				width: 78rem;
+				&:not(:last-child) {
+					margin-right: 6rem;
+				}
 			}
 		}
 	}

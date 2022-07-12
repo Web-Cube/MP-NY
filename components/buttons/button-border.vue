@@ -107,6 +107,18 @@ export default {
 					fill: none;
 					stroke: $gray;
 				}
+				&_noneUser {
+					fill: none;
+					stroke: $gray;
+				}
+				&_closeCircle {
+					fill: none;
+					stroke: $gray;
+				}
+				&_delete {
+					fill: none;
+					stroke: $gray;
+				}
 			}
 		}
 	}
@@ -133,6 +145,21 @@ export default {
 			stroke-width: 1.5;
 		}
 		&_cross {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_noneUser {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_closeCircle {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_delete {
 			fill: none;
 			stroke: $default;
 			stroke-width: 1.5;

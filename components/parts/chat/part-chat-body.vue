@@ -14,7 +14,8 @@
 					.chat-body__buttons.flex
 						button-medium.chat-body__btn(gray icon="infoCircle" v-b-modal.modal-safety)
 							span.p For your safety
-						button-medium.chat-body__btn(gray square icon="dots" name="chatAction")
+						button-medium.chat-body__btn.mobile-hidden(gray square icon="dots" name="chatAction")
+						button-medium.chat-body__btn.mobile-visible(gray square icon="dots" v-b-modal.modal-action)
 					tippy.tippy-hide(to="chatAction" placement="bottom-end" trigger="click" )
 						.chat-body__action
 							.chat-body__action-item
@@ -54,7 +55,7 @@ export default {
 	},
 	data(){
 		return{
-			/*files: [
+			files: [
 				{
 					img: 'create-gallery__img5_small.jpg'
 				},
@@ -68,7 +69,7 @@ export default {
 					name: 'Macbook pro 2016 4k',
 					size: '73КБ'
 				}
-			]*/
+			]
 		}
 	},
 	methods:{

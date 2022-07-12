@@ -69,6 +69,9 @@ export default {
 					&.isActive {
 						background: #F4F3F4;
 					}
+				}
+				&__item {
+					border: 0;
 				}	
 			}
 		}
