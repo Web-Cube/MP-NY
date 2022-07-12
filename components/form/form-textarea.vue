@@ -116,6 +116,14 @@ export default {
 				height: 60rem;
 			}
 		}
+
+		@include large-mobile {
+			.textarea {
+				&__field {
+					height: 48rem;
+				}
+			}
+		}
 	}
 	
 }

@@ -113,6 +113,38 @@ export default{
 				background: #F5F7FB;
 			}
 		}
+
+		@include large-tablet {
+			.item-chat {
+				&__desc {
+					max-width: 90%;
+				}
+				&__text {
+					max-width: 90%;
+				}
+			}
+		}
+
+		@include large-mobile {
+			.item-chat {
+				&__wrap {
+					padding: 15rem 10rem;
+					border-radius: 0;
+				}
+				&__name {
+					font-size: 17rem;
+				}
+				&__icon, &__avatar {
+					width: 60rem;
+					min-width: 60rem;
+					height: 60rem;
+					margin-right: 15rem;
+				}
+				&__info {
+					width: calc( 100% - 75rem );
+				}
+			}
+		}
 	}
 
 	&__wrap {
@@ -125,6 +157,10 @@ export default{
 		left: 15rem;
 		top: 50%;
 		margin-top: -12rem;
+
+		@include large-mobile {
+			display: none;
+		}
 	}
 
 	&__icon, &__avatar {
@@ -133,6 +169,12 @@ export default{
 		height: 60rem;
 		border-radius: 100%;
 		margin-right: 15rem;
+		@include large-mobile {
+			width: 40rem;
+			min-width: 40rem;
+			height: 40rem;
+			margin-right: 10rem;
+		}
 	}
 
 	&__avatar {
@@ -159,6 +201,12 @@ export default{
 		display: block;
 	}
 
+	&__name {
+		@include large-mobile {
+			font-size: 16rem;
+		}
+	}
+
 	&__head {
 		display: flex;
 		align-items: center;
@@ -169,17 +217,27 @@ export default{
 		margin-left: 13rem;
 		padding-top: 3rem;
 		color: #AEAEAE;
+		@include large-mobile {
+			padding-top: 1px;
+			font-weight: 400;
+		}
 	}
 
 	&__content {
 		display: block;
 		margin-top: 7rem;
+
+		@include large-mobile {
+			margin-top: 5rem;
+		}
 	}
 	&__desc {
-		margin-bottom: 2px;
 		font-size: 15rem;
 		display: block;
 		font-weight: 500;
+		&:not(:last-child) {
+			margin-bottom: 2px;
+		}
 	}
 
 	&__text {
@@ -197,6 +255,7 @@ export default{
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		margin-top: 4rem;
 	}
 
 }

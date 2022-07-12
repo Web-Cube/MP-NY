@@ -3,6 +3,8 @@
 		.chat-body__top
 			.chat-body__row.flex.flex_justify.flex_vertical
 				.chat-body__column.chat-body__column_left
+					.chat-body__back(@click="showSidebar")
+						svg-icon(name="prev")
 					item-chat(
 						avatar="User4.jpg"
 						name="Johnson"
@@ -23,24 +25,22 @@
 								button-medium.chat-body__action-btn(white) Delete the Chat
 		.chat-body__container
 			.chat-body__container-wrap.css-scrollbar
-				.chat-body__list(style="height: 2000px")
-					item-chat.chat-sidebar__item(
-						v-for="(message, i) in messages"
-						:key="i"
-						:name="item.name"
-						:avatar="item.avatar"
-						:time="item.time"
-						:counter="item.counter"
-						:desc="item.desc"
-						checkbox
-						button
-						:class="{isActive:number == i}"
-						@change="tabList(i)"
-						@showPanel="panel"
-					)
-						| {{item.text}}
+				.chat-body__section(v-for="(message, i) in messages" :key="i")
+					.chat-body__date(v-if="message.date")
+						.chat-body__date-text {{ message.date }}
+					.chat-body__list
+						item-chat-message.chat-body__item(
+							v-for="(item, i) in message.list"
+							:key="i"
+							:avatar="item.avatar"
+							:name="item.name"
+							:time="item.time"
+							:content="item.content"
+							:answer="item.answer"
+							:gallery="item.gallery"
+						)
 		.chat-body__bottom
-			part-chat-form.chat-body__form
+			part-chat-form.chat-body__form(:files="files")
 </template>
 
 <script>
@@ -50,8 +50,32 @@ export default {
 			type: Array,
 			default: () => ([
 			])
+		},
+	},
+	data(){
+		return{
+			/*files: [
+				{
+					img: 'create-gallery__img5_small.jpg'
+				},
+				{
+					img: 'create-gallery__img1_small.jpg'
+				},
+				{
+					img: 'create-gallery__img2_small.jpg'
+				},
+				{
+					name: 'Macbook pro 2016 4k',
+					size: '73КБ'
+				}
+			]*/
 		}
 	},
+	methods:{
+		showSidebar() {
+			document.querySelector(".section-chat__column_left").removeAttribute("style");
+		}
+	}
 }
 </script>
 
@@ -60,6 +84,10 @@ export default {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+
+	@include small-tablet {
+		padding-bottom: 50rem;
+	}
 
 	&__top {
 		padding: 15rem 0 16rem 25rem;
@@ -73,6 +101,43 @@ export default {
 			position: absolute;
 			left: 0;
 			bottom: 0;
+		}
+
+		@include small-tablet {
+			border-top: 1px solid $light-gray;
+			border-bottom: 1px solid $light-gray;
+			padding: 14rem var(--wrapper-offset);
+			&:before {
+				display: none;
+			}
+		}
+	}
+	&__column {
+		&_left {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&__back {
+		width: 22rem;
+		height: 22rem;
+		margin-right: 8rem;
+		margin-left: -5rem;
+		cursor: pointer;
+		flex-shrink: 0;
+		fill: #464646;
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		@include min-large-tablet {
+			display: none;
+		}
+
+		@include large-mobile {
+			
 		}
 	}
 	&__container {
@@ -89,14 +154,37 @@ export default {
 			height: 100%;
 			overflow-x: hidden;
 			overflow-y: auto;
-			padding-right: 8rem;
+			padding-right: 10rem;
 			padding-left: 25rem;
+		}
+
+		@include small-tablet {
+			margin-top: 20rem;
+			&-wrap {
+				padding: 10rem calc( var(--wrapper-offset) + 10rem ) 10rem var(--wrapper-offset);
+			}
 		}
 	}
 
 	&__btn {
 		&:not(:last-child) {
 			margin-right: 10rem;
+		}
+
+		@include large-mobile {
+			padding: 0;
+			width: 40rem;
+			&:not(:last-child) {
+				margin-right: 5rem;
+			}
+			.button-medium {
+				&__icon {
+					margin-right: 0;
+				}
+				&__text {
+					display: none;
+				}
+			}
 		}
 	}
 	&__action {
@@ -117,6 +205,82 @@ export default {
 
 	&__bottom {
 		padding: 24rem 0 20rem 25rem;
+
+		@include small-tablet {
+			padding: 5rem var(--wrapper-offset);
+			margin-top: 20rem;
+		}
+
+		@include large-mobile {
+			border-top: 1px solid $light-gray;
+		}
+	}
+
+	&__section {
+		&:not(:first-child) {
+			margin-top: 40rem;
+		}
+
+		@include large-mobile {
+			&:not(:first-child) {
+				margin-top: 30rem;
+			}
+		}
+	}
+
+	&__date {
+		display: flex;
+		overflow: hidden;
+		justify-content: center;
+		&-text {
+			position: relative;
+			color: $gray;
+			&:before, &:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 50%;
+				height: 1px;
+				width: 1000px;
+				background: $light-gray;
+			}
+			&:before {
+				right: 100%;
+				margin-right: 20rem;
+			}
+			&:after {
+				left: 100%;
+				margin-left: 20rem;
+			}
+		}
+
+		@include large-mobile {
+			&-text {
+				&:before {
+					margin-right: 15rem;
+				}
+				&:after {
+					margin-left: 15rem;
+				}
+			}
+		}
+	}
+
+	&__list {
+		&:not(:first-child) {
+			margin-top: 40rem;
+		}
+
+		@include large-mobile {
+			&:not(:first-child) {
+				margin-top: 30rem;
+			}
+		}
+	}
+	&__item {
+		&:not(:first-child) {
+			margin-top: 30rem;
+		}
 	}
 }
 </style>
