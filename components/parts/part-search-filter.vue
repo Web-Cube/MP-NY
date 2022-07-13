@@ -29,6 +29,7 @@ export default {
 
 	@include large-tablet {
 		flex-wrap: wrap;
+		height: auto;
 	}
 
 	@include small-tablet {
@@ -44,6 +45,10 @@ export default {
 
 		@include large-tablet {
 			margin-right: 0;
+		}
+
+		@include large-tablet {
+			height: 74rem;
 		}
 	}
 

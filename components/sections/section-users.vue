@@ -3,8 +3,12 @@
 		.section-users__head.flex.flex_vertical.flex_justify
 			.section-users__head-column.section-users__head-column_left
 				h1.section-users__title.h2.h2_big {{title}}
+				button-docs.mobile-visible(to="#") Download EXCL
 			.section-users__head-column.section-users__head-column_right.flex.flex_vertical
-				form-select.section-users__sort(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
+				.section-users__sort
+					form-checkbox.section-users__sort-checkbox
+						p.color-gray Select all
+					form-select.section-users__sort-select(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
 				button-switcher.section-users__switcher(:items="switchers" blue)
 		part-search-filter.annoucement-list__filter(disabled)
 			form-input.search-filter__field(
@@ -154,6 +158,11 @@ export default {
 				&_right {
 					margin-top: 15rem;
 				}
+				&_left {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+				}
 			}
 		}
 	}
@@ -174,10 +183,29 @@ export default {
 
 	&__sort {
 		margin-right: 20rem;
+		display: flex;
+		align-items: center;
+		@include min-large-mobile {
+			&-checkbox {
+				display: none;
+			}
+		}
+
+		@include large-mobile {
+			order: 2;
+			margin-top: 15rem;
+			width: 100%;
+			justify-content: space-between;
+			margin-right: 0;
+		}
 	}
 
 	&__bottom {
 		margin-top: 40rem;
+
+		@include large-mobile {
+			display: none;
+		}
 	}
 
 	&__btn {

@@ -106,5 +106,20 @@ export default {
 			}
 		}
 	}
+
+	&__switcher {
+		margin-left: 10rem;
+	}
+
+	@include large-tablet {
+		th, td {
+			&:first-child {
+				width: 35rem;
+			}
+			&:nth-child(3) {
+				display: none;
+			}
+		}
+	}
 }
 </style>
