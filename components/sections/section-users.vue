@@ -10,6 +10,7 @@
 						p.color-gray Select all
 					form-select.section-users__sort-select(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
 				button-switcher.section-users__switcher(:items="switchers" blue)
+		button-primary.section-users__btn-add.mobile-visible(border icon="plusBig" v-if="moderator") Add moderator
 		part-search-filter.annoucement-list__filter(disabled)
 			form-input.search-filter__field(
 				name="name"
@@ -47,7 +48,7 @@
 			.section-users__bottom-column
 				button-primary.section-users__btn(blue) Load more
 			.section-users__bottom-column.flex
-				button-primary.section-users__btn(gray icon="plusBig" v-if="add") Add moderator
+				button-primary.section-users__btn(gray icon="plusBig" v-if="moderator") Add moderator
 				button-primary.section-users__btn(gray icon="download" to="#") Download base EXCL
 		transition(name="fade")
 			part-annoucement-panel.section-users__panel(v-if="panelOpen" @closePanel="panelOpen = false" modalName="modal-panel-users")
@@ -237,6 +238,12 @@ export default {
 		@include large-mobile {
 			margin-top: 10rem;
 		}
+	}
+
+	&__btn-add {
+		margin-bottom: -5rem;
+		margin-top: 15rem;
+		width: 100%;
 	}
 }
 </style>
