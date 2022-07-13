@@ -134,6 +134,15 @@ export default {
 		}
 	}
 
+	&_white {
+		color: #fff;
+		.link-arrow {
+			&__icon {
+				stroke: #fff;
+			}
+		}
+	}
+
 	&__icon {
 		fill: none;
 		stroke: $gray;
@@ -143,6 +152,7 @@ export default {
 		flex-shrink: 0;
 		margin-left: 4rem;
 		transition: ease .2s;
+		margin-top: 1px;
 	}
 
 	&__text {

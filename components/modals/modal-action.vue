@@ -14,12 +14,7 @@
 			button-close.modal__close(@click.native='close()')
 		h3.modal-panel__title.h3 {{ title }}
 			.modal-panel__list
-				.modal-panel__item
-					button-border.modal-panel__btn(icon="noneUser" BigIcon gray) Block
-				.modal-panel__item
-					button-border.modal-panel__btn(icon="closeCircle" BigIcon gray) Complaint
-				.modal-panel__item
-					button-border.modal-panel__btn(icon="delete" BigIcon gray) Delete the Chat
+				slot
 
 </template>
 <script>

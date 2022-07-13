@@ -40,6 +40,12 @@
 					button-medium.annoucement-panel__btn(icon="setting" blue small) Setting
 					button-medium.annoucement-panel__btn(icon="cross" blue small) Deactivate
 		modal-panel
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="zipper" blue BigIcon) Sale faster
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="chatBorder" BigIcon gray) Chat
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="cross" BigIcon gray) Deactivate
 </template>
 
 <script>

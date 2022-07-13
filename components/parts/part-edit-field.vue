@@ -23,7 +23,7 @@
 						.edit-field__link.color-blue(@click="showEdit") Edit
 				.edit-field__nav.mobile-visible
 					.edit-field__nav-item
-						.edit-field__link.color-blue(@click="$bvModal.show(`${modalName}`)") Edit
+						.edit-field__link.color-blue(@click="$bvModal.show(`${modalName}`)") Edit 
 		modal-field(:id="modalName" :title="groupName")
 			.modal-field__list
 				.modal-field__item

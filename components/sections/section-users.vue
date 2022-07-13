@@ -6,7 +6,7 @@
 				button-docs.mobile-visible(to="#") Download EXCL
 			.section-users__head-column.section-users__head-column_right.flex.flex_vertical
 				.section-users__sort
-					form-checkbox.section-users__sort-checkbox
+					form-checkbox.section-users__sort-checkbox(@change.native="panel")
 						p.color-gray Select all
 					form-select.section-users__sort-select(label="Sort by" :items="['Newest', 'Popular']" value="Newest" noBorder)
 				button-switcher.section-users__switcher(:items="switchers" blue)
@@ -50,9 +50,14 @@
 				button-primary.section-users__btn(gray icon="plusBig" v-if="add") Add moderator
 				button-primary.section-users__btn(gray icon="download" to="#") Download base EXCL
 		transition(name="fade")
-			part-annoucement-panel.section-users__panel(v-if="panelOpen" @closePanel="panelOpen = false")
+			part-annoucement-panel.section-users__panel(v-if="panelOpen" @closePanel="panelOpen = false" modalName="modal-panel-users")
 				button-medium.annoucement-panel__btn(icon="noneUser" blue small) Ban
 				button-medium.annoucement-panel__btn(icon="user" blue small) Check
+		modal-panel(id="modal-panel-users")
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="user" blue BigIcon) Check
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="noneUser" BigIcon gray) Ban
 </template>
 
 <script>
@@ -133,11 +138,7 @@ export default {
 	},
 	methods: {
 	    panel() {
-	    	if ( window.innerWidth > 580 ) {
-	    		this.panelOpen = true;
-	    	} else {
-	    		this.$root.$emit('bv::show::modal', 'modal-panel')
-	    	}
+	    	this.panelOpen = true;
 	    },
 	},
 }
@@ -147,8 +148,12 @@ export default {
 .section-users{
 	padding: 30rem 0;
 
+	@include small-tablet {
+		padding-bottom: 70rem;
+	}
+
 	@include large-mobile {
-		padding: 20rem 0;
+		padding-top: 20rem;
 	}
 
 	&__head {
@@ -179,6 +184,11 @@ export default {
 
 	&__table {
 		margin-top: 45rem;
+
+		@include large-mobile {
+			margin-top: 0;
+			padding-top: 5rem;
+		}
 	}
 
 	&__sort {
@@ -197,6 +207,7 @@ export default {
 			width: 100%;
 			justify-content: space-between;
 			margin-right: 0;
+			padding: 0 5rem 0 11rem;
 		}
 	}
 
@@ -222,6 +233,10 @@ export default {
 		margin-left: 0;
 		margin-right: 0;
 		margin-top: 30rem;
+
+		@include large-mobile {
+			margin-top: 10rem;
+		}
 	}
 }
 </style>

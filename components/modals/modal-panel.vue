@@ -1,6 +1,6 @@
 <template lang="pug">
 	b-modal(
-		id="modal-panel" 
+		:id="id" 
 		size="users" 
 		modal-class="modal-panel" 
 		body-class="modal-panel__body" 
@@ -13,12 +13,7 @@
 			button-close.modal__close(@click.native='close()')
 		h3.modal-panel__title.h3 {{ title }}
 			.modal-panel__list
-				.modal-panel__item
-					button-border.modal-panel__btn(icon="zipper" blue BigIcon) Sale faster
-				.modal-panel__item
-					button-border.modal-panel__btn(icon="chatBorder" BigIcon gray) Chat
-				.modal-panel__item
-					button-border.modal-panel__btn(icon="cross" BigIcon gray) Deactivate
+				slot
 		template(#modal-footer='{ close }')
 			button-border.modal-panel__cancel(gray @click.native='close()') Cancel
 
@@ -30,6 +25,10 @@ export default{
 			type: String,
 			default: 'Select an action'
 		},
+		id: {
+			type: String,
+			default: 'modal-panel'
+		}
 	}
 }
 </script>
@@ -50,7 +49,7 @@ export default{
 	&__footer {
 		padding: 0;
 		border: 0;
-		margin-top: 45rem;
+		margin-top: 30rem;
 	}
 
 	&__btn {
