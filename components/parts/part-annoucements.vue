@@ -36,6 +36,9 @@
 				)
 			transition(name="fade")
 				part-annoucement-panel.annoucements__panel(v-if="panelOpen" @closePanel="panelOpen = false")
+					button-medium.annoucement-panel__btn(icon="delete" blue small) Delete
+					button-medium.annoucement-panel__btn(icon="setting" blue small) Setting
+					button-medium.annoucement-panel__btn(icon="cross" blue small) Deactivate
 		modal-panel
 </template>
 

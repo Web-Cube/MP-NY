@@ -139,6 +139,10 @@ export default {
 					stroke: none;
 					fill: #fff;
 				}
+				&_user {
+					stroke: none;
+					fill: #fff;
+				}
 			}
 		}
 		&:hover {
@@ -306,6 +310,10 @@ export default {
 				height: 2rem;
 				background: $default;
 			}
+		}
+		&_user {
+			stroke: none;
+			fill: $default;
 		}
 	}
 }

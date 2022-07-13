@@ -5,6 +5,34 @@
 				h1.annoucement-list__title-text.h2.h2_big {{title}}
 				span.annoucement-list__title-counter.h3 ({{counter}})
 			button-switcher.annoucement-list__switcher(:items="switchers" blue)
+		part-search-filter.annoucement-list__filter(disabled)
+			form-input.search-filter__field(
+				name="name"
+				label="Name"
+			)
+			form-input.search-filter__field(
+				name="phone"
+				type="tel"
+				label="Phone"
+			)
+			form-input.search-filter__field(
+				name="id"
+				label="ID"
+			)
+			form-select.search-filter__field(
+				value="Categories"
+				name="category"
+				:items="['Category 1', 'Category 2', 'Category 3']"
+			)
+			form-input.search-filter__field(
+				name="cost"
+				label="Cost"
+			)
+			form-input.search-filter__field(
+				name="date"
+				label="Date"
+			)
+		part-annoucement-table.annoucement-list__table
 
 </template>
 
@@ -86,6 +114,14 @@ export default {
 			margin-top: 15rem;
 			width: 100%;
 		}
+	}
+
+	&__filter {
+		margin-top: 40rem;
+	}
+
+	&__table {
+		margin-top: 50rem;
 	}
 }
 </style>

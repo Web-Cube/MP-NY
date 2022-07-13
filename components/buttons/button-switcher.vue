@@ -31,6 +31,10 @@ export default {
 		blue: {
 			type: Boolean,
 			default: false
+		},
+		light: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -38,6 +42,7 @@ export default {
 		Mods(){
 			return {
 				'button-switcher_blue': this.blue,
+				'button-switcher_light': this.light,
 			}
 		}
 	}
@@ -108,6 +113,32 @@ export default {
 					font-size: 15rem;
 					padding: 5rem 17rem;
 					height: 38rem;
+				}
+			}
+		}
+	}
+
+	&_light {
+		border: 0;
+		padding: 0;
+		.button-switcher {
+			&__item {
+				&:not(:last-child) {
+					margin-right: 10rem;
+				}
+			}
+			&__btn {
+				height: 49rem;
+				padding: 0 30rem;
+				background: #F4F3F4;
+				font-size: 14rem;
+				font-weight: 600;
+				color: #9A9A9A;
+			}
+			&__input {
+				&:checked + .button-switcher__btn {
+					color: #fff;
+					background: $blue;
 				}
 			}
 		}

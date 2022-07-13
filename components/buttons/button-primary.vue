@@ -111,6 +111,10 @@ export default {
 			background: #4257C7;
 			color: #fff;
 		}
+		&:disabled {
+			background: $light-gray;
+			opacity: 1!important;
+		}
 	}
 	&_border {
 		background: #fff;
@@ -161,6 +165,16 @@ export default {
 			fill: #7F40BD;
 			width: 14rem;
 			height: 14rem;
+		}
+		&_plusBig {
+			width: 12rem;
+			height: 12rem;
+			margin-right: 15rem;
+		}
+
+		&_download {
+			width: 20rem;
+			height: 20rem;
 		}
 
 		@include large-mobile {

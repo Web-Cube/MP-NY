@@ -1,7 +1,18 @@
 <template lang="pug">
-	.input(:class="Mods")
+	.input(:class="Mods" ref="input")
 		textarea.input__field.input__field_textarea(:name="name" :value="value" :placeholder="placeholder" v-if="textarea")
-		input.input__field(:type="type" :name="name" :value="value" :placeholder="placeholder" :disabled="disabled" :maxlength="maxlength" v-else)
+		input.input__field(
+			:type="type"
+			:name="name"
+			:id="name"
+			:value="value" 
+			:placeholder="placeholder" 
+			:disabled="disabled" 
+			:maxlength="maxlength" 
+			@blur="valid" 
+			v-else
+		)
+		label.input__label(:for="name") {{label}}
 		.input__clear(v-if="adress")
 			svg-icon(name="closeBig")
 		a.input__btn-map.p(:href="mapLink" target="_blank" v-if="adress") Map
@@ -20,6 +31,10 @@ export default {
 			default: ''
 		},
 		name: {
+			type: String,
+			default: ''
+		},
+		label: {
 			type: String,
 			default: ''
 		},
@@ -71,9 +86,20 @@ export default {
 				'is-separator': this.separator,
 				'input_adress': this.adress,
 				'input_big': this.big,
+				'input_label': this.label,
 			}
 		}
 	},
+	methods: {
+		valid(e) {
+			var value = e.currentTarget.value;
+			if ( value.length > 0 ) {
+				this.$refs.input.classList.add('input_sucsess');
+			} else {
+				this.$refs.input.classList.remove('input_sucsess');
+			}
+		},
+	}
 }
 </script>
 
@@ -152,6 +178,26 @@ export default {
 		}
 	}
 
+	&_label {
+		.input {
+			&__field {
+				padding-top: 20rem;
+			}
+		}
+	}
+
+	&_sucsess {
+		.input {
+			&__label {
+				font-size: 14rem;
+				line-height: 1.2;
+				top: 18rem;
+				color: rgba($default, .3);
+				font-weight: 600;
+			}
+		}
+	}
+
 	&__field {
 		width: 100%;
 		height: 60rem;
@@ -184,6 +230,14 @@ export default {
 			padding-top: 20rem;
 			overflow: hidden;
 			resize: none;
+		}
+
+		&:focus + .input__label {
+			font-size: 14rem;
+			line-height: 1.2;
+			top: 18rem;
+			color: rgba($default, .3);
+			font-weight: 600;
 		}
 
 		@include large-mobile {
@@ -284,5 +338,14 @@ export default {
 		align-items: center;
 	}
 	
+	&__label {
+		position: absolute;
+		left: 20rem;
+		top: 28rem;
+		font-size: 17rem;
+		line-height: 1;
+		color: $gray;
+		transition: ease .15s;
+	}
 }
 </style>
