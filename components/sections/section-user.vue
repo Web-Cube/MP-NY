@@ -7,7 +7,47 @@
 					:list="userList"
 				)
 			.section-user__column.section-user__column_right
-				.section-user__publications
+				.section-user__settings(v-if="moderator")
+					.section-user__settings-list
+						.section-user__settings-item(v-for="(item, i) in settings" :key="i")
+							.section-user__settings-title.h3 {{ item.title }}
+							part-edit-fields.section-user__settings-field(
+								v-for="(field, i) in item.fields"
+								:key="i"
+								:label="field.label"
+								:list="field.list"
+								:placeholder="field.placeholder"
+								:modalName="field.modalName"
+								:groupName="field.groupName"
+								:icon="field.icon"
+								v-if="field.option == 'groupFields'"
+							)
+							part-edit-field.section-user__settings-field(
+								v-for="(field, i) in item.fields"
+								:key="i"
+								:label="field.label"
+								:value="field.value"
+								:name="field.name"
+								:type="field.type"
+								:placeholder="field.placeholder"
+								:modalName="field.modalName"
+								:groupName="field.groupName"
+								v-if="!field.option"
+							)
+							part-edit-select.section-user__settings-field(
+								v-for="(field, i) in item.fields"
+								:key="i"
+								:label="field.label"
+								:value="field.value"
+								:name="field.name"
+								:type="field.type"
+								:topPosition="field.topPosition"
+								:placeholder="field.placeholder"
+								:modalName="field.modalName"
+								:groupName="field.groupName"
+								v-if="field.option == 'select'"
+							)
+				.section-user__publications(v-else)
 					h3.section-user__title.h3 {{title}}
 					part-back-nav.section-user__nav(:nav="nav" mobile mobileBlue)
 					.section-user__publications-list.flex
@@ -38,7 +78,16 @@ export default {
 			type: String,
 			default: ""
 		},
+		moderator: {
+			type: Boolean,
+			default: false
+		},
 		userList: {
+			type: Array,
+			default: () => ([
+			]),
+		},
+		settings: {
 			type: Array,
 			default: () => ([
 			]),
@@ -179,6 +228,37 @@ export default {
 			}
 			&-item {
 				margin-top: 15rem;
+			}
+		}
+	}
+
+	&__settings {
+		&-item {
+			&:not(:first-child) {
+				margin-top: 60rem;
+			}
+			@include large-mobile {
+				&:not(:first-child) {
+					margin-top: 40rem;
+				}
+			}
+		}
+		&-field {
+			padding: 20rem;
+			margin-left: -20rem;
+			border-bottom: 1px solid $light-gray;
+
+			@include small-desktop {
+				padding-right: 0;
+			}
+
+			@include large-tablet {
+				padding: 15rem 0;
+				margin-left: 0;
+			}
+
+			@include large-mobile {
+				padding: 27rem 0 20rem 0;
 			}
 		}
 	}
