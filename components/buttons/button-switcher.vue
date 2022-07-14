@@ -164,5 +164,38 @@ export default {
 			}
 		}
 	}
+
+	@include large-mobile {
+		margin-left: -15rem;
+		margin-right: -15rem;
+		padding: 0;
+		border: 0;
+		overflow: hidden;
+		border-radius: 0;
+		&__list {
+			padding-left: 15rem;
+			overflow-x: auto;
+			overflow-y: hidden;
+			padding-bottom: 40px;
+			margin-bottom: -40px;
+		}
+		&__item {
+			padding-top: 2px;
+			padding-bottom: 2px;
+			border-top: 1px solid $light-gray;
+			border-bottom: 1px solid $light-gray;
+			&:first-child {
+				border-left: 1px solid $light-gray;
+				border-radius: 10rem 0 0 10rem;
+				padding-left: 2px;
+			}
+			&:last-child {
+				border-right: 1px solid $light-gray;
+				border-radius: 0 10rem 10rem 0;
+				padding-right: 2px;
+				margin-right: 15rem;
+			}
+		}
+	}
 }
 </style>

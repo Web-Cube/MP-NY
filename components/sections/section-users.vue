@@ -199,7 +199,7 @@ export default {
 
 	&__switcher {
 		@include large-mobile {
-			width: 100%;
+			width: calc( 100% + 30rem );
 		}
 	}
 
