@@ -33,12 +33,17 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		mobileBlue: {
+			type: Boolean,
+			default: false
+		},
 	},
 	computed: {
 		Mods(){
 			return {
 				'back-nav_blue': this.blue,
 				'back-nav_mobile': this.mobile,
+				'back-nav_mobile-blue': this.mobileBlue,
 			}
 		}
 	}
@@ -73,6 +78,17 @@ export default {
 				&__item {
 					border: 0;
 				}	
+			}
+			&-blue {
+				.back-nav {
+					&__btn {
+						color: $default;
+						&.isActive {
+							background: $blue;
+							color: #fff;
+						}
+					}
+				}
 			}
 		}
 		&:not(.back-nav_mobile) {

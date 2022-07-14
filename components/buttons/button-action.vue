@@ -35,6 +35,10 @@ export default {
 		blue: {
 			type: Boolean,
 			default: false,
+		},
+		circle: {
+			type: Boolean,
+			default: false,
 		}
 	},
 
@@ -44,6 +48,7 @@ export default {
 				'button-action_gray' : this.gray,
 				'button-action_small' : this.small,
 				'button-action_blue' : this.blue,
+				'button-action_circle' : this.circle,
 			}
 		}
 	}
@@ -61,6 +66,7 @@ export default {
 	background: none;
 	border-radius: 10rem;
 	font-size: 16rem;
+	cursor: pointer;
 
 	&_gray{
 		color: $gray;
@@ -103,6 +109,19 @@ export default {
 	@include large-mobile {
 		width: 36rem;
 		height: 36rem;
+	}
+	&_circle {
+		width: 50rem;
+		height: 50rem;
+		border-radius: 100%;
+		background: $blue;
+		fill: #fff;
+		.button-action {
+			&__icon {
+				max-width: 23rem;
+				max-height: 15rem;
+			}
+		}
 	}
 	&_small {
 		width: auto;
@@ -156,6 +175,19 @@ export default {
 			stroke-width: 1px;
 			transform: rotate(90deg);
 		}
+		&_sliders {
+			fill: none;
+			stroke: #fff;
+			stroke-width: 2;
+			max-width: 23rem;
+			max-height: 15rem;
+		}
+
+		&_arrowRight {
+			fill: none;
+			stroke: $default;
+			stroke-width: 2px;
+		}
 
 		@include large-mobile {
 			max-width: 16rem;
@@ -171,6 +203,11 @@ export default {
 			&_heart {
 				max-width: 18rem;
 				max-height: 16rem;
+			}
+			&_arrowRight {
+				max-width: 9rem;
+				max-height: 9rem;
+				stroke-width: 3px;
 			}
 		}
 	}

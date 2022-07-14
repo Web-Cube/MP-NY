@@ -50,10 +50,12 @@
 			.section-users__bottom-column.flex
 				button-primary.section-users__btn(gray icon="plusBig" v-if="moderator") Add moderator
 				button-primary.section-users__btn(gray icon="download" to="#") Download base EXCL
-		transition(name="fade")
-			part-annoucement-panel.section-users__panel(v-if="panelOpen" @closePanel="panelOpen = false" modalName="modal-panel-users")
-				button-medium.annoucement-panel__btn(icon="noneUser" blue small) Ban
-				button-medium.annoucement-panel__btn(icon="user" blue small) Check
+		.section-users__panel-wrap
+			button-action.section-users__btn-filter(circle icon="sliders")
+			transition(name="fade")
+				part-annoucement-panel.section-users__panel(v-if="panelOpen" @closePanel="panelOpen = false" modalName="modal-panel-users")
+					button-medium.annoucement-panel__btn(icon="noneUser" blue small) Ban
+					button-medium.annoucement-panel__btn(icon="user" blue small) Check
 		modal-panel(id="modal-panel-users")
 			.modal-panel__item
 				button-border.modal-panel__btn(icon="user" blue BigIcon) Check
@@ -133,6 +135,27 @@ export default {
 					phone: '+7 747 609 99 95',
 					date: '11.04.22',
 					id: '114577854'
+				},
+				{
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					date: '11.04.22',
+					id: '414575854'
+				},
+				{
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					date: '11.04.22',
+					id: '114335854'
+				},
+				{
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					date: '11.04.22',
+					id: '114577854'
 				}
 			]
 		}
@@ -148,6 +171,7 @@ export default {
 <style lang="scss">
 .section-users{
 	padding: 30rem 0;
+	position: relative;
 
 	@include small-tablet {
 		padding-bottom: 70rem;
@@ -230,13 +254,40 @@ export default {
 		}
 	}
 
+	&__btn-filter {
+		@include min-small-tablet {
+			display: none;
+		}
+	}
+
 	&__panel {
 		margin-left: 0;
 		margin-right: 0;
-		margin-top: 30rem;
+		position: static;
+
+		&-wrap {
+			position: sticky;
+			bottom: 30rem;
+			margin-top: 30rem;
+			z-index: 50;
+		}
+
+		@include small-tablet {
+			width: 100%;
+			margin-top: 10rem;
+			&-wrap {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-end;
+				margin-top: -20rem;
+				bottom: 63rem;
+			}
+		}
 
 		@include large-mobile {
-			margin-top: 10rem;
+			&-wrap {
+				margin-top: -50rem;
+			}
 		}
 	}
 

@@ -44,6 +44,10 @@ export default {
 		verysmall: {
 			type: Boolean,
 			default: false
+		},
+		borderRed: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -55,7 +59,8 @@ export default {
 				'button-primary_small': this.small,
 				'button-primary_blue': this.blue,
 				'button-primary_border': this.border,
-				'button-primary_verysmall': this.verysmall
+				'button-primary_verysmall': this.verysmall,
+				'button-primary_border-red': this.borderRed
 			}
 		}
 	}
@@ -123,6 +128,16 @@ export default {
 	&_verysmall {
 		height: 32rem;
 		font-weight: 500;
+	}
+	&_border-red {
+		background: none;
+		border: 1px solid $red;
+		color: $red;
+		font-size: 14rem;
+		&:hover {
+			color: #fff;
+			background: $red;
+		}
 	}
 	&:disabled {
 		opacity: .4;
