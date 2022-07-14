@@ -12,7 +12,10 @@
 					:checked="item.checked"
 				)
 				span.button-switcher__btn
-					.button-switcher__text(v-html="item.text")
+					.button-switcher__text.button-switcher__text_black( v-if="item.counter")
+						| {{item.text}} 
+						span.color-gray ({{item.counter}})
+					.button-switcher__text(v-html="item.text" v-else)
 
 </template>
 
@@ -35,7 +38,11 @@ export default {
 		light: {
 			type: Boolean,
 			default: false
-		}
+		},
+		/*counter: {
+			type: Boolean,
+			default: false
+		}*/
 	},
 
 	computed: {
@@ -91,6 +98,12 @@ export default {
 		}
 	}
 
+	&__text {
+		&_black {
+			color: $default;
+		}
+	}
+
 	&_blue {
 		.button-switcher {
 			&__btn {
@@ -102,6 +115,14 @@ export default {
 				&:checked + .button-switcher__btn {
 					color: #fff;
 					background: $blue;
+					.button-switcher {
+						&__text_black {
+							color: #fff;
+							.color-gray {
+								color: #fff;
+							}
+						}
+					}
 				}
 			}
 		}

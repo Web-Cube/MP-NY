@@ -8,11 +8,15 @@
 							:class="item.class"
 							:to="item.to"
 							v-if="item.to !== '' ? item.to : false"
-						) {{item.text}}
+						)
+							| {{item.text}}
+							span.back-nav__counter(v-if="item.counter") {{item.counter}}
 						.back-nav__btn(
 							:class="item.class"
 							v-else
-						) {{item.text}}
+						)
+							| {{item.text}}
+							span.back-nav__counter(v-if="item.counter") {{item.counter}}
 			.back-nav__column.back-nav__column_right
 				slot
 </template>
@@ -176,6 +180,9 @@ export default {
 		&.isActive, &.nuxt-link-active {
 			color: $default;
 			border-color: $default;
+			.back-nav__counter {
+				color: $blue;
+			}
 		}
 
 		@include large-mobile {
@@ -202,6 +209,11 @@ export default {
 		&.color-gray {
 			color: #9A9A9A;
 		}
+	}
+
+	&__counter {
+		color: $gray;
+		margin-left: 5rem;
 	}
 }
 </style>
