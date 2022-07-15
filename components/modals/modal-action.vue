@@ -46,6 +46,10 @@ export default{
 	&__btn {
 		justify-content: flex-start;
 		width: 100%;
+
+		&.button-primary {
+			justify-content: center;
+		}
 	}
 
 	&__list {

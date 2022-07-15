@@ -14,13 +14,15 @@
 			span.item-chat__info
 				span.item-chat__head
 					span.item-chat__name.p.b {{name}}
-					span.item-chat__time {{time}}
+					span.item-chat__status(v-if="status") {{status}}
+					span.item-chat__time(v-if="small == false") {{time}}
 				span.item-chat__body
 					span.item-chat__content
 						span.item-chat__desc(v-if="desc") {{desc}}
 						span.item-chat__text
 							slot
 					span.item-chat__counter(v-if="counter") {{counter}}
+					span.item-chat__time(v-if="small == true") {{time}}
 </template>
 
 <script>
@@ -37,6 +39,10 @@ export default{
 		time: {
 			type: String,
 			default: "07:00 am"
+		},
+		status: {
+			type: String,
+			default: ""
 		},
 		desc: {
 			type: String,
@@ -58,12 +64,17 @@ export default{
 			type: Boolean,
 			default: false
 		},
+		small: {
+			type: Boolean,
+			default: false
+		},
 	},
 
 	computed: {
 		Mods(){
 			return {
 				'item-chat_btn': this.button,
+				'is-small': this.small,
 			}
 		}
 	}
@@ -111,6 +122,24 @@ export default{
 		&:hover, &.isActive {
 			.item-chat__wrap {
 				background: #F5F7FB;
+			}
+		}
+
+		&.is-small {
+			.item-chat {
+				&__wrap {
+					padding-left: 20rem;
+					padding-right: 4px;
+				}
+				&__content {
+					margin-top: 5rem;
+				}
+				&__desc {
+					max-width: 100%;
+				}
+				&__body {
+					align-items: flex-end;
+				}
 			}
 		}
 
@@ -256,6 +285,17 @@ export default{
 		align-items: center;
 		justify-content: center;
 		margin-top: 4rem;
+	}
+
+	&__status {
+		display: inline-flex;
+		align-items: center;
+		height: 23rem;
+		padding: 0 7rem;
+		background: #F4F3F4;
+		border-radius: 3px;
+		font-size: 13rem;
+		color: $gray;
 	}
 
 }

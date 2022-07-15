@@ -3,14 +3,26 @@
 		.chat-body__top
 			.chat-body__row.flex.flex_justify.flex_vertical
 				.chat-body__column.chat-body__column_left
-					.chat-body__back(@click="showSidebar")
+					component.chat-body__back(
+						:is="to !== '' ? 'NuxtLink' : 'div'"
+						:to="to !== '' ? to : false"
+						@click="showSidebar"
+					)
 						svg-icon(name="prev")
 					item-chat(
-						avatar="User4.jpg"
-						name="Johnson"
-						desc="Macbook pro 2016 4k"
+						:avatar="avatar"
+						:name="name"
+						:desc="desc"
+						:time="time"
 					)
-				.chat-body__column.chat-body__column_right.flex
+						| {{text}}
+				.chat-body__column.chat-body__column_right.flex(v-if="moderator")
+					.chat-body__buttons.flex
+						button-primary.chat-body__btn.mobile-hidden(gray)
+							span.color-gray Close chat
+						button-primary.chat-body__btn.mobile-hidden(blue) Waiting for answer
+						button-medium.chat-body__more.mobile-visible(icon="dotsRotate" white square v-b-modal.modal-action)
+				.chat-body__column.chat-body__column_right.flex(v-else)
 					.chat-body__buttons.flex
 						button-medium.chat-body__btn(gray icon="infoCircle" v-b-modal.modal-safety)
 							span.p For your safety
@@ -42,11 +54,46 @@
 						)
 		.chat-body__bottom
 			part-chat-form.chat-body__form(:files="files")
+
+		modal-action(title="The ad is activated")
+			.modal-action__item
+				button-primary.modal-action__btn(blue) Waiting for answer
+			.modal-panel__item
+				button-primary.modal-action__btn(gray)
+					span.color-gray Close chat
 </template>
 
 <script>
 export default {
 	props: {
+		avatar: {
+			type: String,
+			default: ""
+		},
+		name: {
+			type: String,
+			default: ""
+		},
+		desc: {
+			type: String,
+			default: ""
+		},
+		time: {
+			type: String,
+			default: ""
+		},
+		text: {
+			type: String,
+			default: ""
+		},
+		to: {
+			type: String,
+			default: ""
+		},
+		moderator: {
+			type: Boolean,
+			default: false
+		},
 		messages: {
 			type: Array,
 			default: () => ([
@@ -74,7 +121,9 @@ export default {
 	},
 	methods:{
 		showSidebar() {
-			document.querySelector(".section-chat__column_left").removeAttribute("style");
+			if ( document.querySelector(".section-chat__column_left") ) {
+				document.querySelector(".section-chat__column_left").removeAttribute("style");
+			}
 		}
 	}
 }
@@ -170,6 +219,11 @@ export default {
 	&__btn {
 		&:not(:last-child) {
 			margin-right: 10rem;
+		}
+
+		&.button-primary {
+			padding-left: 30rem;
+			padding-right: 30rem;
 		}
 
 		@include large-mobile {
@@ -282,6 +336,10 @@ export default {
 		&:not(:first-child) {
 			margin-top: 30rem;
 		}
+	}
+
+	&__more {
+		margin-right: -10rem;
 	}
 }
 </style>

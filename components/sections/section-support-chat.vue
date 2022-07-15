@@ -267,6 +267,9 @@ export default {
 		margin-right: -32px;
 		padding-left: var(--wrapper-offset);
 		padding-right: var(--wrapper-offset);
+		@include min-small-tablet {
+			display: none;
+		}
 		@include large-mobile {
 			padding-top: 10rem;
 			overflow: hidden;
@@ -282,6 +285,9 @@ export default {
 	}
 
 	&__sidebar {
+		@include min-small-tablet {
+			display: none!important;
+		}
 		@include small-tablet {
 			padding-bottom: 0!important;
 			margin-top: 10rem;

@@ -1,29 +1,28 @@
 <template lang="pug">
-	section.section-chat
-		.section-chat__row
-			.section-chat__column.section-chat__column_left
-				part-chat-sidebar.section-chat__sidebar(:list="list" :title="sidebarTitle")
-			.section-chat__column.section-chat__column_right
-				part-chat-body.section-chat__body(
+	section.chat-moderator
+		.chat-moderator__row
+			.chat-moderator__column.chat-moderator__column_left
+				part-chat-sidebar.chat-moderator__sidebar(
+					:list="list"
+					:title="sidebarTitle"
+					search="false"
+					moderator
+					backLink="/support-chat"
+					:checkbox="false"
+					small
+
+					statText="Register"
+					:statCounter="5"
+				)
+			.section-chat__column.chat-moderator__column_right
+				part-chat-body.chat-moderator__body(
 					:messages="messages"
 					avatar="User4.jpg"
 					name="Johnson"
-					time="07:00 am"
-					desc="Macbook pro 2016 4k"
+					text="Was 20 minutes ago"
+					moderator
+					to="/support-chat"
 				)
-
-		modal-safety
-			p
-				| Pick it up from the pick-up point before 21:00 on Thursday, January 27, then the order will have to be canceled. Entering the pick—up point only with a mask and gloves - this will help.
-			p
-				| Pick it up from the pick-up point before 21:00 on Thursday, January 27, then the order will have to be canceled. Entering the pick—up point only with a mask and gloves - this will help.
-		modal-action
-			.modal-panel__item
-				button-border.modal-panel__btn(icon="noneUser" BigIcon gray) Block
-			.modal-panel__item
-				button-border.modal-panel__btn(icon="closeCircle" BigIcon gray) Complaint
-			.modal-panel__item
-				button-border.modal-panel__btn(icon="delete" BigIcon gray) Delete the Chat
 </template>
 
 <script>
@@ -35,7 +34,7 @@ export default {
 		},
 		sidebarTitle: {
 			type: String,
-			default: "Messages"
+			default: "Advertises"
 		},
 		blacklist: {
 			type: Array,
@@ -47,67 +46,39 @@ export default {
 		return{
 			list: [
 				{
-					text: 'A pleasure to contact with you pleasure to contact with you',
-				},
-				{
 					name: 'Johnson',
 					avatar: 'User4.jpg',
-					desc: 'Macbook pro 2016 text',
+					desc: 'I forgot my password',
 					text: 'A pleasure to contact with you pleasure to contact with you',
-					counter: 2
-				},
-				{
-					name: 'Johnson',
-					avatar: 'User4.jpg',
-					desc: 'Macbook pro 2016 text',
-					text: 'A pleasure to contact with you pleasure to contact with you',
+					status: 'Wait for answer'
 				},
 				{
 					name: 'Alexandr',
 					avatar: 'User3.jpg',
-					desc: 'Macbook pro 2016 text',
+					desc: 'I forgot my password',
 					text: 'A pleasure to contact with you pleasure to contact with you',
-					counter: 2
+					status: 'Wait for answer'
 				},
 				{
 					name: 'Johnson',
 					avatar: 'User4.jpg',
-					desc: 'Macbook pro 2016 text',
+					desc: 'I forgot my password',
 					text: 'A pleasure to contact with you pleasure to contact with you',
-					counter: 2
-				},
-				{
-					name: 'Johnson',
-					avatar: 'User4.jpg',
-					desc: 'Macbook pro 2016 text',
-					text: 'A pleasure to contact with you pleasure to contact with you',
+					status: 'Wait for answer'
 				},
 				{
 					name: 'Alexandr',
 					avatar: 'User3.jpg',
-					desc: 'Macbook pro 2016 text',
+					desc: 'I forgot my password',
 					text: 'A pleasure to contact with you pleasure to contact with you',
-					counter: 2
+					status: 'Wait for answer'
 				},
 				{
 					name: 'Johnson',
 					avatar: 'User4.jpg',
-					desc: 'Macbook pro 2016 text',
+					desc: 'I forgot my password',
 					text: 'A pleasure to contact with you pleasure to contact with you',
-					counter: 2
-				},
-				{
-					name: 'Johnson',
-					avatar: 'User4.jpg',
-					desc: 'Macbook pro 2016 text',
-					text: 'A pleasure to contact with you pleasure to contact with you',
-				},
-				{
-					name: 'Alexandr',
-					avatar: 'User3.jpg',
-					desc: 'Macbook pro 2016 text',
-					text: 'A pleasure to contact with you pleasure to contact with you',
-					counter: 2
+					status: 'Wait for answer'
 				},
 			],
 			messages: [
@@ -176,7 +147,7 @@ export default {
 </script>
 
 <style lang="scss">
-.section-chat {
+.chat-moderator {
 	position: relative;
 	border-top: 1px solid $light-gray;
 	overflow: hidden;
@@ -230,7 +201,7 @@ export default {
 		@include large-tablet {
 			width: 100%;
 			&_left {
-				min-width: inherit;
+				display: none;
 			}
 			&_right {
 				border-left: 0;

@@ -1,11 +1,16 @@
 <template lang="pug">
-	.chat-sidebar
+	.chat-sidebar(:class="Mods")
 		.chat-sidebar__top
+			button-link-arrow.chat-sidebar__back(:to="backLink" v-if="moderator == true")
 			.chat-sidebar__title.h3 {{title}} 
 				span.color-blue ({{counter}})
-			part-chat-search.chat-sidebar__search
-			form-checkbox.chat-sidebar__select-all(all @change.native="panel")
+			part-chat-search.chat-sidebar__search(v-if="search == true")
+			form-checkbox.chat-sidebar__select-all(all @change.native="panel" v-if="moderator == false")
 				span.color-gray.h6 Select all
+		.chat-sidebar__stat(v-if="statText")
+			.chat-sidebar__stat-text
+				| {{statText}} 
+				span.color-blue ({{statCounter}})
 		.chat-sidebar__container
 			.chat-sidebar__container-wrap
 				.chat-sidebar__list
@@ -17,8 +22,11 @@
 						:time="item.time"
 						:counter="item.counter"
 						:desc="item.desc"
-						checkbox
+						:status="item.status"
+						:checkbox="checkbox"
+						:small="small"
 						button
+
 						:class="{isActive:number == i}"
 						@change="tabList(i)"
 						@showPanel="panel"
@@ -39,6 +47,34 @@ export default {
 			type: Number,
 			default: 20
 		},
+		statCounter: {
+			type: Number,
+			default: null
+		},
+		statText: {
+			type: String,
+			default: ''
+		},
+		search: {
+			type: Boolean,
+			default: true
+		},
+		moderator: {
+			type: Boolean,
+			default: false
+		},
+		checkbox: {
+			type: Boolean,
+			default: true
+		},
+		small: {
+			type: Boolean,
+			default: false
+		},
+		backLink: {
+			type: String,
+			default: '#'
+		},
 		list: {
 			type: Array,
 			default: () => ([
@@ -57,12 +93,21 @@ export default {
 			this.number = i;
 
 			if ( window.innerWidth < 1121 ) {
-				document.querySelector(".section-chat__column_left").style.display = "none";
+				if ( document.querySelector(".section-chat__column_left") ) {
+					document.querySelector(".section-chat__column_left").style.display = "none";
+				}
 			}
 		},
 		panel() {
 	    	this.panelOpen = true;
 	    },
+	},
+	computed: {
+		Mods(){
+			return {
+				'chat-sidebar_moderator': this.moderator
+			}
+		}
 	}
 }
 </script>
@@ -76,6 +121,31 @@ export default {
 
 	@include small-tablet {
 		padding-bottom: 60rem;
+	}
+
+	&_moderator {
+		.chat-sidebar {
+			&__top {
+				min-height: 91rem;
+				border-bottom: 1px solid $light-gray;
+				padding-top: 20rem;
+				padding-bottom: 20rem;
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+
+	&__back {
+		margin-right: 25rem;
+		.link-arrow {
+			&__icon {
+				width: 15rem;
+				height: 17rem;
+				transform: rotate(180deg);
+				stroke: $default;
+			}
+		}
 	}
 
 	&__top {
@@ -155,6 +225,12 @@ export default {
 		&:not(:first-child) {
 			border-top: 1px solid #F4F3F4;
 		}
+	}
+
+	&__stat {
+		padding: 22rem 10rem 14rem 30rem;
+		font-size: 16rem;
+		font-weight: 600;
 	}
 }
 </style>
