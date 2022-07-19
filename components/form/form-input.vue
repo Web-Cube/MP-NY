@@ -362,6 +362,14 @@ export default {
 		border-radius: 4px;
 		color: $blue;
 		font-size: 17rem;
+
+		@include large-mobile {
+			height: 26rem;
+			margin-top: -13rem;
+			padding: 0 6rem;
+			font-size: 14rem;
+
+		}
 	}
 }
 </style>

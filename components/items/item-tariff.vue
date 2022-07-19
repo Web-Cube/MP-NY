@@ -15,7 +15,16 @@
 						.item-tariff__time {{time}}
 				ul.item-tariff__list(v-if="list" :class="Mods")
 					li.item-tariff__item(v-for="(item, i) in list" :key="i") {{item}}
-				button-link-arrow.item-tariff__more(v-if="list" more small blue @click.native="toggle" :class="Mods") More
+				button-link-arrow.item-tariff__more(
+					v-if="list" 
+					more 
+					small 
+					blue 
+					@click.native="toggle" 
+					:class="Mods" 
+					showText="More"
+					hideText="Roll up"
+				)
 			.item-tariff__bottom
 				button-primary.item-tariff__btn(border small v-b-modal.modal-thank @click.native="$bvModal.hide('modal-tariffs');")
 					span.color-gray Choose

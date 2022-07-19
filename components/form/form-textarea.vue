@@ -31,6 +31,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		big: {
+			type: Boolean,
+			default: false
+		},
 	},
 	data () {
 		return {
@@ -41,7 +45,8 @@ export default {
 	computed: {
 		Mods(){
 			return {
-				'textarea_small': this.small
+				'textarea_small': this.small,
+				'textarea_big': this.big
 			}
 		},
 		inputStyle () {
@@ -121,6 +126,17 @@ export default {
 			.textarea {
 				&__field {
 					height: 48rem;
+				}
+			}
+		}
+	}
+
+	&_big {
+		.textarea {
+			&__field {
+				height: 170rem;
+				&::placeholder{
+					white-space: pre-wrap;
 				}
 			}
 		}

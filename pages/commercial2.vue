@@ -1,6 +1,11 @@
 <template lang="pug">
 	main.main
-		section-commercial(:switchers="switchers" title="Type of advertise")
+		section-commercial(
+			:switchers="switchers" 
+			title="Type of banner" 
+			banner 
+			deleteButton="this banner"
+		)
 </template>
 
 <script>
@@ -12,11 +17,11 @@ export default {
 				{
 					value: 'For user',
 					text: 'For user',
-					checked: true
 				},
 				{
 					value: 'For business',
 					text: 'For business',
+					checked: true
 				},
 			],
 		}

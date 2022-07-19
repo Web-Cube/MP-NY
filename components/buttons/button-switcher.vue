@@ -63,6 +63,10 @@ export default {
 	padding: 3px;
 	&__list {
 		display: flex;
+
+		@include large-mobile {
+			min-width: 100%;
+		}
 	}
 	&__item {
 		width: 100%;

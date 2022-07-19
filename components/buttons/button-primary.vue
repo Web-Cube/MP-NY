@@ -191,6 +191,13 @@ export default {
 			width: 20rem;
 			height: 20rem;
 		}
+		&_close {
+			width: 14rem;
+			height: 14rem;
+			stroke: $default;
+			stroke-width: 1.5;
+			margin-right: 15rem;
+		}
 
 		@include large-mobile {
 			&_phone {

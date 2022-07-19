@@ -1,5 +1,5 @@
 <template lang="pug">
-	label.radio-switch
+	label.radio-switch(:class="Mods")
 		input.radio-switch__input(:name="name" :value="value" type="checkbox" :checked="checked")
 		.radio-switch__btn
 			.radio-switch__icon
@@ -27,11 +27,16 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		rotate: {
+			type: Boolean,
+			default: false
+		},
 	},
 	computed: {
 		Mods(){
 			return {
-				'checkbox_light': this.light,
+				'radio-switch_light': this.light,
+				'radio-switch_rotate': this.rotate,
 			}
 		}
 	}
@@ -44,6 +49,13 @@ export default {
 	align-items: center;
 	cursor: pointer;
 	font-size: 16rem;
+
+	&_rotate {
+		flex-direction: row-reverse;
+		.radio-switch__text {
+			margin-right: 13rem;
+		}
+	}
 
 	&__input {
 		display: none;
