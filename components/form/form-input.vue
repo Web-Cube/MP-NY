@@ -347,5 +347,21 @@ export default {
 		color: $gray;
 		transition: ease .15s;
 	}
+
+	&__change {
+		position: absolute;
+		right: 15rem;
+		top: 50%;
+		margin-top: -14rem;
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		padding: 0 12rem;
+		min-height: 28rem;
+		background: #fff;
+		border-radius: 4px;
+		color: $blue;
+		font-size: 17rem;
+	}
 }
 </style>

@@ -61,6 +61,10 @@ export default {
 		gray: {
 			type: Boolean,
 			default: false
+		},
+		large: {
+			type: Boolean,
+			default: false
 		}
 	},
 	computed: {
@@ -75,7 +79,8 @@ export default {
 				'button-medium_small': this.small,
 				'button-medium_verysmall': this.verysmall,
 				'button-medium_border-white': this.borderWhite,
-				'button-medium_transparent': this.transparent
+				'button-medium_transparent': this.transparent,
+				'button-medium_large': this.large
 			}
 		}
 	}
@@ -164,6 +169,9 @@ export default {
 		&.button-medium_verysmall {
 			width:30rem;
 		}
+		&.button-medium_large {
+			width: 50rem;
+		}
 	}
 
 	&_border-white {
@@ -241,6 +249,10 @@ export default {
 			background: #fff;
 			border-color: #E4E4E4;
 		}
+	}
+
+	&_large {
+		height: 50rem;
 	}
 
 	&__icon {
