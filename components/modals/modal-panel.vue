@@ -12,8 +12,8 @@
 		template(#modal-header='{ close }')
 			button-close.modal__close(@click.native='close()')
 		h3.modal-panel__title.h3 {{ title }}
-			.modal-panel__list
-				slot
+		.modal-panel__list
+			slot
 		template(#modal-footer='{ close }')
 			button-border.modal-panel__cancel(gray @click.native='close()') Cancel
 

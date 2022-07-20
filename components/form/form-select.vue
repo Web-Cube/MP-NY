@@ -218,7 +218,6 @@ export default {
 				border-radius: 10rem;
 				padding: 15rem 20rem;
 				width: 100%;
-				color: $default;
 			}
 			&__body {
 				width: 100%;

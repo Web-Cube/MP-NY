@@ -32,7 +32,49 @@
 				name="date"
 				label="Date"
 			)
-		part-annoucement-table.annoucement-list__table(:rows="rows")
+		form-checkbox.annoucement-list__select-all(@change.native="panel")
+			span.color-gray.h6 Select all
+		part-annoucement-table.annoucement-list__table(:rows="rows" @showPanel="panel")
+
+		.annoucement-list__items
+			item-annoucement.annoucement-list__item(
+				v-for="(item, i) in list"
+				:key="i"
+				:name="item.name"
+				:user="item.user"
+				:category="item.category"
+				:status="item.status"
+				:date="item.date"
+				:to="item.to"
+				:preview="item.preview"
+				@showPanel="panel"
+				small
+			)
+
+		transition(name="fade")
+			part-annoucement-panel.annoucement-list__panel(v-if="panelOpen" @closePanel="panelOpen = false" modalName="modal-annoucement-list")
+				button-medium.annoucement-panel__btn(icon="check" blue small) Active
+				button-medium.annoucement-panel__btn(icon="user" blue small) Check
+					span.hidden  other advertises
+				button-medium.annoucement-panel__btn(icon="category" blue small) Change categories
+				button-medium.annoucement-panel__btn(icon="minusCircle" blue small) Ban
+					span.hidden  this person
+
+		modal-panel(id="modal-annoucement-list")
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="checkBig" blue BigIcon v-b-modal.modal-activated) Active
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="closeBig" BigIcon gray v-b-modal.modal-refusal) Refuse
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="profile" BigIcon gray) Check other advertises
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="category" BigIcon gray) Change categories
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="minusCircle" BigIcon gray) Ban this person
+
+		modal-activated
+			| You have activated the ad, if it is an error, click «Cancel»
+		modal-refusal
 
 </template>
 
@@ -50,6 +92,7 @@ export default {
 	},
 	data(){
 		return{
+			panelOpen: false,
 			switchers: [
 				{
 					value: 'On moderation',
@@ -76,10 +119,99 @@ export default {
 					status: 'Non active',
 					date: '11.04.22',
 					id: '114575854'
+				},
+				{
+					img: 'item-card__img1.jpg',
+					name: 'Продает Macbook M1 pro 2021 16’2',
+					category: 'Electronics',
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					status: 'Non active',
+					date: '11.04.22',
+					id: '114575854'
+				},
+				{
+					img: 'item-card__img1.jpg',
+					name: 'Продает Macbook M1 pro 2021 16’2',
+					category: 'Electronics',
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					status: 'Non active',
+					date: '11.04.22',
+					id: '114575854'
+				},
+				{
+					img: 'item-card__img1.jpg',
+					name: 'Продает Macbook M1 pro 2021 16’2',
+					category: 'Electronics',
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					status: 'Non active',
+					date: '11.04.22',
+					id: '114575854'
+				},
+				{
+					img: 'item-card__img1.jpg',
+					name: 'Продает Macbook M1 pro 2021 16’2',
+					category: 'Electronics',
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					status: 'Non active',
+					date: '11.04.22',
+					id: '114575854'
+				},
+				{
+					img: 'item-card__img1.jpg',
+					name: 'Продает Macbook M1 pro 2021 16’2',
+					category: 'Electronics',
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					status: 'Non active',
+					date: '11.04.22',
+					id: '114575854'
 				}
+			],
+			list: [
+				{
+					name: 'Объектив SLR Magic. Sony E. 25mm f1.4',
+					to: '#',
+					user: 'Johnson',
+					category: 'Electronics',
+					date: '11.04.22',
+					status: 'Non active',
+					preview: 'item-card__img1.jpg',
+				},
+				{
+					name: 'Объектив SLR Magic. Sony E. 25mm f1.4',
+					to: '#',
+					user: 'Johnson',
+					category: 'Electronics',
+					date: '11.04.22',
+					status: 'Non active',
+					preview: 'item-card__img1.jpg',
+				},
+				{
+					name: 'Объектив SLR Magic. Sony E. 25mm f1.4',
+					to: '#',
+					user: 'Johnson',
+					category: 'Electronics',
+					date: '11.04.22',
+					status: 'Non active',
+					preview: 'item-card__img1.jpg',
+				},
 			]
 		}
-	}
+	},
+	methods: {
+	    panel() {
+	    	this.panelOpen = true;
+	    },
+	},
 }
 </script>
 
@@ -87,8 +219,12 @@ export default {
 .annoucement-list{
 	padding: 30rem 0;
 
+	@include small-tablet {
+		padding-bottom: 80rem;
+	}
+
 	@include large-mobile {
-		padding: 20rem 0;
+		padding: 20rem 0 60rem 0;
 	}
 
 	&__title {
@@ -135,6 +271,34 @@ export default {
 
 	&__table {
 		margin-top: 50rem;
+
+		@include large-tablet {
+			display: none;
+		}
+	}
+
+	&__panel {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 10rem;
+	}
+
+	&__items {
+		@include min-large-tablet {
+			display: none;
+		}
+	}
+
+	&__select-all {
+		margin-top: 15rem;
+		@include min-large-tablet {
+			display: none;
+		}
+	}
+
+	&__item {
+		padding: 15rem 0;
+		border-bottom: 1px solid $light-gray;
 	}
 }
 </style>

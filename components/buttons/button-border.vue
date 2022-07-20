@@ -75,6 +75,10 @@ export default {
 					fill: none;
 					stroke: $blue;
 				}
+				&_check {
+					fill: none;
+					stroke: $blue;
+				}
 			}
 		}
 	}
@@ -119,6 +123,10 @@ export default {
 					fill: none;
 					stroke: $gray;
 				}
+				&_minusCircle {
+					fill: none;
+					stroke: $gray;
+				}
 			}
 		}
 	}
@@ -160,6 +168,16 @@ export default {
 			stroke-width: 1.5;
 		}
 		&_delete {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_check {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.2;
+		}
+		&_minusCircle {
 			fill: none;
 			stroke: $default;
 			stroke-width: 1.5;

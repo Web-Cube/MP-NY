@@ -33,8 +33,8 @@
 						.annoucement-table__row
 							.annoucement-table__id {{row.id}}
 							.annoucement-table__buttons
-								button-medium.annoucement-table__btn(icon="check" blue square)
-								button-medium.annoucement-table__btn(icon="closeBig" gray square)
+								button-medium.annoucement-table__btn(icon="check" blue square v-b-modal.modal-activated)
+								button-medium.annoucement-table__btn(icon="closeBig" gray square v-b-modal.modal-refusal)
 								button-medium.annoucement-table__btn(icon="editSmall" border square)
 </template>
 
@@ -107,6 +107,7 @@ export default {
 
 	&__buttons {
 		display: flex;
+		margin-left: 20rem;
 	}
 
 	&__btn {

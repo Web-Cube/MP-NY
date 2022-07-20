@@ -1,15 +1,28 @@
 <template lang="pug">
-	.item-annoucement
+	.item-annoucement(:class="Mods")
 		.item-annoucement__row
 			.item-annoucement__column.item-annoucement__column_left
 				form-checkbox.item-annoucement__checkbox(@change.native="$emit('showPanel')")
 				NuxtLink.item-annoucement__preview(:to="to")
 					img.object-fit(:src="require(`~/assets/img/${preview}`)" v-if="preview")
-				.item-annoucement__info
+
+				.item-annoucement__info(v-if="small")
+					.item-annoucement__title.h4 {{name}}
+					.item-annoucement__desc
+						.item-annoucement__text(v-if="user")
+							span.color-gray User: &nbsp;
+							| {{user}}
+						.item-annoucement__text(v-if="category")
+							span.color-gray Category: &nbsp;
+							| {{category}}
+					.item-annoucement__footer.flex.flex_vertical.flex_justify
+						.item-annoucement__status {{status}}
+						.item-annoucement__footer-date {{date}}
+				.item-annoucement__info(v-else)
 					.item-annoucement__name
 						.item-annoucement__title.h4 {{name}}
-					.item-annoucement__price.mobile-visible $ {{ numberWithSpaces(price) }}
-					.item-annoucement__days.color-gray.mobile-visible
+					.item-annoucement__price.tablet-visible $ {{ numberWithSpaces(price) }}
+					.item-annoucement__days.color-gray.tablet-visible
 						| Left: 
 						span.color-blue {{days}}
 					.item-annoucement__distance.color-gray.h6 {{distance}}
@@ -17,15 +30,16 @@
 					.item-annoucement__nav.flex
 						button-medium.item-annoucement__nav-btn(icon="chatBorder") Chat
 						button-medium.item-annoucement__nav-btn(icon="closeBig" white) Deactivate
-					part-statistic.item-annoucement__statistic.mobile-visible(:statistics="statistics" light)
+					part-statistic.item-annoucement__statistic.tablet-visible(:statistics="statistics" light)
+
 			.item-annoucement__column.item-annoucement__column_right
-				.item-annoucement__price.mobile-hidden $ {{ numberWithSpaces(price) }}
-				part-statistic.item-annoucement__statistic.mobile-hidden(:statistics="statistics" light)
+				.item-annoucement__price.tablet-hidden $ {{ numberWithSpaces(price) }}
+				part-statistic.item-annoucement__statistic.tablet-hidden(:statistics="statistics" light)
 				.item-annoucement__bottom.flex.flex_justify
 					.item-annoucement__bottom-column
-						button-medium.item-annoucement__bottom-btn.mobile-hidden(icon="chart" v-b-modal.modal-statistic) Statistics
+						button-medium.item-annoucement__bottom-btn.tablet-hidden(icon="chart" v-b-modal.modal-statistic) Statistics
 					.item-annoucement__bottom-column.flex
-						button-medium.item-annoucement__bottom-btn.mobile-hidden(icon="zipper" blue) Sale faster
+						button-medium.item-annoucement__bottom-btn.tablet-hidden(icon="zipper" blue) Sale faster
 						button-medium.item-annoucement__more(icon="dots" border square)
 </template>
 
@@ -36,6 +50,18 @@ export default{
 		name: {
 			type: String,
 			default: "Объектив SLR Magic. Sony E. 25mm f1.4"
+		},
+		user: {
+			type: String,
+			default: ""
+		},
+		category: {
+			type: String,
+			default: ""
+		},
+		status: {
+			type: String,
+			default: "Non active"
 		},
 		city: {
 			type: String,
@@ -89,6 +115,10 @@ export default{
 				}
 			])
 		},
+		small: {
+			type: Boolean,
+			default: false
+		},
 	},
 	data(){
 		return {
@@ -100,6 +130,14 @@ export default{
 		showPhone() {
 			this.phone = true;
 		},
+	},
+
+	computed: {
+		Mods(){
+			return {
+				'item-annoucement_small': this.small
+			}
+		}
 	}
 }
 </script>
@@ -109,13 +147,13 @@ export default{
 	position: relative;
 
 	@include min-large-tablet {
-		.mobile-visible {
+		.tablet-visible {
 			display: none;
 		}
 	}
 
 	@include large-tablet {
-		.mobile-hidden {
+		.tablet-hidden {
 			display: none;
 		}
 	}
@@ -210,6 +248,25 @@ export default{
 			position: static;
 			overflow: visible;
 			white-space: inherit;
+			height: auto;
+		}
+	}
+
+	&__desc {
+		margin-top: 10rem;
+		font-weight: 500;
+		.color-gray {
+			color: #9A9A9A;
+		}
+
+		@include large-mobile {
+			font-size: 12rem;
+		}
+	}
+
+	&__text {
+		&:not(:first-child) {
+			margin-top: 5rem;
 		}
 	}
 
@@ -301,6 +358,27 @@ export default{
 			border: 0;
 			right: -10rem;
 			top: -12rem;
+		}
+	}
+
+	&__status {
+		display: inline-flex;
+		height: 20rem;
+		padding: 0 7rem;
+		background: #F4F3F4;
+		border-radius: 3px;
+		color: $gray;
+		@include large-mobile {
+			font-size: 12rem;
+		}
+	}
+
+	&__footer {
+		margin-top: 14rem;
+		@include large-mobile {
+			&-date {
+				font-size: 12rem;
+			}
 		}
 	}
 }

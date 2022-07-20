@@ -35,6 +35,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		large: {
+			type: Boolean,
+			default: false
+		}
 	},
 	data () {
 		return {
@@ -46,7 +50,8 @@ export default {
 		Mods(){
 			return {
 				'textarea_small': this.small,
-				'textarea_big': this.big
+				'textarea_big': this.big,
+				'textarea_large': this.large
 			}
 		},
 		inputStyle () {
@@ -137,6 +142,22 @@ export default {
 				height: 170rem;
 				&::placeholder{
 					white-space: pre-wrap;
+				}
+			}
+		}
+	}
+
+	&_large {
+		.textarea {
+			&__field {
+				height: 250rem;
+			}
+		}
+
+		@include large-mobile {
+			.textarea {
+				&__field {
+					height: 185rem;
 				}
 			}
 		}

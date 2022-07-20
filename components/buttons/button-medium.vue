@@ -153,6 +153,10 @@ export default {
 					stroke: none;
 					fill: #fff;
 				}
+				&_category {
+					stroke: none;
+					fill: #fff;
+				}
 			}
 		}
 		&:hover {
@@ -361,12 +365,25 @@ export default {
 		&_check {
 			width: 16rem;
 			height: 16rem;
+			stroke-width: 1.2;
 		}
 		&_editSmall {
 			stroke: none;
 			fill: $gray;
 			width: 18rem;
 			height: 18rem;
+		}
+		&_category {
+			stroke: none;
+			fill: $default;
+		}
+	}
+
+	&__text {
+		@include large-tablet {
+			.hidden {
+				display: none;
+			}
 		}
 	}
 }

@@ -32,6 +32,10 @@ export default {
 	margin-left: -20rem;
 	margin-right: -20rem;
 
+	@include small-tablet {
+		bottom: 60rem;
+	}
+
 	@include large-mobile {
 		padding: 13rem;
 		border-radius: 15rem;
@@ -42,7 +46,7 @@ export default {
 			margin-left: 15rem;
 		}
 
-		@include small-tablet {
+		@include large-tablet {
 			&:not(:first-child) {
 				margin-left: 10rem;
 			}
@@ -52,9 +56,6 @@ export default {
 		margin-left: 30rem;
 
 		@include large-tablet {
-			margin-left: 20rem;
-		}
-		@include small-tablet {
 			margin-left: 10rem;
 		}
 	}
