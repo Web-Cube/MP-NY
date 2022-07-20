@@ -254,6 +254,13 @@ export default {
 			background: #fff;
 			border-color: #E4E4E4;
 		}
+		.button-medium {
+			&__icon {
+				&_closeBig {
+					fill: $gray;
+				}
+			}
+		}
 	}
 
 	&_light {
@@ -350,6 +357,16 @@ export default {
 			margin-right: 15rem;
 			fill: $default;
 			stroke: none;
+		}
+		&_check {
+			width: 16rem;
+			height: 16rem;
+		}
+		&_editSmall {
+			stroke: none;
+			fill: $gray;
+			width: 18rem;
+			height: 18rem;
 		}
 	}
 }

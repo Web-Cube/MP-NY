@@ -32,7 +32,7 @@
 				name="date"
 				label="Date"
 			)
-		part-annoucement-table.annoucement-list__table
+		part-annoucement-table.annoucement-list__table(:rows="rows")
 
 </template>
 
@@ -65,6 +65,19 @@ export default {
 					text: 'Non Active'
 				}
 			],
+			rows: [
+				{
+					img: 'item-card__img1.jpg',
+					name: 'Продает Macbook M1 pro 2021 16’2',
+					category: 'Electronics',
+					user: 'Johnson',
+					email: 'Bari56@mail.ru',
+					phone: '+7 747 609 99 95',
+					status: 'Non active',
+					date: '11.04.22',
+					id: '114575854'
+				}
+			]
 		}
 	}
 }
