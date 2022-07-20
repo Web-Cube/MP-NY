@@ -11,8 +11,19 @@
 	
 		template(#modal-header='{ close }')
 			button-close.modal__close(@click.native='close()')
-			.modal-commercial__title.h3 {{ title }}
-			button-switcher.modal-commercial__switcher(:items="switchers" blue)
+			.modal-commercial__title.h3.mobile-visible {{ title }}
+			.modal-commercial__top(v-if="selectLabel")
+				.modal-commercial__top-title.h4 {{selectLabel}}
+				form-select.modal-commercial__top-select(
+					default
+					:value="value"
+					:items="items"
+				)
+					button-medium.modal-commercial__btn(icon="plusBig" light) New client
+
+			.modal-commercial__header-row
+				.modal-commercial__title.h3.mobile-hidden {{ title }}
+				button-switcher.modal-commercial__switcher(:items="switchers" blue name="commercial")
 
 		.modal-commercial__container.css-scrollbar
 			table
@@ -55,10 +66,22 @@ export default{
 			type: String,
 			default: 'modal-commercial'
 		},
+		value: {
+			type: String,
+			default: ''
+		},
 		rows: {
 			type: Array,
 			default: () => ([
 			]),
+		},
+		items: {
+			type: [Array, Object],
+			default: () => ([])
+		},
+		selectLabel: {
+			type: String,
+			default: ''
 		},
 	},
 	data(){
@@ -104,13 +127,18 @@ export default{
 	}
 
 	&__header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
+		display: block;
+		&-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+		}
 
 		@include large-mobile {
-			flex-wrap: wrap;
+			&-row {
+				flex-wrap: wrap;
+			}
 		}
 	}
 	&__title {
@@ -156,7 +184,7 @@ export default{
 		overflow-y: auto;
 		margin-right: -40rem;
 		padding-right: 38rem;
-		max-height: 500rem;
+		max-height: 440rem;
 
 		@include small-tablet {
 			padding-right: 40rem;
@@ -167,7 +195,7 @@ export default{
 
 		@include large-mobile {
 			margin-top: 10rem;
-			max-height: calc( 80vh - 150rem );
+			max-height: calc( 75vh - 200rem );
 		}
 	}
 	table, thead, tr, td, th {
@@ -241,6 +269,38 @@ export default{
 		}
 	}
 
+	&__top {
+		padding-bottom: 30rem;
+		border-bottom: 1px solid $light-gray;
+		margin-bottom: 27rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		&-title {
+			font-family: 'Gilroy';
+			font-weight: 600;
+			white-space: nowrap;
+			margin-right: 30rem;
+		}
+		&-select {
+			width: 66.66%;
+		}
+
+		@include large-mobile {
+			display: block;
+			padding-bottom: 15rem;
+			margin-bottom: -5rem;
+			margin-top: 20rem;
+			&-title {
+				font-size: 16rem;
+			}
+			&-select {
+				width: 100%;
+				margin-top: 10rem;
+			}
+		}
+	}
+
 	@include large-mobile {
 		table {
 			border-collapse:separate;
@@ -272,6 +332,11 @@ export default{
 				width: 33.33%;
 			}
 		}
+	}
+
+	&__btn {
+		margin-top: 10rem;
+		width: 100%;
 	}
 }
 </style>

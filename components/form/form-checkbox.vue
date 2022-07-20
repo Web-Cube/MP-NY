@@ -131,6 +131,12 @@ export default {
 		.p {
 			font-size: 17rem;
 		}
+
+		@include large-mobile {
+			.p {
+				font-size: 14rem;
+			}
+		}
 	}
 }
 </style>

@@ -1,7 +1,12 @@
 <template lang="pug">
 	.button-photo
 		input.button-photo__input(:name="name" :value="value" type="file")
-		.button-photo__wrap
+		.button-photo__wrap.button-photo__wrap_img(v-if="img")
+			.button-photo__img
+				img(:src="require(`~/assets/img/${img}`)")
+			.button-photo__edit
+				svg-icon(name="editSmall")
+		.button-photo__wrap(v-else)
 			svg-icon(name="camera" viewBox="0 0 24 24")
 
 </template>
@@ -16,6 +21,10 @@ export default {
 		name: {
 			type: String,
 			default: 'file'
+		},
+		img: {
+			type: String,
+			default: ''
 		},
 	},
 }
@@ -68,6 +77,7 @@ export default {
 		align-items: center;
 		justify-content: center;
 		transition: ease .15s;
+		position: relative;
 		&:before {
 			content: '';
 			position: absolute;
@@ -86,10 +96,50 @@ export default {
 			z-index: 2;
 			transition: ease .1s;
 		}
+		&_img {
+			border: 1px solid $light-gray;
+			&:before {
+				display: none;
+			}
+		}
 		@include large-mobile {
 			svg {
 				fill: $default;
 			}
+		}
+	}
+
+	&__img {
+		max-width: 90%;
+		max-height: 90%;
+		img {
+			max-height: 100rem;
+		}
+
+		@include large-mobile {
+			img {
+				max-height: 80rem;
+			}
+		}
+	}
+	&__edit {
+		position: absolute;
+		right: 1px;
+		bottom: 3px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: $blue;
+		border-radius: 100%;
+		width: 34rem;
+		height: 34rem;
+		svg {
+			fill: #fff!important;
+			width: 16rem;
+			height: 16rem;
+		}
+		@include large-mobile {
+			right: -3px;
 		}
 	}
 }

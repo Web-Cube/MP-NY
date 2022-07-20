@@ -8,19 +8,25 @@
 						.commercial__field
 							label.commercial__label.h4 Client
 							form-input.commercial__input(disabled value="Client 1")
-								.input__change(v-b-modal.modal-commercial) Сhange
+								.input__change(v-b-modal.modal-commercial2) Сhange
 						.commercial__field
 							label.commercial__label.h4 Banner
 							form-input.commercial__input(disabled value="Banner 1")
-								.input__change(v-b-modal.modal-commercial) Сhange
+								.input__change(v-b-modal.modal-commercial3) Сhange
 				.commercial__body
 					.commercial__head.flex.flex_vertical.flex_justify
 						h2.commercial__title.h3 {{title}}
 						button-primary.commercial__add(light icon="plusBig") Add new
-					module-add-avatar.commercial__add-avatar
-						| Add your photo for answers, comments and reviews
+					module-add-avatar.commercial__add-avatar(title="Phone.png" img="card-premium__img1.png")
+						| 20 MB
 
 					.commercial__fields
+						.commercial__field
+							label.commercial__label.h4 Background color 
+							part-color-panel.commercial__color-panel(:list="backgroundColors")
+						.commercial__field
+							label.commercial__label.h4 Text color
+							part-color-panel.commercial__color-panel(:list="textColors")
 						.commercial__field
 							label.commercial__label.h4 Name 
 							form-input.commercial__input(value="Объектив SLR Magic. Sony E. 25mm f1.4")
@@ -53,6 +59,7 @@
 									value="The second row of the catalog" 
 									default
 									:items="['The second row of the catalog','The second row of the catalog 2','The second row of the catalog 3']"
+									top
 								)
 
 					.commercial__bottom
@@ -143,6 +150,25 @@
 						blue
 					)
 		modal-commercial(:rows="rows")
+		modal-commercial(
+			:rows="rows"
+			id="modal-commercial2" 
+			client
+			selectLabel="Select a client"
+			title="Type of banner"
+			value="Client 1"
+			:items="items"
+		)
+
+		modal-commercial(
+			:rows="rows"
+			id="modal-commercial3" 
+			client
+			selectLabel="Select a banner"
+			title="Type of banner"
+			value="Banner 1"
+			:items="items2"
+		)
 
 </template>
 
@@ -213,6 +239,71 @@ export default {
 				"Your sales statistics",
 				"Maximum calls and messages",
 				"Up to 10 times more views",
+			],
+			backgroundColors: [
+				{
+					color: '#EEF1FE'
+				},
+				{
+					color: '#556DEE'
+				},
+				{
+					color: 'linear-gradient(239.83deg, #E0F0FF 10.5%, #FFE3D3 124.13%)'
+				},
+				{
+					color: '#F4F3F4'
+				}
+			],
+			textColors: [
+				{
+					color: '#062439'
+				},
+				{
+					color: '#556DEE'
+				},
+				{
+					color: '#fff',
+					border: '#D2D2D7'
+				},
+				{
+					color: '#F4F3F4'
+				}
+			],
+			items: [
+				{
+					text: "Client 1",
+					counter: 3
+				},
+				{
+					text: "Client 2",
+					counter: 2
+				},
+				{
+					text: "Client 3",
+					counter: 4
+				},
+				{
+					text: "Client 4",
+					counter: 123
+				},
+			],
+			items2: [
+				{
+					text: "Banner 1",
+					counter: 3
+				},
+				{
+					text: "Banner 2",
+					counter: 2
+				},
+				{
+					text: "Banner 3",
+					counter: 4
+				},
+				{
+					text: "Banner 4",
+					counter: 123
+				},
 			]
 		}
 	}
@@ -294,6 +385,13 @@ export default {
 
 		@include large-mobile {
 			padding-bottom: 15rem;
+			&-row {
+				padding-top: 5rem;
+				.commercial__field {
+					width: 100%;
+					margin-top: 15rem;
+				}
+			}
 		}
 	}
 
@@ -399,6 +497,17 @@ export default {
 		&:not(:last-child) {
 			margin-right: 25rem;
 		}
+
+		@include large-mobile {
+			width: 50%;
+			margin-top: 13rem;
+			&:not(:last-child) {
+				margin-right: 0;
+			}
+		}
+	}
+	&__color-panel {
+		margin-top: 15rem;
 	}
 }
 </style>

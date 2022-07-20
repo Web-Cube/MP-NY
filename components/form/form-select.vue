@@ -8,11 +8,32 @@
 				.select__arrow
 					svg-icon(name="arrowDown" viewBox="0 0 11 7")
 			transition(name="DropDown")
-				.select__list(v-if="listOn")
-					.select__item(v-for="(item, i) in items" :key="i")
-						label.select__btn
-							input.select__btn-input(type="radio" :name="name" :value="item" @change="closeList(); updateValue();" v-model="currentValue")
-							span.select__btn-text {{ item }}
+				.select__body(v-if="listOn")
+					.select__list
+						.select__item(v-for="(item, i) in items" :key="i")
+							label.select__btn
+								input.select__btn-input(
+									type="radio"
+									:name="name"
+									:value="item.text" 
+									@change="closeList(); updateValue();" 
+									v-model="currentValue" 
+									v-if="item.text"
+								)
+								input.select__btn-input(
+									type="radio"
+									:name="name"
+									:value="item" 
+									@change="closeList(); updateValue();" 
+									v-model="currentValue" 
+									v-else
+								)
+								span.select__btn-text(v-if="item.text")
+									| {{ item.text }} 
+									span.select__btn-counter.color-blue(v-if="item.counter") ({{item.counter}})
+								span.select__btn-text(v-else) {{ item }}
+
+					slot
 
 </template>
 
@@ -197,20 +218,25 @@ export default {
 				border-radius: 10rem;
 				padding: 15rem 20rem;
 				width: 100%;
+				color: $default;
 			}
-			&__list {
+			&__body {
 				width: 100%;
+				border-radius: 10rem;
+				margin-top: 5px;
+			}
+			&__btn {
+				color: $gray;
 			}
 		}
 	}
 
 	&_top {
 		.select {
-			&__list {
+			&__body {
 				top: auto;
 				bottom: 100%;
-				margin-bottom: 10rem;
-				border-radius: 15rem 15rem 5px 5px;
+				margin-bottom: 5px;
 			}
 		}
 	}
@@ -287,7 +313,7 @@ export default {
 		}
 	}
 
-	&__list {
+	&__body {
 		position: absolute;
 		top: 100%;
 		margin-top: 10rem;

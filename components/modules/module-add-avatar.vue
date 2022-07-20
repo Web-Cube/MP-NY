@@ -1,6 +1,6 @@
 <template lang="pug">
 	.add-avatar
-		button-photo.add-avatar__btn
+		button-photo.add-avatar__btn(:img="img")
 		.add-avatar__info
 			.add-avatar__title.b {{title}}
 			.add-avatar__text.color-gray
@@ -13,6 +13,14 @@ export default {
 		title: {
 			type: String,
 			default: "Add an avatar"
+		},
+		img: {
+			type: String,
+			default: ""
+		},
+		edit: {
+			type: Boolean,
+			default: false
 		},
 	}
 }
@@ -29,6 +37,10 @@ export default {
 	}
 	&__btn {
 		margin-right: 30rem;
+
+		@include large-mobile {
+			margin-right: 26rem;
+		}
 	}
 
 	&__info {
