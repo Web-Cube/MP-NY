@@ -9,7 +9,7 @@
 				Nuxt
 				part-mobile-menu
 				modal-search
-		//module-page-helper
+		module-page-helper
 </template>
 <script>
 export default {

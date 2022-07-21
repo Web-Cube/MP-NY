@@ -8,7 +8,7 @@
 			.page-helper__scroll.css-scrollbar.content
 				ul
 					li(v-for="(Page, PID) in PageList" :key="PID")
-						NuxtLink.link(:to="Page") {{ PID }}
+						NuxtLink.link(:to="Page.path") {{ Page.name }}
 </template>
 
 <script>
@@ -17,16 +17,16 @@ export default {
 		return {
 			Opened: false,
 
-			PageList: {
-				"Главная": "/",
-				"Каталог": "/catalog",
-				"Контакты": "/contacts",
-				"Карточка": "/single",
-				"Помощь": "/support",
-				"Мои объявления": "/announcements",
-				"Создать объявлениe": "/create-ad",
-				// "Favorites ad": "/favorites-ad",
-			}
+			// PageList: {
+			// 	"Главная": "/",
+			// 	"Каталог": "/catalog",
+			// 	"Контакты": "/contacts",
+			// 	"Карточка": "/single",
+			// 	"Помощь": "/support",
+			// 	"Мои объявления": "/announcements",
+			// 	"Создать объявлениe": "/create-ad",
+			// 	// "Favorites ad": "/favorites-ad",
+			// }
 		}
 	},
 
@@ -34,6 +34,15 @@ export default {
 		ButtonLabel(){
 			return this.Opened ? 'x' : 'i';
 		},
+
+		PageList(){
+			return this.$router.options.routes.map(Route => (
+				{
+					name: Route.name,
+					path: Route.path
+				}
+			))
+		}
 	},
 
 	methods: {
