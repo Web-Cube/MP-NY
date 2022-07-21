@@ -67,6 +67,7 @@ export default {
 
 	&__more{
 		margin-top: 30rem;
+		cursor: pointer;
 
 		@include large-mobile {
 			margin-top: 20rem;	

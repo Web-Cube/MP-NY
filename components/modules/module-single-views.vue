@@ -12,11 +12,11 @@
 	color: $gray;
 	fill: $gray;
 	font-weight: 600;
-	line-height: 1em;
+	line-height: 1;
 
 	@include large-mobile {
 		font-size: 14rem;
-		line-height: 1em;
+		line-height: 1;
 		fill: #C3C8CB;
 	}
 

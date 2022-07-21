@@ -72,9 +72,19 @@
 			.modal-panel__item
 				button-border.modal-panel__btn(icon="minusCircle" BigIcon gray) Ban this person
 
+		modal-panel(id="modal-product-action")
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="profile" BigIcon gray) Check other advertises
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="category" BigIcon gray) Change categories
+			.modal-panel__item
+				button-border.modal-panel__btn(icon="minusCircle" BigIcon gray) Ban this person
+
 		modal-activated
 			| You have activated the ad, if it is an error, click «Cancel»
 		modal-refusal
+
+		modal-product
 
 </template>
 
@@ -261,7 +271,7 @@ export default {
 	&__switcher {
 		@include large-mobile {
 			margin-top: 15rem;
-			width: 100%;
+			width: calc( 100% + 30rem );
 		}
 	}
 

@@ -35,7 +35,7 @@
 							.annoucement-table__buttons
 								button-medium.annoucement-table__btn(icon="check" blue square v-b-modal.modal-activated)
 								button-medium.annoucement-table__btn(icon="closeBig" gray square v-b-modal.modal-refusal)
-								button-medium.annoucement-table__btn(icon="editSmall" border square)
+								button-medium.annoucement-table__btn(icon="editSmall" border square v-b-modal.modal-product)
 </template>
 
 <script>

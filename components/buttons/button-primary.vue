@@ -1,8 +1,17 @@
 <template lang="pug">
+	a.button-primary.h5(
+		:href="to"
+		:class="Mods"
+		v-if="link"
+	)
+		svg-icon.button-primary__icon(:name="icon" :class="`button-primary__icon_${icon}`" v-if="icon")
+		span.button-primary__text
+			slot
 	component.button-primary.h5(
 		:is="to !== '' ? 'NuxtLink' : 'button'"
 		:to="to !== '' ? to : false"
 		:class="Mods"
+		v-else
 	)
 		svg-icon.button-primary__icon(:name="icon" :class="`button-primary__icon_${icon}`" v-if="icon")
 		span.button-primary__text
@@ -22,6 +31,10 @@ export default {
 			default: ""
 		},
 		light: {
+			type: Boolean,
+			default: false
+		},
+		link: {
 			type: Boolean,
 			default: false
 		},
@@ -48,6 +61,14 @@ export default {
 		borderRed: {
 			type: Boolean,
 			default: false
+		},
+		red: {
+			type: Boolean,
+			default: false
+		},
+		big: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -60,7 +81,9 @@ export default {
 				'button-primary_blue': this.blue,
 				'button-primary_border': this.border,
 				'button-primary_verysmall': this.verysmall,
-				'button-primary_border-red': this.borderRed
+				'button-primary_border-red': this.borderRed,
+				'button-primary_red': this.red,
+				'button-primary_big': this.big
 			}
 		}
 	}
@@ -82,9 +105,16 @@ export default {
 	cursor: pointer;
 	font-family: 'Gilroy';
 
+	&_big {
+		height: 70rem;
+	}
+
 	@include large-mobile {
 		height: 50rem;
 		font-size: 14rem;
+		&_big {
+			height: 60rem;
+		}
 	}
 
 	&_light {
@@ -120,6 +150,14 @@ export default {
 			background: $light-gray;
 			opacity: 1!important;
 		}
+		.button-primary {
+			&__icon {
+				&_check {
+					fill: none;
+					stroke: #fff;
+				}
+			}
+		}
 	}
 	&_border {
 		background: #fff;
@@ -137,6 +175,18 @@ export default {
 		&:hover {
 			color: #fff;
 			background: $red;
+		}
+	}
+	&_red {
+		background: rgba(235, 87, 87, 0.14);
+		color: $red;
+
+		.button-primary {
+			&__icon {
+				&_close {
+					stroke: $red;
+				}
+			}
 		}
 	}
 	&:disabled {
@@ -197,6 +247,37 @@ export default {
 			stroke: $default;
 			stroke-width: 1.5;
 			margin-right: 15rem;
+		}
+
+		&_check {
+			fill: none;
+			stroke: $default;
+			width: 20rem;
+			height: 20rem;
+		}
+
+		&_user {
+			width: 18rem;
+			height: 18rem;
+		}
+
+		&_grid {
+			width: 18rem;
+			height: 18rem;
+		}
+		&_grid2 {
+			width: 16rem;
+			height: 16rem;
+		}
+
+		&_danger {
+			width: 17rem;
+			height: 17rem;
+		}
+
+		&_dots {
+			margin-right: 0;
+			width: 14rem;
 		}
 
 		@include large-mobile {

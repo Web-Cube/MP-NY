@@ -40,7 +40,7 @@
 						button-medium.item-annoucement__bottom-btn.tablet-hidden(icon="chart" v-b-modal.modal-statistic) Statistics
 					.item-annoucement__bottom-column.flex
 						button-medium.item-annoucement__bottom-btn.tablet-hidden(icon="zipper" blue) Sale faster
-						button-medium.item-annoucement__more(icon="dots" border square)
+						button-medium.item-annoucement__more(icon="dots" border square v-b-modal.modal-product)
 </template>
 
 <script>
