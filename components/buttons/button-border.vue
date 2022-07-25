@@ -127,6 +127,14 @@ export default {
 					fill: none;
 					stroke: $gray;
 				}
+				&_penEdit {
+					fill: none;
+					stroke: $gray;
+				}
+				&_copy {
+					fill: none;
+					stroke: $gray;
+				}
 			}
 		}
 	}
@@ -178,6 +186,16 @@ export default {
 			stroke-width: 1.2;
 		}
 		&_minusCircle {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_penEdit {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_copy {
 			fill: none;
 			stroke: $default;
 			stroke-width: 1.5;
