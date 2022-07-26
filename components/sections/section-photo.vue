@@ -1,7 +1,7 @@
 <template lang="pug">
 	section.section-photo
-		button-primary.section-photo__btn(blue icon="plusBig")
-			| Add a question
+		button-primary.section-photo__btn(blue icon="plusBig" v-b-modal.modal-photo)
+			| Add a photo
 		.section-photo__list.flex
 			item-photo.section-photo__item(
 				v-for="(item, i) in list"
@@ -27,6 +27,7 @@
 				button-border.modal-panel__btn(icon="penEdit" BigIcon gray) Edit
 			.modal-panel__item
 				button-border.modal-panel__btn(icon="copy" BigIcon gray) Copy
+		modal-photo
 </template>
 
 <script>
