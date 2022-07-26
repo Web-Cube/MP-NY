@@ -3,8 +3,9 @@
 		.correct-head__row.flex.flex_vertical.flex_justify
 			.correct-head__column.correct-head__column_left
 				h1.correct-head__title.h2.h2_big {{title}}
-			.correct-head__column.correct-head__column_right
+			.correct-head__column.correct-head__column_right.flex.flex_vertical
 				button-switcher.correct-head__switcher(:items="switchers" blue name="correct")
+				slot
 </template>
 
 <script>
@@ -46,11 +47,27 @@ export default {
 	}
 
 	&__column {
-		@include large-mobile {
+		@include small-tablet {
 			width: 100%;
+			display: block;
 			&_left {
 				display: none;
 			}
+		}
+	}
+
+	&__switcher {
+		order: 2;
+	}
+
+	&__btn {
+		min-width: 180rem;
+		margin-right: 10rem;
+		order: 1;
+
+		@include small-tablet {
+			margin-top: 30rem;
+			min-width: 190rem;
 		}
 	}
 }

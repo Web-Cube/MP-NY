@@ -157,6 +157,10 @@ export default {
 					stroke: none;
 					fill: #fff;
 				}
+				&_plusBig {
+					stroke: none;
+					fill: #fff;
+				}
 			}
 		}
 		&:hover {
@@ -218,6 +222,10 @@ export default {
 					fill: #fff;
 				}
 				&_deleteBig {
+					stroke: none;
+					fill: #fff;
+				}
+				&_plusBig {
 					stroke: none;
 					fill: #fff;
 				}
@@ -374,6 +382,10 @@ export default {
 			height: 18rem;
 		}
 		&_category {
+			stroke: none;
+			fill: $default;
+		}
+		&_plusBig {
 			stroke: none;
 			fill: $default;
 		}

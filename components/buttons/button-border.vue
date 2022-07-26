@@ -135,6 +135,14 @@ export default {
 					fill: none;
 					stroke: $gray;
 				}
+				&_filters {
+					fill: none;
+					stroke: $gray;
+				}
+				&_duplicate {
+					fill: none;
+					stroke: $gray;
+				}
 			}
 		}
 	}
@@ -196,6 +204,19 @@ export default {
 			stroke-width: 1.5;
 		}
 		&_copy {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_plusBig {
+			padding: 2px;
+		}
+		&_filters {
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
+		}
+		&_duplicate {
 			fill: none;
 			stroke: $default;
 			stroke-width: 1.5;
