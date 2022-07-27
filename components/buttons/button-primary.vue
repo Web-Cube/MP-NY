@@ -69,6 +69,14 @@ export default {
 		big: {
 			type: Boolean,
 			default: false
+		},
+		medium: {
+			type: Boolean,
+			default: false
+		},
+		active: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -83,7 +91,9 @@ export default {
 				'button-primary_verysmall': this.verysmall,
 				'button-primary_border-red': this.borderRed,
 				'button-primary_red': this.red,
-				'button-primary_big': this.big
+				'button-primary_big': this.big,
+				'button-primary_medium': this.medium,
+				'isActive': this.active
 			}
 		}
 	}
@@ -107,6 +117,11 @@ export default {
 
 	&_big {
 		height: 70rem;
+	}
+
+	&_medium {
+		height: 50rem;
+		font-size: 14rem;
 	}
 
 	@include large-mobile {
@@ -162,6 +177,11 @@ export default {
 	&_border {
 		background: #fff;
 		border: 1px solid #C4C4C4;
+		&.isActive {
+			border-color: transparent;
+			background: $blue;
+			color: #fff!important;
+		}
 	}
 	&_verysmall {
 		height: 32rem;

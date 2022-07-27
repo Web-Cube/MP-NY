@@ -50,7 +50,7 @@ export default {
 		},
 		color: {
 			type: String,
-			default: 'red'
+			default: ''
 		},
 		name: {
 			type: String,
