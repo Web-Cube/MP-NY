@@ -4,6 +4,7 @@
 		.select__wrap
 			input.select__input(type="hidden" :name="name" :value="value")
 			.select__head(v-click-outside="closeList" @click="toggleList")
+				.select__color(:class="`${color}`" v-if="color")
 				.select__value {{ value }}
 				.select__arrow
 					svg-icon(name="arrowDown" viewBox="0 0 11 7")
@@ -17,7 +18,7 @@
 									:name="name"
 									:value="item.text" 
 									@change="closeList(); updateValue();" 
-									v-model="currentValue" 
+									v-model="currentValue"
 									v-if="item.text"
 								)
 								input.select__btn-input(
@@ -29,7 +30,8 @@
 									v-else
 								)
 								span.select__btn-text(v-if="item.text")
-									| {{ item.text }} 
+									span.select__color(:class="`${item.color}`" v-if="item.color")
+									span {{ item.text }} 
 									span.select__btn-counter.color-blue(v-if="item.counter") ({{item.counter}})
 								span.select__btn-text(v-else) {{ item }}
 
@@ -45,6 +47,10 @@ export default {
 		value: {
 			type: String,
 			default: 'Select'
+		},
+		color: {
+			type: String,
+			default: 'red'
 		},
 		name: {
 			type: String,
@@ -290,6 +296,31 @@ export default {
 			padding: 0;
 			border: 0;
 		}
+	}
+
+	&__color {
+		width: 10rem;
+		height: 10rem;
+		flex-shrink: 0;
+		margin-right: 10rem;
+		border-radius: 10px;
+		display: inline-flex;
+		&.red {
+			background: $red;
+		}
+		&.blue {
+			background: $blue;
+		}
+		&.brown {
+			background: $brown;
+		}
+		&.green {
+			background: $green;
+		}
+	}
+
+	&__value {
+		margin-right: auto;
 	}
 
 	&__arrow {

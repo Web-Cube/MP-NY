@@ -10,6 +10,7 @@
 					:value="item.value"
 					type="radio"
 					:checked="item.checked"
+					@change="$emit('change')"
 				)
 				span.button-switcher__btn
 					.button-switcher__text.button-switcher__text_black( v-if="item.counter")

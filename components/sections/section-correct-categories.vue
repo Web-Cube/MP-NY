@@ -14,6 +14,7 @@
 				.correct-categories__item
 					module-category(
 						btn
+						v-b-modal.modal-category
 					)
 		.correct-categories__box
 			.correct-categories__level.color-blue 2 level
@@ -29,6 +30,7 @@
 				.correct-categories__item
 					module-category(
 						btn
+						v-b-modal.modal-category
 					)
 		.correct-categories__box
 			.correct-categories__level.color-brown 3 level
@@ -44,6 +46,7 @@
 				.correct-categories__item
 					module-category(
 						btn
+						v-b-modal.modal-category
 					)
 		.correct-categories__box
 			.correct-categories__level.color-green 4 level
@@ -59,6 +62,7 @@
 				.correct-categories__item
 					module-category(
 						btn
+						v-b-modal.modal-category
 					)
 		transition(name="fade")
 			part-annoucement-panel.correct-categories__panel(v-if="panelOpen" @closePanel="panelOpen = false" modalName="modal-correct-categories")

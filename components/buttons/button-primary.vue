@@ -131,7 +131,7 @@ export default {
 		background: #F5F5F7;
 		border: 1px solid #F5F5F7;
 		&:hover:not(:disabled) {
-			background: #fff;
+			background: #E4E4E4;
 			border-color: #E4E4E4;
 		}
 	}
