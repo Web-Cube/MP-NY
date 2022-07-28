@@ -33,7 +33,7 @@ export default {
 				},
 				{
 					icon: 'editText',
-					to: '/correct-text',
+					to: '/сorrect-text',
 					name: 'Correct the text'
 				},
 				{

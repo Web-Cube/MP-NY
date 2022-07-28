@@ -77,7 +77,11 @@ export default {
 		active: {
 			type: Boolean,
 			default: false
-		}
+		},
+		square: {
+			type: Boolean,
+			default: false
+		},
 	},
 
 	computed: {
@@ -93,7 +97,8 @@ export default {
 				'button-primary_red': this.red,
 				'button-primary_big': this.big,
 				'button-primary_medium': this.medium,
-				'isActive': this.active
+				'isActive': this.active,
+				'button-primary_square': this.square,
 			}
 		}
 	}
@@ -107,13 +112,23 @@ export default {
 	align-items: center;
 	justify-content: center;
 	height: 60rem;
-	padding: 0 20rem;
+	padding: 0 30rem;
 	border-radius: 10rem;
 	font-size: 16rem;
 	font-weight: 600;
 	transition: ease .12s;
 	cursor: pointer;
 	font-family: 'Gilroy';
+
+	&_square {
+		width: 60rem;
+		padding: 0;
+		.button-primary {
+			&__icon {
+				margin-right: 0;
+			}
+		}
+	}
 
 	&_big {
 		height: 70rem;
@@ -127,8 +142,13 @@ export default {
 	@include large-mobile {
 		height: 50rem;
 		font-size: 14rem;
+		padding: 0 20rem;
 		&_big {
 			height: 60rem;
+		}
+		&_square {
+			width: 50rem;
+			padding: 0;
 		}
 	}
 
@@ -168,6 +188,10 @@ export default {
 		.button-primary {
 			&__icon {
 				&_check {
+					fill: none;
+					stroke: #fff;
+				}
+				&_penEdit {
 					fill: none;
 					stroke: #fff;
 				}
@@ -298,6 +322,14 @@ export default {
 		&_dots {
 			margin-right: 0;
 			width: 14rem;
+		}
+
+		&_penEdit {
+			width: 16rem;
+			height: 16rem;
+			fill: none;
+			stroke: $default;
+			stroke-width: 1.5;
 		}
 
 		@include large-mobile {

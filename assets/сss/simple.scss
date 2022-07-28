@@ -362,3 +362,15 @@ svg {
 		display: none!important;
 	}
 }
+
+.tablet-hidden {
+	@include small-tablet {
+		display: none !important;
+	}
+}
+
+.min-tablet-hidden {
+	@include min-small-tablet {
+		display: none !important;
+	}
+}

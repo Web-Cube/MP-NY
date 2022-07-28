@@ -7,7 +7,6 @@
 			:style="inputStyle" 
 			@keyup="resize();")
 		textarea.textarea__field.textarea__field_shadow(v-model="currentValue" ref="shadow" tabindex="0")
-		
 
 </template>
 

@@ -8,7 +8,7 @@
 			:placeholder="placeholder"
 			:type="type"
 		)
-		button-primary.correct-field__btn(gray icon="close")
+		button-primary.correct-field__btn(gray icon="close" square)
 
 </template>
 
@@ -48,13 +48,11 @@ export default {
 	}
 
 	&__btn {
-		width: 60rem;
-		min-width: 60rem;
 		margin-left: 10rem;
-		.button-primary {
-			&__icon {
-				margin-right: 0;
-			}
+		flex-shrink: 0;
+
+		@include large-mobile {
+			margin-left: 6rem;
 		}
 	}
 
